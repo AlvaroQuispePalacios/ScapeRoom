@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 
 :root{
-    --main-bg-color: #131512;
-    --other0:#fcfbe5;
+    --main-bg-color: #1a1519;
+    --other0:#e4e2d6;
     --other1:#cd355d;
-    --other2:#de5941;
-    --other3:#d08043;
+    --other2:#f9a11c;
+    --other3:#f9a11c;
+    --other4:#528fae;
 }
 
 body{
@@ -35,6 +36,11 @@ body{
 .logo-title{
     font-size: 1.5rem;
     color: var(--other1);
+}
+
+.logo-img{
+    width: 5rem;
+    border-radius: 50%;
 }
 
 .links{
