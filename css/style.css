@@ -90,13 +90,29 @@ main{
 }
 
 .lr-text-bg-login button{
-    padding: .5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 1rem;
+    outline: 1px solid var(--other0);
+    border-radius: 2px;
+    border: none;
+    color: var(--other0);
+    background-color: transparent;
+}
+
+.lr-text-bg-login button:hover{
+    /* border: none; */
+    background-color: #223d49;
+}
+
+.lr-text-bg-login div{
+    margin-top: 1rem;
 }
 
 .lr-login{
     position: absolute;
     display: flex;
-    display: none;
+    /* display: none; */
     flex-direction: column;
     justify-content: center;
     width: 50%;
@@ -127,11 +143,9 @@ input{
     padding: 1rem;
     border-radius: 5px;
     border: none;
-    background-color: var(--other0);
 }
 
 input:focus-visible{
-    border: none;
     outline: none;
 }
 
@@ -141,6 +155,13 @@ input:focus-visible{
     gap: 1rem;
 }
 
+.lr-form-login button{
+    font-size: 1rem;
+}
+
+.lr-form-login button:hover{
+    background-color: #fff;
+}
 /* ----------------------ESTILOS DE REGISTRO -------------*/
 
 .lr-text-bg-register{
@@ -155,7 +176,22 @@ input:focus-visible{
 }
 
 .lr-text-bg-register button{
-    padding: .5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 1rem;
+    outline: 1px solid var(--other0);
+    border-radius: 2px;
+    border: none;
+    color: var(--other0);
+    background-color: transparent;
+}
+
+.lr-text-bg-register button:hover{
+    background-color: #59182b;
+}
+
+.lr-text-bg-register div{
+    margin-top: 1rem;
 }
 
 .lr-register{
@@ -182,8 +218,8 @@ input:focus-visible{
 
 .lr-register button{
     padding: 1rem;
-    border-radius: 5px;
     border: none;
+    border-radius: 5px;
 }
 
 .lr-form-register{
@@ -192,3 +228,10 @@ input:focus-visible{
     gap: 1rem;
 }
 
+.lr-form-register button{
+    font-size: 1rem;
+}
+
+.lr-form-register button:hover{
+    background-color: #fff;
+}
