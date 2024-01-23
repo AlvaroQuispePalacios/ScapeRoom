@@ -2,3 +2,7 @@
     - Iniciamos el proyecto con entusiasmo, pero los animos se ven abatidos al ver que se necesita que el usuario tiene que registrarse y poder hacer LOGIN.
     - Iniciamos la creacion del html y css para la pagina (Inicio, Iniciar Sesion, Registrarse);
     
+23-01-2024
+    - Iniciamos la creacion de los formularios para el login y register(HTML y CSS)
+    - Mañana sera un nuevo dia
+
