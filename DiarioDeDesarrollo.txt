@@ -6,3 +6,8 @@
     - Iniciamos la creacion de los formularios para el login y register(HTML y CSS)
     - Mañana sera un nuevo dia
 
+24-01-2024
+    - Terminamos la parte de HTML y CSS para el login y register
+    - Iniciamos el JS para poder registrarte y harcer login
+    - Mañana sera un nuevo dia
+    
