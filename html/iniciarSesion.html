@@ -28,31 +28,31 @@
         <section class="lr-main">
 
             <article class="lr-text-bg-login">
-                <p>¿Aún no tienes cuenta?</p>
+                <p>¿Ya tienes una cuenta?</p>
                 <i>Inicia sesión para entrar en la pagina</i>
                 <div>
-                    <button>Iniciar Sesión</button>
+                    <button id="btnShowLogin">Iniciar Sesión</button>
                 </div>
             </article>
 
             <article class="lr-text-bg-register">
-                <p>¿Ya tienes una cuenta?</p>
+                <p>¿Aún no tienes cuenta?</p>
                 <i>Registrate y prueba la experiencia de un Scape Roomn</i>
                 <div>
-                    <button>Registrarse</button>
+                    <button id="btnShowRegister">Registrarse</button>
                 </div>
             </article>
 
-            <article class="lr-login">
+            <article class="lr-login" id="lrLogin">
                 <h2>Iniciar Sesión</h2>
                 <form class="lr-form-login">
                     <input type="text" id="lrLoginUsername" placeholder="Username">
                     <input type="password" id="lrLoginPassword" placeholder="Password">
-                    <button>Iniciar Sesión</button>
+                    <button >Iniciar Sesión</button>
                 </form>
             </article>
 
-            <article class="lr-register">
+            <article class="lr-register" id="lrRegister">
                 <h2>Registrarse</h2>
                 <form class="lr-form-register">
                     <input type="text" id="lrRegisterUsername" placeholder="Username">
@@ -65,4 +65,5 @@
         </section>
     </main>
 </body>
+<script src="../js/animationsCSS.js"></script>
 </html>
