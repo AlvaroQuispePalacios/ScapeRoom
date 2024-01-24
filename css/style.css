@@ -77,7 +77,7 @@ main{
     justify-content: center;
     align-items: center;
     max-width: 1000px;
-    top: 15rem;
+    top: 9rem;
     margin: 0 auto;
     /* border: 1px solid white; */
 }
@@ -130,17 +130,13 @@ main{
     padding-top: 0;
     border-radius: 10px;
     transition: all 1s;
-    /* 
-    animation-name: slideInRight;
-    animation-duration: .5s; 
-    */
 }
 
 .hidden{
     display: none;
 }
 
-@keyframes slideInRight{
+@keyframes hidden{
     from{
         height: 32rem;
     }
@@ -152,8 +148,21 @@ main{
     }
 }
 
+@keyframes show{
+    from{
+        height: 256px;
+        border-radius: 2px;
+        opacity: 0;
+    }
+
+    to{
+        height: 32rem;
+        border-radius: 10px;
+        opacity: 1;
+    }
+}
+
 .lr-login h2{
-    color: #fff;
     text-align: center;
     font-size: 2.1rem;
 }
@@ -170,6 +179,10 @@ input{
     padding: 1rem;
     border-radius: 5px;
     border: none;
+}
+
+button{
+    cursor: pointer;
 }
 
 input:focus-visible{
@@ -241,7 +254,6 @@ input:focus-visible{
 }
 
 .lr-register h2{
-    color: #fff;
     text-align: center;
     font-size: 2.1rem;
 }

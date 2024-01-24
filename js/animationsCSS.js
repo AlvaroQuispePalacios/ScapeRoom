@@ -6,13 +6,22 @@ const lrLogin = document.getElementById("lrLogin");
 const lrRegister = document.getElementById("lrRegister");
 
 btnShowRegister.addEventListener("click", () => {
-    lrLogin.style = "animation-name: slideInRight;animation-duration: .5s;";
+    lrLogin.style = "animation-name: hidden;animation-duration: .5s;";
 
-    let animation = setTimeout(() => {
+    let animationHidden = setTimeout(() => {
         lrLogin.style = "opacity: 0"
         lrLogin.style ="display:none"
     }, 400);
 
+    lrRegister.style = "animation-name: show;animation-duration: .5s; display:flex";
 
-    // clearTimeout(animation);
+});
+
+btnShowLogin.addEventListener("click", () => {
+    lrRegister.style = "animation-name: hidden;animation-duration: .5s;";
+    let animationHidden = setTimeout(() => {
+        lrRegister.style = "opacity: 0"
+        lrRegister.style ="display:none"
+    }, 400);
+    lrLogin.style = "animation-name: show;animation-duration: .5s; display:flex";
 });
