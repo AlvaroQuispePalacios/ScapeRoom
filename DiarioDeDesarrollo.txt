@@ -10,4 +10,6 @@
     - Terminamos la parte de HTML y CSS para el login y register
     - Iniciamos el JS para poder registrarte y harcer login
     - Mañana sera un nuevo dia
-    
+
+26-01-2024
+    - Seguimos con la parte de registro

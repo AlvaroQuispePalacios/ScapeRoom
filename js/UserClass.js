@@ -36,3 +36,7 @@ class User {
         return user;
     }
 }
+
+//  
+// let arrayUsersToLS = [];
+// let arrayUsersFromLS;

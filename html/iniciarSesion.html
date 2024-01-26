@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Scape Rooms D:</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar">
@@ -24,7 +26,7 @@
     </header>
     <main>
         <h2>Iniciar Sesión</h2>
-        
+
         <section class="lr-main">
 
             <article class="lr-text-bg-login">
@@ -48,7 +50,7 @@
                 <form class="lr-form-login">
                     <input type="text" id="lrLoginUsername" placeholder="Username">
                     <input type="password" id="lrLoginPassword" placeholder="Password">
-                    <button id="btnFormLogin">Iniciar Sesión</button>
+                    <button type="button" id="btnFormLogin">Iniciar Sesión</button>
                 </form>
             </article>
 
@@ -56,16 +58,20 @@
                 <h2>Registrarse</h2>
                 <form class="lr-form-register">
                     <input type="text" id="lrRegisterUsername" placeholder="Username">
+                    <span></span>
                     <input type="password" id="lrRegisterPassword" placeholder="Password">
+                    <span></span>
                     <input type="password" id="lrRegisterRepeatPassword" placeholder="Repeat Password">
-                    <button id="btnFormRegister">Registrarse</button>
+                    <span></span>
+                    <button type="button" id="btnFormRegister">Registrarse</button>
                 </form>
             </article>
 
         </section>
     </main>
+    <script src="../js/animationsCSS.js"></script>
+    <script src="../js/UserClass.js"></script>
+    <script src="../js/register.js"></script>
 </body>
-<script src="../js/animationsCSS.js"></script>
-<script src="../js/User.js"></script>
-<script src="../js/register.js"></script>
+
 </html>
