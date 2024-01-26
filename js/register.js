@@ -37,19 +37,6 @@ function isRequired(input) {
     return false
 }
 
-function checkPasswordSame(password1, password2) {
-    
-    if (isRequired(password1) && isRequired(password2)) {
-        if (password1.value != password2.value) {
-            showInputError(password2, "Las contraseñas no son iguales");
-        } else {
-            showInputCorrect(password2);
-            return true;
-        }
-    }
-    return false;
-}
-
 function checkLength(input) {
     if (isRequired(input)) {
         if (input.value.length <= 4) {
@@ -61,6 +48,26 @@ function checkLength(input) {
     }
     return false;
 }
+
+function checkPasswordValid(input){
+    let re;
+    if(isRequired(input)){
+        
+    }
+}
+
+function checkPasswordSame(password1, password2) {
+    if (isRequired(password2)) {
+        if (password1.value != password2.value) {
+            showInputError(password2, "Las contraseñas no son iguales");
+        } else {
+            showInputCorrect(password2);
+            return true;
+        }
+    }
+    return false;
+}
+
 
 function showInputError(input, mensaje) {
     let error = document.querySelector(`#${input.id} + span`);
@@ -82,6 +89,7 @@ function allInputsValid() {
 btnFormRegister.addEventListener("click", () => {
     checkLength(lrRegisterUsername);
     checkPasswordSame(lrRegisterPassword, lrRegisterRepeatPassword);
+    // isRequired(lrRegisterRepeatPassword);
     // let allInputsComplete = isRequired([lrRegisterUsername, lrRegisterPassword, lrRegisterRepeatPassword]);
     // if(allInputsComplete){
     //     checkLength(lrRegisterUsername);
