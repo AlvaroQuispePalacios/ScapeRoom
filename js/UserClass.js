@@ -1,4 +1,4 @@
-class User {
+export default class User {
     constructor(username, password) {
         this.username = username;
         this.password = password;
@@ -36,7 +36,3 @@ class User {
         return user;
     }
 }
-
-//  
-// let arrayUsersToLS = [];
-// let arrayUsersFromLS;

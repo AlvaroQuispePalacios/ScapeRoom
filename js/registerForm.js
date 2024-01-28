@@ -1,3 +1,5 @@
+import User from "./userClass.js";
+
 const lrRegisterUsername = document.getElementById("lrRegisterUsername");
 const lrRegisterPassword = document.getElementById("lrRegisterPassword");
 const lrRegisterRepeatPassword = document.getElementById("lrRegisterRepeatPassword");
@@ -5,28 +7,10 @@ const btnFormRegister = document.getElementById("btnFormRegister");
 
 
 // ---------------------------------FUNCIONES-------------------------------------
+
 //------------------- VALIDACIONES DEL FORMULARIO REGISTER----------------------------
 // Verifica que todos los campos esten completos y si alguno no esta completo se envia un mensaje de error
 function isRequired(input) {
-    // let arrayInputRequired = Array();
-
-    // inputs.forEach((input) => {
-    //     if (input.value === null || input.value === undefined || input.value.trim() === "") {
-    //         let mensaje = `El campo es obligatorio`;
-    //         showInputError(input, mensaje);
-    //         arrayInputRequired.push(false);
-    //     } else {
-    //         showInputCorrect(input);
-    //         arrayInputRequired.push(true);
-    //         console.log("Esta completo");
-    //     };
-    // });
-
-    // let allInputsValid = arrayInputRequired.reduce((previousValue, nextValue) => {
-    //     return previousValue && nextValue;
-    // });
-
-    // return allInputsValid;
     if (input.value === null || input.value === undefined || input.value.trim() === "") {
         let mensaje = `El campo es obligatorio`;
         showInputError(input, mensaje);
@@ -49,11 +33,17 @@ function checkLength(input) {
     return false;
 }
 
-function checkPasswordValid(input){
-    let re;
-    if(isRequired(input)){
-        
+function checkPasswordValid(input) {
+    let re = /^(?=.*[A-Z])(?=.*\d).{5,}$/;
+    if (checkLength(input)) {
+        if (re.test(input.value.trim())) {
+            return true;
+        } else {
+            showInputError(input, "Se necesita 1 mayuscula y 1 numero");
+            return false;
+        }
     }
+    return false;
 }
 
 function checkPasswordSame(password1, password2) {
@@ -68,6 +58,13 @@ function checkPasswordSame(password1, password2) {
     return false;
 }
 
+function allInputsValid() {
+    let arrayInputsValid = Array();
+    arrayInputsValid.push(checkLength(lrRegisterUsername));
+    arrayInputsValid.push(checkPasswordValid(lrRegisterPassword));
+    arrayInputsValid.push(checkPasswordSame(lrRegisterPassword, lrRegisterRepeatPassword));
+    return arrayInputsValid[0] && arrayInputsValid[1] && arrayInputsValid[2];
+}
 
 function showInputError(input, mensaje) {
     let error = document.querySelector(`#${input.id} + span`);
@@ -79,28 +76,38 @@ function showInputCorrect(input) {
     let correcto = document.querySelector(`#${input.id} + span`);
     correcto.style = "display:none";
 }
-
-function allInputsValid() {
-
+// Verifica que el username no exista en el local storage
+function isUsernameExistInLocalStorage(input){
+    let isUsernameExistInLS = true;
+    for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        let userFromLS = JSON.parse(localStorage.getItem(key));
+        if(userFromLS.username == input.value){
+            isUsernameExistInLS = false;
+            showInputError(input, "El username ya existe");
+            break;
+        }else{
+            showInputCorrect(input);
+        }
+    }
+    return isUsernameExistInLS;
 }
 
+function createUser(inputUsername, inputPassword){
+    return new User(inputUsername.value, inputPassword.value);
+}
 
+function saveUserToLocalStorage(userObject){
+    localStorage.setItem(localStorage.length + 1, JSON.stringify(userObject));
+}
 // -------------------------------------EVENTOS---------------------------------------
 btnFormRegister.addEventListener("click", () => {
-    checkLength(lrRegisterUsername);
-    checkPasswordSame(lrRegisterPassword, lrRegisterRepeatPassword);
-    // isRequired(lrRegisterRepeatPassword);
-    // let allInputsComplete = isRequired([lrRegisterUsername, lrRegisterPassword, lrRegisterRepeatPassword]);
-    // if(allInputsComplete){
-    //     checkLength(lrRegisterUsername);
-    //     checkPasswordSame(lrRegisterPassword, lrRegisterRepeatPassword);
-    // }
-    // console.log(isRequired([lrRegisterUsername, lrRegisterPassword, lrRegisterRepeatPassword]));
-    // isRequired([lrRegisterUsername, lrRegisterPassword, lrRegisterRepeatPassword]);
-
-    // console.log(lrRegisterUsername.value);
-    // console.log(lrRegisterPassword.value);
-    // console.log(lrRegisterRepeatPassword.value);
+    if (allInputsValid() && isUsernameExistInLocalStorage(lrRegisterUsername)) {
+        let newUser = createUser(lrRegisterUsername, lrRegisterPassword);
+        sessionStorage.setItem("connected", )
+        saveUserToLocalStorage(newUser);
+        location.href = "../index.html";
+    }
 });
 
 // let arrayUsersToLS = [];
