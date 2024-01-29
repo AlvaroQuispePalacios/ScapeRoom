@@ -1,10 +1,16 @@
-import User from "./userClass.js";
+// import User from "./userClass.js";
+// let pruebaUsuario = new User("Prueba", "contraseña");
+// console.log(pruebaUsuario.getUsername());
+// pruebaUsuario.setUsername("CambioDeNombre")
+// console.log(pruebaUsuario.getUsername());
+// pruebaUsuario.addGameEasy({time: "00:00:21"});
+// pruebaUsuario.addGameEasy({time: "00:04:39"});
+// console.log(pruebaUsuario);
 
 const lrRegisterUsername = document.getElementById("lrRegisterUsername");
 const lrRegisterPassword = document.getElementById("lrRegisterPassword");
 const lrRegisterRepeatPassword = document.getElementById("lrRegisterRepeatPassword");
 const btnFormRegister = document.getElementById("btnFormRegister");
-
 
 // ---------------------------------FUNCIONES-------------------------------------
 
@@ -100,13 +106,36 @@ function createUser(inputUsername, inputPassword){
 function saveUserToLocalStorage(userObject){
     localStorage.setItem(localStorage.length + 1, JSON.stringify(userObject));
 }
+
+function saveUserToSessionStorage(userObject){
+    sessionStorage.setItem(localStorage.length, JSON.stringify(userObject));
+}
+// Verificar si un usuario esta conectado
+function checkUserConnected(){
+    if(sessionStorage.length > 0){
+        let links = document.getElementsByClassName("link");
+        // links.forEach((link) => {
+        //     if(link.getAttribute(href))
+        // });
+        console.log(links[0].getAttribute("href"));
+    }else{
+        console.log("No se encuentra ningun usuario conectado");
+    }
+}
 // -------------------------------------EVENTOS---------------------------------------
 btnFormRegister.addEventListener("click", () => {
     if (allInputsValid() && isUsernameExistInLocalStorage(lrRegisterUsername)) {
         let newUser = createUser(lrRegisterUsername, lrRegisterPassword);
-        sessionStorage.setItem("connected", )
         saveUserToLocalStorage(newUser);
-        location.href = "../index.html";
+        saveUserToSessionStorage(newUser)
+        location.href = "../pages/userIndex.html";
+    }
+});
+
+window.addEventListener("load", () =>{
+    // Recuerda probarlo en el servidor si se crea una variable en el sessionStorage porque en local utilizando el liveServer se crear uno por defecto 
+    if(sessionStorage.length > 1){
+        location.href = "../pages/userIndex.html";
     }
 });
 
