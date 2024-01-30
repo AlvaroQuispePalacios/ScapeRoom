@@ -1,4 +1,4 @@
-// import User from "./userClass.js";
+// import User from "./UserClass.js";
 // let pruebaUsuario = new User("Prueba", "contraseña");
 // console.log(pruebaUsuario.getUsername());
 // pruebaUsuario.setUsername("CambioDeNombre")
@@ -72,7 +72,7 @@ function allInputsValid() {
     return arrayInputsValid[0] && arrayInputsValid[1] && arrayInputsValid[2];
 }
 
-function showInputError(input, mensaje) {
+export function showInputError(input, mensaje) {
     let error = document.querySelector(`#${input.id} + span`);
     error.style = "display:block"
     error.textContent = mensaje;
@@ -83,7 +83,7 @@ function showInputCorrect(input) {
     correcto.style = "display:none";
 }
 // Verifica que el username no exista en el local storage
-function isUsernameExistInLocalStorage(input){
+export function isUsernameExistInLocalStorage(input){
     let isUsernameExistInLS = true;
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
@@ -110,14 +110,13 @@ function saveUserToLocalStorage(userObject){
 function saveUserToSessionStorage(userObject){
     sessionStorage.setItem(localStorage.length, JSON.stringify(userObject));
 }
+
 // Verificar si un usuario esta conectado
-function checkUserConnected(){
-    if(sessionStorage.length > 0){
-        let links = document.getElementsByClassName("link");
-        // links.forEach((link) => {
-        //     if(link.getAttribute(href))
-        // });
-        console.log(links[0].getAttribute("href"));
+function checkUserConnected(){    
+    // Recuerda probarlo en el servidor si se crea una variable en el sessionStorage porque en local utilizando el liveServer se crear uno por defecto 
+    if(sessionStorage.length > 1){
+        location.href = "../pages/userIndex.html";
+
     }else{
         console.log("No se encuentra ningun usuario conectado");
     }
@@ -132,12 +131,7 @@ btnFormRegister.addEventListener("click", () => {
     }
 });
 
-window.addEventListener("load", () =>{
-    // Recuerda probarlo en el servidor si se crea una variable en el sessionStorage porque en local utilizando el liveServer se crear uno por defecto 
-    if(sessionStorage.length > 1){
-        location.href = "../pages/userIndex.html";
-    }
-});
+window.addEventListener("load", checkUserConnected());
 
 // let arrayUsersToLS = [];
 

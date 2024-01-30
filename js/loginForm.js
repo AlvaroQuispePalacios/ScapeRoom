@@ -1,3 +1,4 @@
+
 const lrLoginUsername = document.getElementById("lrLoginUsername");
 const lrLoginPassword = document.getElementById("lrLoginPassword");
 
@@ -7,9 +8,10 @@ function searchUserToLs(){
         let userToLs = localStorage.getItem(key);
         if((userToLs.username == lrLoginUsername.value) && (userToLs.password == lrLoginPassword.value)){
             location.href = "../pages/userIndex.html";
+            break;
         }else{
+            showInputError(lrLoginPassword, "Error");
         }
     }
 }
-
-showInputError(lrLoginPassword, "El usuario o la contraseña son incorrectos");
+showInputError(lrLoginPassword, "Error");
