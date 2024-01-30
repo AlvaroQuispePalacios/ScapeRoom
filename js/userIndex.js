@@ -1,10 +1,13 @@
 const cerrarSesion = document.getElementById("closeSession");
+const linkUserInfo = document.getElementById("linkUserInfo");
 
-
-
+function showinfoUserNavbar(){
+    
+}
 
 function closeSession(){
     sessionStorage.clear();
+    checkUserLogged();
 }
 
 function checkUserLogged(){
@@ -13,7 +16,10 @@ function checkUserLogged(){
     }
 }
 
-
 cerrarSesion.addEventListener("click", closeSession);
-window.addEventListener("load", checkUserLogged());
+
+window.addEventListener("load", () => {
+
+    checkUserLogged();
+});
 

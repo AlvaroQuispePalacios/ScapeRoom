@@ -72,7 +72,7 @@ function allInputsValid() {
     return arrayInputsValid[0] && arrayInputsValid[1] && arrayInputsValid[2];
 }
 
-export function showInputError(input, mensaje) {
+function showInputError(input, mensaje) {
     let error = document.querySelector(`#${input.id} + span`);
     error.style = "display:block"
     error.textContent = mensaje;
@@ -83,7 +83,7 @@ function showInputCorrect(input) {
     correcto.style = "display:none";
 }
 // Verifica que el username no exista en el local storage
-export function isUsernameExistInLocalStorage(input){
+function isUsernameExistInLocalStorage(input){
     let isUsernameExistInLS = true;
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
@@ -107,8 +107,8 @@ function saveUserToLocalStorage(userObject){
     localStorage.setItem(localStorage.length + 1, JSON.stringify(userObject));
 }
 
-function saveUserToSessionStorage(userObject){
-    sessionStorage.setItem(localStorage.length, JSON.stringify(userObject));
+function saveUserToSessionStorage(key, userObject){
+    sessionStorage.setItem(key, JSON.stringify(userObject));
 }
 
 // Verificar si un usuario esta conectado
@@ -126,12 +126,12 @@ btnFormRegister.addEventListener("click", () => {
     if (allInputsValid() && isUsernameExistInLocalStorage(lrRegisterUsername)) {
         let newUser = createUser(lrRegisterUsername, lrRegisterPassword);
         saveUserToLocalStorage(newUser);
-        saveUserToSessionStorage(newUser)
+        saveUserToSessionStorage(localStorage.length, newUser)
         location.href = "../pages/userIndex.html";
     }
 });
 
-window.addEventListener("load", checkUserConnected());
+window.addEventListener("load", checkUserConnected);
 
 // let arrayUsersToLS = [];
 
