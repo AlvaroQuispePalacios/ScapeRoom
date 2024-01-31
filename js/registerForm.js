@@ -1,12 +1,3 @@
-// import User from "./UserClass.js";
-// let pruebaUsuario = new User("Prueba", "contraseña");
-// console.log(pruebaUsuario.getUsername());
-// pruebaUsuario.setUsername("CambioDeNombre")
-// console.log(pruebaUsuario.getUsername());
-// pruebaUsuario.addGameEasy({time: "00:00:21"});
-// pruebaUsuario.addGameEasy({time: "00:04:39"});
-// console.log(pruebaUsuario);
-
 const lrRegisterUsername = document.getElementById("lrRegisterUsername");
 const lrRegisterPassword = document.getElementById("lrRegisterPassword");
 const lrRegisterRepeatPassword = document.getElementById("lrRegisterRepeatPassword");
@@ -82,56 +73,46 @@ function showInputCorrect(input) {
     let correcto = document.querySelector(`#${input.id} + span`);
     correcto.style = "display:none";
 }
+
 // Verifica que el username no exista en el local storage
 function isUsernameExistInLocalStorage(input){
-    let isUsernameExistInLS = true;
+    let isUsernameExistInLS = false;
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
-        let userFromLS = JSON.parse(localStorage.getItem(key));
-        if(userFromLS.username == input.value){
-            isUsernameExistInLS = false;
+        if(key == input.value){ 
+            isUsernameExistInLS = true;
             showInputError(input, "El username ya existe");
             break;
         }else{
             showInputCorrect(input);
         }
     }
-    return isUsernameExistInLS;
+    return !isUsernameExistInLS;
 }
 
 function createUser(inputUsername, inputPassword){
     return new User(inputUsername.value, inputPassword.value);
 }
 
-function saveUserToLocalStorage(userObject){
-    localStorage.setItem(localStorage.length + 1, JSON.stringify(userObject));
+function saveUserToLocalStorage(key, userObject){
+    localStorage.setItem(key, JSON.stringify(userObject));
 }
 
 function saveUserToSessionStorage(key, userObject){
     sessionStorage.setItem(key, JSON.stringify(userObject));
 }
 
-// Verificar si un usuario esta conectado
-function checkUserConnected(){    
-    // Recuerda probarlo en el servidor si se crea una variable en el sessionStorage porque en local utilizando el liveServer se crear uno por defecto 
-    if(sessionStorage.length > 1){
-        location.href = "../pages/userIndex.html";
-
-    }else{
-        console.log("No se encuentra ningun usuario conectado");
-    }
-}
 // -------------------------------------EVENTOS---------------------------------------
 btnFormRegister.addEventListener("click", () => {
     if (allInputsValid() && isUsernameExistInLocalStorage(lrRegisterUsername)) {
         let newUser = createUser(lrRegisterUsername, lrRegisterPassword);
-        saveUserToLocalStorage(newUser);
-        saveUserToSessionStorage(localStorage.length, newUser)
+        saveUserToLocalStorage(lrRegisterUsername.value, newUser);
+        saveUserToSessionStorage("connected", newUser);
         location.href = "../pages/userIndex.html";
     }
 });
 
-window.addEventListener("load", checkUserConnected);
+// window.addEventListener("load", checkUserConnected);
 
 // let arrayUsersToLS = [];
 

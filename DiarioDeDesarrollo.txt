@@ -16,3 +16,8 @@
 
 29-01-2024
     - Iniciamos con el formulario del login 
+
+31-01-2024
+    - Terminamos el login
+    - Iniciamos el formulario para poder editar los datos del usuario
+    - Corregimos errores que se daban en el register 
