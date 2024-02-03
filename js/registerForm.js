@@ -2,6 +2,7 @@ const lrRegisterUsername = document.getElementById("lrRegisterUsername");
 const lrRegisterPassword = document.getElementById("lrRegisterPassword");
 const lrRegisterRepeatPassword = document.getElementById("lrRegisterRepeatPassword");
 const btnFormRegister = document.getElementById("btnFormRegister");
+let arrayUsers = Array();
 
 // ---------------------------------FUNCIONES-------------------------------------
 
@@ -95,13 +96,22 @@ function createUser(inputUsername, inputPassword){
 }
 
 function saveUserToLocalStorage(key, userObject){
-    localStorage.setItem(key, JSON.stringify(userObject));
+    if(localStorage.getItem("users")){
+        arrayUsers = JSON.parse(localStorage.getItem("users"));
+
+        console.log("hola");
+    }else{
+        arrayUsers.push()
+        console.log("no existen D:");
+    }
+    // localStorage.setItem(key, JSON.stringify(userObject));
 }
 
 function saveUserToSessionStorage(key, userObject){
     sessionStorage.setItem(key, JSON.stringify(userObject));
 }
 
+saveUserToLocalStorage("hola","usuario");
 // -------------------------------------EVENTOS---------------------------------------
 btnFormRegister.addEventListener("click", () => {
     if (allInputsValid() && isUsernameExistInLocalStorage(lrRegisterUsername)) {
