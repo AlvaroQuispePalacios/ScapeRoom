@@ -61,11 +61,13 @@ function showInputCorrect(input) {
 // Verifica que el username se repita excepto el mismo
 function isUsernameExistInLocalStorage(input) {
     let arrayUsernames = Array();
+
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
         arrayUsernames.push(key);
     }
-
+    
+    console.log("hola");
 
     // return isUsernameExistInLS;
 }
@@ -89,7 +91,4 @@ btnSaveChangeInfoUser.addEventListener("click", () => {
     }
 });
 
-for (let i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    console.log(key);
-}
+

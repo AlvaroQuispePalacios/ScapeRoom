@@ -21,3 +21,10 @@
     - Terminamos el login
     - Iniciamos el formulario para poder editar los datos del usuario
     - Corregimos errores que se daban en el register 
+
+03-02-2024
+    HECHO
+        - Corregimos mas errores que se presentaban en el register y login
+
+    HACER 04-02-2024
+        - Terminar que el usuario pueda modificar sus datos y iniciar los juegos para el Scape Room

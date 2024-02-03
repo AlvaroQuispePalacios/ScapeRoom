@@ -76,53 +76,52 @@ function showInputCorrect(input) {
 }
 
 // Verifica que el username no exista en el local storage
-function isUsernameExistInLocalStorage(input){
+function isUsernameExistInLocalStorage(input) {
     let isUsernameExistInLS = false;
     for (let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i);
-        if(key == input.value){ 
+        if (key == input.value) {
             isUsernameExistInLS = true;
             showInputError(input, "El username ya existe");
             break;
-        }else{
+        } else {
             showInputCorrect(input);
         }
     }
     return !isUsernameExistInLS;
 }
 
-function createUser(inputUsername, inputPassword){
+function createUser(inputUsername, inputPassword) {
     return new User(inputUsername.value, inputPassword.value);
 }
 
-function saveUserToLocalStorage(key, userObject){
-    if(localStorage.getItem("users")){
-        arrayUsers = JSON.parse(localStorage.getItem("users"));
-
-        console.log("hola");
-    }else{
-        arrayUsers.push()
-        console.log("no existen D:");
-    }
-    // localStorage.setItem(key, JSON.stringify(userObject));
+function saveToLocalStorage(key, object) {
+    localStorage.setItem(key, JSON.stringify(object));
 }
 
-function saveUserToSessionStorage(key, userObject){
-    sessionStorage.setItem(key, JSON.stringify(userObject));
+function saveToSessionStorage(key, object) {
+    sessionStorage.setItem(key, JSON.stringify(object));
 }
 
-saveUserToLocalStorage("hola","usuario");
+
 // -------------------------------------EVENTOS---------------------------------------
 btnFormRegister.addEventListener("click", () => {
     if (allInputsValid() && isUsernameExistInLocalStorage(lrRegisterUsername)) {
         let newUser = createUser(lrRegisterUsername, lrRegisterPassword);
-        saveUserToLocalStorage(lrRegisterUsername.value, newUser);
-        saveUserToSessionStorage("connected", newUser);
-        location.href = "../pages/userIndex.html";
+        if (localStorage.getItem("users")) {
+            arrayUsers = JSON.parse(localStorage.getItem("users"));
+            arrayUsers.push(newUser);
+            saveToLocalStorage("users", arrayUsers);
+            saveToSessionStorage("connected", newUser);
+        }else{
+            arrayUsers.push(newUser);
+            saveToLocalStorage("users", arrayUsers);
+            saveToSessionStorage("connected", newUser);
+        }
+        checkUserConnected();
+        // location.href = "../pages/userIndex.html";
     }
 });
-
-// window.addEventListener("load", checkUserConnected);
 
 // let arrayUsersToLS = [];
 

@@ -10,10 +10,10 @@ function showInfoUserNavbar(){
 
 function closeSession(){
     sessionStorage.clear();
-    checkUserLogged();
+    checkUserConnected();
 }
 
-function checkUserLogged(){
+function checkUserConnected(){
     if(sessionStorage.getItem("connected") == null){
         location.href = "../index.html";
     }
@@ -22,7 +22,7 @@ function checkUserLogged(){
 cerrarSesion.addEventListener("click", closeSession);
 
 window.addEventListener("load", () => {
-    checkUserLogged();
+    checkUserConnected();
     showInfoUserNavbar();
 });
 
