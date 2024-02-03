@@ -3,6 +3,7 @@
 const ucFormUsername = document.getElementById("ucFormUsername");
 const ucFormPassword = document.getElementById("ucFormPassword");
 const btnSaveChangeInfoUser = document.getElementById("btnSaveChangeInfoUser");
+let arrayUsers;
 
 function isRequired(input) {
     if (input.value === null || input.value === undefined || input.value.trim() === "") {
@@ -58,21 +59,24 @@ function showInputCorrect(input) {
     correcto.style = "display:none";
 }
 
-// Verifica que el username se repita excepto el mismo
+// Verifica que el username no se repita excepto el mismo
 function isUsernameExistInLocalStorage(input) {
-    let arrayUsernames = Array();
-
-    for (let i = 0; i < localStorage.length; i++) {
-        let key = localStorage.key(i);
-        arrayUsernames.push(key);
-    }
-    
-    console.log("hola");
-
-    // return isUsernameExistInLS;
+    let isUsernameExist = false
+    arrayUsers = JSON.parse(localStorage.getItem("users"));
+    let contador = 0;
+    arrayUsers.forEach((user) => {
+        if(contador == 0){
+            if(user.name == input.value){
+                contador++;
+            }
+        }else if(contador > 0){
+            if(user.name == input.value){
+                isUsernameExist = true;
+            }
+        }
+    });
+    return !isUsernameExist;
 }
-
-isUsernameExistInLocalStorage(ucFormUsername);
 
 function showUserInfoCard() {
     let userToSt = JSON.parse(sessionStorage.getItem("connected"));
