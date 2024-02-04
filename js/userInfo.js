@@ -3,7 +3,9 @@
 const ucFormUsername = document.getElementById("ucFormUsername");
 const ucFormPassword = document.getElementById("ucFormPassword");
 const btnSaveChangeInfoUser = document.getElementById("btnSaveChangeInfoUser");
-let arrayUsers;
+const arrayUsers = JSON.parse(localStorage.getItem("users"));
+const userConnected = JSON.parse(sessionStorage.getItem("connected"));
+
 
 function isRequired(input) {
     if (input.value === null || input.value === undefined || input.value.trim() === "") {
@@ -59,39 +61,60 @@ function showInputCorrect(input) {
     correcto.style = "display:none";
 }
 
-// Verifica que el username no se repita excepto el mismo
+// Verifica que el username no se repita
 function isUsernameExistInLocalStorage(input) {
-    let isUsernameExist = false
-    arrayUsers = JSON.parse(localStorage.getItem("users"));
-    let contador = 0;
+    let isUsernameExist = false;
+
+    let arrayUsersExceptUserConnected = Array();
+
     arrayUsers.forEach((user) => {
-        if(contador == 0){
-            if(user.name == input.value){
-                contador++;
-            }
-        }else if(contador > 0){
-            if(user.name == input.value){
-                isUsernameExist = true;
-            }
+        if (user.username != userConnected.username) {
+            arrayUsersExceptUserConnected.push(user);
         }
     });
+
+    arrayUsersExceptUserConnected.forEach((user) => {
+        if (user.username == input.value) {
+            console.log("El usuario existe");
+            showInputError(ucFormUsername, "El usuario ya existe");
+
+            isUsernameExist = true;
+        }
+    });
+
     return !isUsernameExist;
+}
+
+function updateDataUser(inputUsername, inputPassword) {
+    arrayUsers.forEach((user) => {
+        if(user.username == userConnected.username){
+            user.username = inputUsername.value;
+            user.password = inputPassword.value;
+            userConnected.username = inputUsername.value;
+            userConnected.password = inputPassword.value;
+            localStorage.setItem("users", JSON.stringify(arrayUsers));
+            sessionStorage.setItem("connected", JSON.stringify(userConnected));
+        }
+    });
 }
 
 function showUserInfoCard() {
     let userToSt = JSON.parse(sessionStorage.getItem("connected"));
+    console.log(userToSt);
     ucFormUsername.value = userToSt.username;
     ucFormPassword.value = userToSt.password;
 }
 
 showUserInfoCard();
 
-
 btnSaveChangeInfoUser.addEventListener("click", () => {
     if (allInputsValid() && isUsernameExistInLocalStorage(ucFormUsername)) {
-        console.log(":D");
+        console.log("El username se puede cambiar");
+        updateDataUser(ucFormUsername, ucFormPassword);
+        showUserInfoCard();
+        showInfoUserNavbar();
     } else {
-        console.log("D:");
+        console.log("El username no es valido");
     }
 });
 

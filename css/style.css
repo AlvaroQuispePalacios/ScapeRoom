@@ -1,27 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 
-:root{
+:root {
     --main-bg-color: #1a1519;
-    --other0:#e4e2d6;
-    --other1:#cd355d;
-    --other2:#f9a11c;
-    --other3:#f9a11c;
-    --other4:#528fae;
+    --other0: #e4e2d6;
+    --other1: #cd355d;
+    --other2: #f9a11c;
+    --other3: #f9a11c;
+    --other4: #528fae;
 }
 
-*{
+* {
     box-sizing: border-box;
     font-family: roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-body{
+body {
     padding: 0;
     margin: 0;
     background-color: var(--main-bg-color);
     color: var(--other0);
 }
+
 /* ---------------------ESTILOS DEL NAVBAR----------------- */
-.navbar{
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,37 +32,37 @@ body{
     /* border: 1px solid beige; */
 }
 
-.logo{
+.logo {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.logo-title{
+.logo-title {
     letter-spacing: .1rem;
     font-size: 1.5rem;
     color: var(--other1);
 }
 
-.logo-img{
+.logo-img {
     width: 5rem;
     border-radius: 50%;
 }
 
-.links{
+.links {
     display: flex;
     gap: 1.5rem;
     list-style: none;
 }
 
-.link{
+.link {
     letter-spacing: .1rem;
     color: var(--other0);
     text-decoration: none;
     transition: all 0.2s;
 }
 
-.link:hover{
+.link:hover {
     color: var(--other1);
 }
 
@@ -71,14 +72,14 @@ body{
     border-radius: 50%;
 } */
 
-main{
+main {
     padding: .1rem 1rem;
     margin: 0 auto;
     max-width: 1200px;
 }
 
 /* -----------------------ESTILOS DE INICIAR SESION --------------- */
-.lr-main{
+.lr-main {
     position: relative;
     display: flex;
     justify-content: center;
@@ -89,7 +90,7 @@ main{
     /* border: 1px solid white; */
 }
 
-.lr-text-bg-login{
+.lr-text-bg-login {
     background-color: var(--other4);
     min-width: 50%;
     padding: 2rem;
@@ -97,11 +98,11 @@ main{
     min-height: 256px;
 }
 
-.lr-text-bg-login > p{
+.lr-text-bg-login>p {
     font-size: 1.7rem;
 }
 
-.lr-text-bg-login button{
+.lr-text-bg-login button {
     font-size: 1rem;
     font-weight: bold;
     letter-spacing: .1rem;
@@ -115,16 +116,16 @@ main{
 
 }
 
-.lr-text-bg-login button:hover{
+.lr-text-bg-login button:hover {
     /* border: none; */
     background-color: #223d49;
 }
 
-.lr-text-bg-login div{
+.lr-text-bg-login div {
     margin-top: 1rem;
 }
 
-.lr-login{
+.lr-login {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -140,48 +141,48 @@ main{
     transition: all 1s;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-@keyframes hidden{
-    from{
+@keyframes hidden {
+    from {
         height: 32rem;
     }
 
-    to{
+    to {
         height: 256px;
         border-radius: 2px;
         opacity: 0;
     }
 }
 
-@keyframes show{
-    from{
+@keyframes show {
+    from {
         height: 256px;
         border-radius: 2px;
         opacity: 0;
     }
 
-    to{
+    to {
         height: 32rem;
         border-radius: 10px;
         opacity: 1;
     }
 }
 
-.lr-login h2{
+.lr-login h2 {
     text-align: center;
     font-size: 2.1rem;
 }
 
-.lr-login button{
+.lr-login button {
     padding: 1rem;
     border-radius: 5px;
     border: none;
 }
 
-input{
+input {
     font-size: .9rem;
     display: block;
     padding: 1rem;
@@ -189,34 +190,35 @@ input{
     border: none;
 }
 
-button{
+button {
     cursor: pointer;
 }
 
-input:focus-visible{
+input:focus-visible {
     outline: none;
 }
 
-.lr-form-login{
+.lr-form-login {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.lr-form-login span{
+.lr-form-login span {
     display: none;
 }
 
-.lr-form-login button{
+.lr-form-login button {
     font-size: 1rem;
 }
 
-.lr-form-login button:hover{
+.lr-form-login button:hover {
     background-color: #fff;
 }
+
 /* ----------------------ESTILOS DE REGISTRO -------------*/
 
-.lr-text-bg-register{
+.lr-text-bg-register {
     background-color: var(--other1);
     min-width: 50%;
     padding: 2rem;
@@ -224,11 +226,11 @@ input:focus-visible{
     min-height: 256px;
 }
 
-.lr-text-bg-register > p{
+.lr-text-bg-register>p {
     font-size: 1.7rem;
 }
 
-.lr-text-bg-register button{
+.lr-text-bg-register button {
     font-size: 1rem;
     font-weight: bold;
     letter-spacing: .1rem;
@@ -242,15 +244,15 @@ input:focus-visible{
 
 }
 
-.lr-text-bg-register button:hover{
+.lr-text-bg-register button:hover {
     background-color: #59182b;
 }
 
-.lr-text-bg-register div{
+.lr-text-bg-register div {
     margin-top: 1rem;
 }
 
-.lr-register{
+.lr-register {
     position: absolute;
     display: flex;
     display: none;
@@ -266,45 +268,44 @@ input:focus-visible{
     border-radius: 10px;
 }
 
-.lr-register h2{
+.lr-register h2 {
     text-align: center;
     font-size: 2.1rem;
 }
 
-.lr-register button{
+.lr-register button {
     padding: 1rem;
     border: none;
     border-radius: 5px;
 }
 
-.lr-form-register{
+.lr-form-register {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.lr-form-register span{
+.lr-form-register span {
     display: none;
 }
 
-.lr-form-register button{
+.lr-form-register button {
     font-size: 1rem;
 }
 
-.lr-form-register button:hover{
+.lr-form-register button:hover {
     background-color: #fff;
 }
 
 
 /*------------ ESTILOS DE LA CARD DEL USUARIO----------------- */
 
-.user-card{
+.user-card {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    margin-top: 5rem;
+    margin-top: 2rem;
     max-width: 22rem;
-
     border-radius: 10px;
     overflow: hidden;
     background-color: var(--other0);
@@ -312,32 +313,30 @@ input:focus-visible{
     padding: 1rem;
 }
 
-.user-card-img{    
+.user-card-img {}
 
-}
-
-.user-card-img img{
+.user-card-img img {
     aspect-ratio: 16 / 9;
     width: 100%;
     height: 100%;
 }
 
-.user-card-info{
+.user-card-info {
     padding: .5rem;
 
 }
 
-.user-card-info h2{
+.user-card-info h2 {
     text-align: center;
 }
 
-.user-card-form{
+.user-card-form {
     display: flex;
     flex-direction: column;
     gap: .5rem;
 }
 
-.user-card-form input{
+.user-card-form input {
     display: block;
     width: 100%;
     background-color: transparent;
@@ -349,14 +348,74 @@ input:focus-visible{
     border-bottom: 1px solid black;
 }
 
-.user-card-form input:focus-visible{
+.user-card-form input:focus-visible {
     background-color: transparent;
 }
-.user-card-form label{
+
+.user-card-form label {
     font-size: 1.2rem;
     text-align: center;
 }
 
-.user-card-form label p{
+.user-card-form label p {
     margin-bottom: .5rem;
+}
+
+.user-card-form div {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: end;
+}
+
+.btn-save-change-info-user {
+    padding: .7rem;
+    font-size: 1rem;
+    border: 0;
+    border-radius: 5px;
+    background-color: var(--other2);
+}
+
+.btn-save-change-info-user:hover {
+    background-color: #b67717;
+    color: #fff;
+}
+
+/* ---------------POPUP DE DATOS CAMBIADOS CON EXITO-------------------- */
+.pop-up {
+    position: relative;
+    /* border: 1px solid yellow; */
+    width: 100%;
+    height: 5.5rem;
+}
+
+.pop-up-content {
+    position: absolute;
+    top: 4rem;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    padding: .5rem;
+    width: 14rem;
+    height: 100%;
+    text-align: center;
+    background-color: var(--other0);
+    border-radius: 5px;
+    color: #1a1519;
+    animation-name: popUpAnimation;
+    animation-duration: .5s;
+    display: none;
+}
+
+.pop-up-content p {
+    align-items: center;
+}
+
+@keyframes popUpAnimation {
+    from{
+        top:-5rem;
+    }
+    to {
+       top:4rem;
+    }
+
 }
