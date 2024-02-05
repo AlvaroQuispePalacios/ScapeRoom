@@ -1,0 +1,25 @@
+.memory-main{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.card-memory{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 11rem;
+    height: 15rem;
+    border-radius: 5px;
+    background-color: rgb(169, 169, 237);
+    cursor: pointer;
+}
+
+.card-memory-content{
+    color: black;
+    font-size: 5rem;
+    opacity: 0;
+    cursor: pointer;
+} 

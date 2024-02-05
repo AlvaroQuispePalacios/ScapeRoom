@@ -419,3 +419,62 @@ input:focus-visible {
     }
 
 }
+
+/*  */
+.menu-start-game{
+    margin-top: 10rem;
+}
+
+.menu-start-game > p{
+    font-size: 5rem;
+    text-align: center;
+}
+
+.menu-start-game > div{
+    text-align: center;
+}
+
+.menu-start-game button{
+    font-size: 3rem;
+    padding: 2rem;
+    background-color: #cd355d;
+    color: var(--other0);
+    border: 5px dashed var(--other0);
+    border-radius: 5px;
+}
+
+.menu-start-game button:hover{
+    color: #b2b0a7;
+    border: 5px dashed #b2b0a7;
+    background-color: #982343;
+}
+
+.menu-select-difficulty{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-select-difficulty h2{
+    text-align: center;
+    font-size: 3rem;
+}
+
+.menu-select-difficulty button{
+    text-align: center;
+    font-size: 2rem;
+    padding: 1.5rem;
+    width: 12.5rem;
+    background-color: #cd355d;
+    color: var(--other0);
+    border: 5px dashed var(--other0);
+    border-radius: 5px;
+}
+
+.menu-select-difficulty button:hover{
+    color: #b2b0a7;
+    border: 5px dashed #b2b0a7;
+    background-color: #982343;
+}
+
