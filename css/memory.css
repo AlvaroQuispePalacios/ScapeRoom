@@ -13,7 +13,8 @@
     width: 11rem;
     height: 15rem;
     border-radius: 5px;
-    background-color: rgb(169, 169, 237);
+    /* background-color: rgb(169, 169, 237); */
+    background-color: #528fae;;
     cursor: pointer;
 }
 
