@@ -1,25 +1,70 @@
-let numeroRandom;
-let cantidadCartas;
+// --------------------------------- JUEGO MEMORY-----------------------------
+const animacionCarta = [
+    { transform: "rotate3d(0, 2, 0, 0deg)" },
+    { transform: "rotate3d(0, 2, 0, 45deg)" },
+    { transform: "rotate3d(0, 2, 0, 90deg)" },
+    { transform: "rotate3d(0, 2, 0, 45deg)" },
+    { transform: "rotate3d(0, 2, 0, 0deg)" },
+];
 
-function generarNumeroRandom(){
-    numeroRandom = Math.floor(Math.random() * (MAX_CARDS - MIN_CARDS) + MIN_CARDS);
-    if(numeroRandom % 2 !== 0){
-        generarNumeroRandom();
+let arrayCompararCartasObjeto = Array();
+let arrayCompararCartasContenido = Array();
+let contadorMemory = 0;
+let aciertosMemory = 0;
+let memoryCompletado = false;
+
+
+// Da la animacion de vuelta de carta y agrega la carta en el array correspondiente
+function darVueltaCarta(carta) {
+    carta.animate(animacionCarta, 500);
+    carta.disabled = true;
+    carta.firstElementChild.style = "opacity: 1";
+    arrayCompararCartasObjeto.push(carta);
+    arrayCompararCartasContenido.push(carta.firstElementChild.textContent);
+    contadorMemory++;
+}
+
+// Compara las cartas elegidas y si el contenido es igual deja a las cartas deshabilitadas y si no les da vuelta nuevamente
+function compararCartas() {
+    if (contadorMemory == 2) {
+        if (arrayCompararCartasContenido[0] == arrayCompararCartasContenido[1]) {
+            contadorMemory = 0;
+            aciertosMemory++;
+            arrayCompararCartasContenido = [];
+            arrayCompararCartasObjeto = [];
+        } else {
+            setTimeout(() => {
+                arrayCompararCartasObjeto.forEach((carta) => {
+                    carta.animate(animacionCarta, 500);
+                    carta.disabled = false;
+                    carta.firstElementChild.style = "opacity: 0";
+                });
+                arrayCompararCartasContenido = [];
+                arrayCompararCartasObjeto = [];
+                contadorMemory = 0;
+            }, 400);
+        }
     }
 }
-function generarCantidadCartas(){
-    for(let i = 0; i < numeroRandom; i++){
-        $("#game").append(
-            `<div class='card'><span class='card-content'></span></div>`
-        );
+
+// Genera el contenedor de las cartas y genera las cartas
+function generarCartas(cantidadCartas) {
+    main.innerHTML = `<div class="memory-main"></div>`;
+    for (let i = 0; i < cantidadCartas; i++) {
+        document.querySelector(".memory-main").innerHTML +=
+            `
+            <button class="card-memory">
+                <span class="card-memory-content"></span>
+            </button>
+        `;
     }
 }
-let arrayDesornado = [];
 
-function generarContenidoEnCartas(){
+function generarContenidoEnCartas(cantidadCartas) {
+    let arrayDesornado = [];
     // Genera el contenido del array
-    for(let i = 0; i < numeroRandom/2; i++){
-        arrayDesornado.push(i+1);
+    for (let i = 0; i < cantidadCartas / 2; i++) {
+        arrayDesornado.push(i + 1);
     }
     arrayDesornado.forEach((e) => {
         arrayDesornado.push(e);
@@ -28,46 +73,20 @@ function generarContenidoEnCartas(){
     arrayDesornado = arrayDesornado.sort(() => {
         return Math.random() - 0.5;
     })
-    // Ingresa el contenido del array 
-    $(".card > span").each((index, e) => {
-        $(e).text(arrayDesornado[index]);
-    });
 
+    // Ingresa el contenido del array a las cartas
+    let cards = document.querySelectorAll(".card-memory-content");
+    cards.forEach((card, index) => {
+        card.textContent = arrayDesornado[index];
+    })
 }
-generarNumeroRandom();
-generarCantidadCartas();
-generarContenidoEnCartas();
-const MAX_CARTAS_ELEGIDAS = 2
-let contador = 0;
-let arrayCompararCartasContenido = [];
-let arrayCompararCartasObjeto = [];
-let arrayIndex = [];
 
-$(".card").each((index, e) => {
-    $(e).on("click", () => {
-        if (contador < MAX_CARTAS_ELEGIDAS) {
-            arrayCompararCartasContenido[contador] = $(e).find(".card-content").text();
-            arrayCompararCartasObjeto[contador] = $(e).find(".card-content"); 
-            arrayIndex[contador] = index;
-            arrayCompararCartasObjeto[contador].css("opacity", 1);
-            contador++;
-            if(arrayCompararCartasObjeto.length == 2){
-                if((arrayCompararCartasContenido[0] == arrayCompararCartasContenido[1]) && (arrayIndex[0] != arrayIndex[1])){
-                    arrayCompararCartasObjeto = [];
-                    arrayCompararCartasContenido = [];
-                    arrayIndex = [];
-                    contador = 0;
-                }else{
-                    setTimeout(() => {
-                        arrayCompararCartasObjeto[0].css("opacity", 0);
-                        arrayCompararCartasObjeto[1].css("opacity", 0);
-                        arrayCompararCartasObjeto = [];
-                        arrayCompararCartasContenido = [];
-                        arrayIndex = [];
-                        contador = 0;
-                     }, 500);
-                }
-            }
-        }
-    });
-});
+function juegoMemoryCompletado(cantidadDeCartas) {
+    if(aciertosMemory == (cantidadDeCartas/2)){
+        memoryCompletado = true;
+        juegosDesordenados.shift();
+        juegosDesordenados[0]();
+    }
+}
+
+

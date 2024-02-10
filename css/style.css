@@ -21,6 +21,10 @@ body {
     color: var(--other0);
 }
 
+header{
+    
+}
+
 /* ---------------------ESTILOS DEL NAVBAR----------------- */
 .navbar {
     display: flex;
@@ -476,5 +480,79 @@ input:focus-visible {
     color: #b2b0a7;
     border: 5px dashed #b2b0a7;
     background-color: #982343;
+}
+
+/* Estilos del submenu */
+
+.submenu{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding: .1rem 1rem;
+    margin: 0 auto;
+    margin-top: 6rem;
+    max-width: 1200px;
+    height: 200px;
+}
+
+.submenu-map{
+    text-align: center;
+    width: 33%;
+}
+
+.submenu-temp{
+    text-align: center;
+    width: 33%;
+}
+
+.submenu-hints{
+    text-align: center;
+    width: 33%;
+    /* border: 1px solid #223d49; */
+}
+
+.submenu-hints > div{
+    position: relative;
+}
+
+.submenu-hints-dialogue{
+    position: absolute;
+    top: 0rem;
+    right: 11rem;
+    font-size: 16px;
+    border: 1px solid #1a1519;
+    border-radius: 5px;
+    padding: .5rem;
+    background-color: #b2b0a7; 
+    color: #1a1519;
+    font-weight: bold;
+    width: 47ch;
+    white-space: nowrap;
+    animation: typewriter 5s steps(50);
+    overflow: hidden;
+}
+
+.submenu-hints-dialogue > span{
+    color: #1a1519;
+    animation: blink 1s infinite;
+}
+
+@keyframes typewriter{
+    from{width: 0;}
+}
+
+@keyframes blink {
+    50%{
+        opacity: 0;
+    }
+ 
+}
+
+.submenu-hints img{
+    max-width: 70%;
+    /* border: 1px solid #223d49; */
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #b2b0a7;
 }
 

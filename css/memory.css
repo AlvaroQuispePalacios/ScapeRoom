@@ -16,7 +16,14 @@
     /* background-color: rgb(169, 169, 237); */
     background-color: #528fae;;
     cursor: pointer;
+    transition: all .2s linear;
 }
+
+/* .card-memory:hover{
+    transform: rotate3d(0, 2, 0, 90deg);
+} */
+
+
 
 .card-memory-content{
     color: black;

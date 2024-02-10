@@ -39,3 +39,11 @@
         - Mejoramos el juego memory
     HACER
         - ALgo
+10-02-2024
+    HECHO
+        - Terminamos el primer juego
+        - Empezamos a pensar en el segundo
+        - Se agrega un "personaje" que sera el que nos de las pistas para las diferente habitaciones
+    HACER
+        - Agregar el mapa que nos muestre las habitaciones 
+        - Agregar el temporizador
