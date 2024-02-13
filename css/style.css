@@ -21,10 +21,6 @@ body {
     color: var(--other0);
 }
 
-header{
-    
-}
-
 /* ---------------------ESTILOS DEL NAVBAR----------------- */
 .navbar {
     display: flex;
@@ -493,6 +489,7 @@ input:focus-visible {
     margin-top: 6rem;
     max-width: 1200px;
     height: 200px;
+    display: none;
 }
 
 .submenu-map{

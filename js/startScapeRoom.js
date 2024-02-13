@@ -1,8 +1,11 @@
 // En este archivo me canse del ingles
 const btnStartScapeRoom = document.getElementById("btnStartScapeRoom");
 const main = document.getElementById("main");
-const nGames = 2;
-const arrayDeJuegos = [createGameMemory, createOtherGame1];
+const submenu = document.querySelector(".submenu");
+const submenuHintsDialogue = document.querySelector(".submenu-hints-dialogue");
+// const nGames = 2;
+
+const arrayDeJuegos = [createGameMemory, createOtherGame1, createOtherGame2];
 const juegosDesordenados = seleccionarJuegosAleatoriamente();
 let dificultad;
 console.log(juegosDesordenados);
@@ -28,32 +31,51 @@ function createMenuSelectDifficulty() {
 }
 
 // Si el memory es el primero en crearse
-function isCreateMemory(nCards){
+function isCreateMemoryFirst(){
     if(juegosDesordenados[0] == createGameMemory){
-        juegosDesordenados[0](nCards);
+        return true;
     }
+    return false;
 }
 
 function selectDifficulty(difficulty) {
     if (difficulty == "easy") {
-        dificultad = "easy";
-        isCreateMemory(8);
+        juegosDesordenados.splice(1, 2, createFinal);
+        console.log(juegosDesordenados);
+        if(isCreateMemoryFirst()){
+            juegosDesordenados[0](8);
+        }else{
+            juegosDesordenados[0]();
+        }
+
+        submenu.style = "display: flex";
         
     } else if (difficulty == "medium") {
         dificultad = "medium";
-        isCreateMemory(12);
+        // isCreateMemory(12);
 
     } else if (difficulty == "hard") {
         dificultad = "hard";
-        isCreateMemory(16);
+        // isCreateMemory(16);
     }
 }
 
 function createOtherGame1(){
-    console.log("otro juego 1");
+
+}
+
+function createOtherGame2(){
+
+}
+
+function createFinal(){
+    document.querySelector("#main > div").remove();
+    crearCandado();
+    console.log("Inicia el final del juego");
 }
 
 function createGameMemory(cantidadDeCartas) {
+
     generarCartas(cantidadDeCartas);
     generarContenidoEnCartas(cantidadDeCartas);
     let cartas = document.querySelectorAll(".card-memory");

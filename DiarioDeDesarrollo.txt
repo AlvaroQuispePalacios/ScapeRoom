@@ -34,11 +34,13 @@
         - Terminamos que el usuario pueda modificar sus datos
     HACER 05-02-2024
         - Comenzar con los juegos para el scape room
+
 07-02-2024
     HECHO
         - Mejoramos el juego memory
     HACER
         - ALgo
+
 10-02-2024
     HECHO
         - Terminamos el primer juego
@@ -47,3 +49,9 @@
     HACER
         - Agregar el mapa que nos muestre las habitaciones 
         - Agregar el temporizador
+
+13-02-2024
+    HECHO 
+        - Iniciamos con el segundo juego
+    HACER 
+        - Terminar el segundo juego

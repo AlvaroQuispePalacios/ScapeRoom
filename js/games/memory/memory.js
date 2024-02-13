@@ -83,6 +83,7 @@ function generarContenidoEnCartas(cantidadCartas) {
 
 function juegoMemoryCompletado(cantidadDeCartas) {
     if(aciertosMemory == (cantidadDeCartas/2)){
+        console.log("El juego memory acabo");
         memoryCompletado = true;
         juegosDesordenados.shift();
         juegosDesordenados[0]();
