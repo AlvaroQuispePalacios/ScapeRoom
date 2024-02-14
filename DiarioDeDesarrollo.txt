@@ -55,3 +55,8 @@
         - Iniciamos con el segundo juego
     HACER 
         - Terminar el segundo juego
+
+14-02-2024
+    HECHO
+        - Se arreglaron errores de cuando se generaba los juegos
+        - Seguimos con el segundo juego parte visual casi lista

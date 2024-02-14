@@ -9,11 +9,12 @@
 }
 
 .candado{
+    position: relative;
     display: flex;
     flex-direction: column;
     border-radius: 5px;
     background-color: #528fae;;
-    padding: 1rem;
+    padding: 2rem;
 }
 
 .candado-tablero{
@@ -39,4 +40,13 @@
 .candado-btn button{
     padding: .5rem;
     font-size: 14px;
+}
+
+.candado-nota{
+    width: 15rem;
+}
+
+.candado-nota img{
+    width: 100%;
+    cursor: pointer;
 }

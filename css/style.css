@@ -483,7 +483,7 @@ input:focus-visible {
 .submenu{
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: baseline;
     padding: .1rem 1rem;
     margin: 0 auto;
     margin-top: 6rem;
@@ -493,18 +493,29 @@ input:focus-visible {
 }
 
 .submenu-map{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 33%;
 }
 
 .submenu-temp{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 33%;
 }
 
 .submenu-hints{
-    text-align: center;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 33%;
+    height: 100%;
     /* border: 1px solid #223d49; */
 }
 
@@ -512,43 +523,36 @@ input:focus-visible {
     position: relative;
 }
 
-.submenu-hints-dialogue{
+.dialogue{
     position: absolute;
-    top: 0rem;
-    right: 11rem;
-    font-size: 16px;
-    border: 1px solid #1a1519;
+    bottom: 8rem;
+    right: 4rem;
+    width: 14rem;
+    height: 10rem;
+    padding: 1rem;
+    background-color: #fad17279;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
     border-radius: 5px;
-    padding: .5rem;
-    background-color: #b2b0a7;
-     
-    color: #1a1519;
-    font-weight: bold;
-    width: 47ch;
-    white-space: nowrap;
-    animation: typewriter 5s steps(50);
-    overflow: hidden;
+    animation: aparecerLentamente 1s;
 }
 
-.submenu-hints-dialogue > span{
-    color: #1a1519;
-    animation: blink 1s infinite;
+.dialogue p{
+    margin: 0;
+    padding: 0;
 }
 
-@keyframes typewriter{
-    from{width: 0;}
-}
-
-@keyframes blink {
-    50%{
+@keyframes aparecerLentamente {
+    from{
         opacity: 0;
     }
- 
+    to{
+        opacity: 1;
+    }
 }
 
 .submenu-hints img{
-    max-width: 70%;
-    /* border: 1px solid #223d49; */
+    width: 10rem;
+    height: 10rem;
     cursor: pointer;
     border-radius: 50%;
     background-color: #b2b0a7;
