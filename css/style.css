@@ -478,7 +478,7 @@ input:focus-visible {
     background-color: #982343;
 }
 
-/* Estilos del submenu */
+/*------------------------- Estilos del submenu------------------------- */
 
 .submenu{
     display: flex;
@@ -520,7 +520,8 @@ input:focus-visible {
     border: 1px solid #1a1519;
     border-radius: 5px;
     padding: .5rem;
-    background-color: #b2b0a7; 
+    background-color: #b2b0a7;
+     
     color: #1a1519;
     font-weight: bold;
     width: 47ch;

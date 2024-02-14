@@ -71,6 +71,8 @@ function createOtherGame2(){
 function createFinal(){
     document.querySelector("#main > div").remove();
     crearCandado();
+    cambiarNumeroDeLaCerradura();
+    
     console.log("Inicia el final del juego");
 }
 
