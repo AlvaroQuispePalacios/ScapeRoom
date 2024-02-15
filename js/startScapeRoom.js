@@ -5,7 +5,7 @@ const submenu = document.querySelector(".submenu");
 const dialogue = document.querySelector(".dialogue");
 // const nGames = 2;
 
-const arrayDeJuegos = [createGameMemory, createOtherGame1, createOtherGame2];
+const arrayDeJuegos = [createGameMemory, createOtherGame1, createOtherGame2, createFinal];
 const juegosDesordenados = seleccionarJuegosAleatoriamente();
 let dificultad;
 console.log(juegosDesordenados);
@@ -48,7 +48,8 @@ function selectDifficulty(difficulty) {
     }, 5000);
 
     if (difficulty == "easy") {
-        juegosDesordenados.splice(1, 2, createFinal);
+        dificultad = "easy";
+        juegosDesordenados.splice(2);
         console.log(juegosDesordenados);
 
         if (isCreateMemoryFirst()) {
@@ -56,15 +57,26 @@ function selectDifficulty(difficulty) {
         } else {
             juegosDesordenados[0]();
         }
-
         submenu.style = "display: flex";
+
     } else if (difficulty == "medium") {
         dificultad = "medium";
+        juegosDesordenados.splice(3);
+        if (isCreateMemoryFirst()) {
+            juegosDesordenados[0](12);
+        } else {
+            juegosDesordenados[0]();
+        }
         // isCreateMemory(12);
         submenu.style = "display: flex";
+
     } else if (difficulty == "hard") {
         dificultad = "hard";
-        // isCreateMemory(16);
+        if (isCreateMemoryFirst()) {
+            juegosDesordenados[0](12);
+        } else {
+            juegosDesordenados[0]();
+        }
         submenu.style = "display: flex";
     }
 }
@@ -82,16 +94,87 @@ function mostrarDialogo(mensaje) {
     }, 3000);
 }
 
-function createOtherGame1() {}
+function createOtherGame1() {
+    juegosDesordenados.shift();
+    if(juegosDesordenados.length == 0){
+        setTimeout(() => {
+            limpiarMain();
+        }, 2000);
 
-function createOtherGame2() {}
+    }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "easy"){
+        setTimeout(() => {
+            // Ejecutamos el siguiente juego
+            juegosDesordenados[0](8);
+            
+        }, 2000);
+    }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "medium"){
+        setTimeout(() => {
+            // Ejecutamos el siguiente juego
+            juegosDesordenados[0](12);
+            
+        }, 2000);
+    }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "hard"){
+        setTimeout(() => {
+            // Ejecutamos el siguiente juego
+            juegosDesordenados[0](16);
+            
+        }, 2000);
+    }else{
+        setTimeout(() => {
+            // Ejecutamos el siguiente juego
+            juegosDesordenados[0]();
+            
+        }, 2000);
+    }
+}
+
+function createOtherGame2() {
+    juegosDesordenados.shift();
+    if(juegosDesordenados.length == 0){
+        console.log("los juegos terminaron");
+        limpiarMain();
+    }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "easy"){
+        setTimeout(() => {
+            // Ejecutamos el siguiente juego
+            juegosDesordenados[0](8);
+            
+        }, 2000);
+    }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "medium"){
+        setTimeout(() => {
+            // Ejecutamos el siguiente juego
+            juegosDesordenados[0](12);
+            
+        }, 2000);
+    }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "hard"){
+        setTimeout(() => {
+            // Ejecutamos el siguiente juego
+            juegosDesordenados[0](16);
+            
+        }, 2000);
+    }else{
+        setTimeout(() => {
+            // Ejecutamos el siguiente juego
+            juegosDesordenados[0]();
+            
+        }, 2000);
+    }
+
+}
 
 function createFinal() {
-    // document.querySelector("#main > div").remove();
     limpiarMain();
     crearCandado();
+    generarCodigo();
     cambiarNumeroDeLaCerradura();
-    console.log("Inicia el final del juego");
+
+    let mainPopUp = document.querySelector(".main-popup");
+    let nota = document.querySelector(".candado-nota");
+    let btnProbarCodigo = document.querySelector("#btnProbarCodigo");
+
+    nota.addEventListener("click", mirarNota);
+    mainPopUp.addEventListener("click", dejarDeMirarNota);
+    btnProbarCodigo.addEventListener("click", probarCodigo);
+
 }
 
 function createGameMemory(cantidadDeCartas) {

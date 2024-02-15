@@ -50,3 +50,50 @@
     width: 100%;
     cursor: pointer;
 }
+
+.main-popup{
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    z-index: 10;
+}
+
+.contenido-popup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nota-popup{
+    max-width: 1200px;
+}
+
+.codigo-item{
+    position: absolute;
+    font-size: 2rem;
+    color: black;
+}
+
+.item1{
+    top: 0;
+}
+
+.item2{
+    top: 2rem;
+    right: 2rem;
+}
+
+.item3{
+    bottom: 8rem;
+    right: 5.3rem;
+}
+
+.item4{
+    bottom: 0;
+    left: 0;
+}
+

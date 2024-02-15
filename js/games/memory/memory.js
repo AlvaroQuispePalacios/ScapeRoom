@@ -87,14 +87,18 @@ function juegoMemoryCompletado(cantidadDeCartas) {
         memoryCompletado = true;
         juegosDesordenados.shift();
         // Aqui ira la animacion de obtener una nota donde habra un numero
-        mostrarDialogo("Vayamos al siguiente juego")
-        setTimeout(() => {
-            // Ejecutamos el siguiente juego
-            juegosDesordenados[0]();
-            
-        }, 2000);
+        mostrarDialogo("Juego completado")
+        if(juegosDesordenados.length == 0){
+            console.log("los juegos terminaron");
+            limpiarMain();
+        }else{
+            setTimeout(() => {
+                // Ejecutamos el siguiente juego
+                juegosDesordenados[0]();
+                
+            }, 2000);
+        }
     }
-
 }
 
 
