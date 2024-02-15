@@ -60,3 +60,7 @@
     HECHO
         - Se arreglaron errores de cuando se generaba los juegos
         - Seguimos con el segundo juego parte visual casi lista
+
+15-02-2024
+    HECHO
+        - Se acabo el segundo juego
