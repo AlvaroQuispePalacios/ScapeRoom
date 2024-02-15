@@ -533,7 +533,7 @@ input:focus-visible {
     background-color: #fad17279;
     clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
     border-radius: 5px;
-    animation: aparecerLentamente 1s;
+    animation: aparecerLentamente .7s;
 }
 
 .dialogue p{
@@ -557,3 +557,45 @@ input:focus-visible {
     border-radius: 50%;
     background-color: #b2b0a7;
 }
+
+/* ----------------------Puntuacion final despues de acabar la partida -------------*/
+
+.puntuacion-main{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+    text-align: center;
+}
+
+.puntuacion-main > h1{
+    margin-bottom: 0;
+    font-size: 3rem;
+}
+
+.puntuacion{
+    font-size: 2.5rem;
+}
+
+.puntuacion-items{
+    display: flex;
+    justify-content: baseline;
+    width: 100%;
+    text-align: center;
+}
+
+.puntuacion-item{
+    font-size: 1.5rem;
+    width: 33%;
+}
+
+/* .puntuacion-item > h2{
+    font-size: 2rem;
+}
+
+.puntuacion-item > p {
+    font-size: 2.5rem;
+} */

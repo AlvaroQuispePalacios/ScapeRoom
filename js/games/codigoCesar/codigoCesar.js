@@ -117,44 +117,13 @@ function probarCodigo(){
     }
 
     juegoAdivinarCodigoCompletado(esCodigoValido)
-    console.log(esCodigoValido);
-
 }  
 
 function juegoAdivinarCodigoCompletado(array) {
     if(array[0] && array[1] && array[2] && array[3]){
         mostrarDialogo("Juego completado");
         // Si quieres introducir para poder regresar a una partida hay que agregar juegoAdivinarCodigoCompletado = true para guardarlo en la partida, con el codigo generado anteriormente y volverlos a cargar para poder jugar donde lo dejamos
-        juegosDesordenados.shift();
-        if(juegosDesordenados.length == 0){
-            setTimeout(() => {
-                limpiarMain();
-            }, 2000);
-        }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "easy"){
-            setTimeout(() => {
-                // Ejecutamos el siguiente juego
-                juegosDesordenados[0](8);
-                
-            }, 2000);
-        }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "medium"){
-            setTimeout(() => {
-                // Ejecutamos el siguiente juego
-                juegosDesordenados[0](12);
-                
-            }, 2000);
-        }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "hard"){
-            setTimeout(() => {
-                // Ejecutamos el siguiente juego
-                juegosDesordenados[0](16);
-                
-            }, 2000);
-        }else{
-            setTimeout(() => {
-                // Ejecutamos el siguiente juego
-                juegosDesordenados[0]();
-                
-            }, 2000);
-        }
+        irAlSiguienteJuego();
     }
 }
 
