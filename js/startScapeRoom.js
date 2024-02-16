@@ -4,11 +4,12 @@ const main = document.getElementById("main");
 const submenu = document.querySelector(".submenu");
 const dialogue = document.querySelector(".dialogue");
 
-const arrayDeJuegos = [createGameMemory, createOtherGame1, createOtherGame2, createGameCodigoCesar];
+const arrayDeJuegos = [createGameMemory, createGameAdivinarPalabraDesordenada, createOtherGame2, createGameCodigoCesar];
 const juegosDesordenados = seleccionarJuegosAleatoriamente();
 let dificultad;
-let user = JSON.parse(sessionStorage.getItem("connected"));
+let user = User.fromJSON(JSON.parse(sessionStorage.getItem("connected")));
 console.log(user);
+console.log(user.getUsername());
 console.log(juegosDesordenados);
 
 // ---------------------------- MENU ----------------------
@@ -49,7 +50,21 @@ function selectDifficulty(difficulty) {
     }, 5000);
 
     if (difficulty == "easy") {
+
         dificultad = "easy";
+
+        // user.addGameEasy(
+        //     {
+        //         games: [
+        //             {
+                        
+        //             }
+        //         ],
+        //         time: ,
+        //         score: 
+
+        //     }
+        // );
 
         juegosDesordenados.splice(2);
 
@@ -134,7 +149,10 @@ function irAlSiguienteJuego(){
     }
 }
 
-function createOtherGame1() {
+function createGameAdivinarPalabraDesordenada() {
+    limpiarMain();
+
+    
     console.log("Otro juego");
     // irAlSiguienteJuego();
 }

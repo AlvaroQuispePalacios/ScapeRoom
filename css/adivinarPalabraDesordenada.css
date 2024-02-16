@@ -1,0 +1,32 @@
+.adivinarPalabraDesordenada-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.adivinarPalabraDesordenada-main > h2{
+    font-size: 3rem;
+}
+
+.palabra{
+    display: flex;
+    gap: .5rem;
+    font-size: 1.6rem;
+    padding: 1rem;
+    font-weight: bold;
+    border: 2px solid #528fae;
+    border-radius: 5px;
+}
+
+
+.letra-desordenada{
+    padding: 1rem;
+    border-radius: 5px;
+    min-width: 48px;
+    text-align: center;
+    border: 2px solid #cd355d;
+}
+
