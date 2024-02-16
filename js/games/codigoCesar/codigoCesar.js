@@ -7,29 +7,6 @@
 // let nota = document.querySelector(".candado-nota");
 let codigo = Array();
 
-function generarCodigo() {
-    min = Math.ceil(0);
-    max = Math.floor(9);
-    let candado = document.querySelector(".candado");
-    for(let i = 0 ; i < 4; i++){
-        let numeroRandom = Math.floor(Math.random() * (max - min + 1) + min);
-        codigo.push(numeroRandom+2);
-        candado.innerHTML += `<div class="codigo-item item${i+1}">${numeroRandom}</div>`;
-    }
-
-    //
-    for(let y = 0; y < codigo.length; y++){
-        if(codigo[y] == 10){
-            codigo[y] = 1;
-        }
-        if(codigo[y] == 11){
-            codigo[y] = 0;
-        }
-    }
-
-    console.log(codigo);
-}
-
 function crearCandado() {
     main.innerHTML = `<div class="final-main"></div>`;
     document.querySelector(".final-main").innerHTML = `
@@ -67,6 +44,7 @@ function crearCandado() {
                 <button id="btnProbarCodigo">Probar combinación</button>
             </section>
     </article>
+
     <section class="candado-nota">
         <img src="../img/nota1.png" alt="nota1">
     </section>
@@ -77,6 +55,31 @@ function crearCandado() {
         </div>
     </div>  
     `;
+}
+
+function generarCodigo() {
+    min = Math.ceil(0);
+    max = Math.floor(9);
+    let candado = document.querySelector(".candado");
+    candado.innerHTML += `<div class="codigo"></div>`
+    for(let i = 0 ; i < 4; i++){
+        let numeroRandom = Math.floor(Math.random() * (max - min + 1) + min);
+        codigo.push(numeroRandom+2);
+        document.querySelector(".codigo").innerHTML += `<div class="codigo-item item${i+1}">${numeroRandom}</div>`;
+        // candado.innerHTML += `<div class="codigo-item item${i+1}">${numeroRandom}</div>`;
+    }
+
+    //
+    for(let y = 0; y < codigo.length; y++){
+        if(codigo[y] == 10){
+            codigo[y] = 1;
+        }
+        if(codigo[y] == 11){
+            codigo[y] = 0;
+        }
+    }
+
+    console.log(codigo);
 }
 
 // Da la funcionalidad a los botones para poder cambiar los numeros y adivinar el codigo

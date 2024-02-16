@@ -12,14 +12,19 @@ function checkUserConnected(){
 
 function isUserExistInLs(usernameInput, passwordInput){
     let array = [false];
-    arrayUsers = JSON.parse(localStorage.getItem("users"));
-    arrayUsers.forEach((user) => {
-        if((user.username == usernameInput.value) && (user.password == passwordInput.value)){
-            array[0] = true;
-            array.push(user);
-            return;
-        }
-    });
+
+    if(localStorage.getItem("users") !== null){
+        arrayUsers = JSON.parse(localStorage.getItem("users"));
+        arrayUsers.forEach((user) => {
+            if((user.username == usernameInput.value) && (user.password == passwordInput.value)){
+                array[0] = true;
+                array.push(user);
+                return;
+            }
+        });
+    }else{
+        console.log("No existen usuarios en la base de datos");
+    }
     return array;
 }
 

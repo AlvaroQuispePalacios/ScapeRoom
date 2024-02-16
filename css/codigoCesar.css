@@ -72,28 +72,34 @@
     max-width: 1200px;
 }
 
+.codigo{
+    display: flex;
+    padding-top: 1rem;
+    justify-content: center;
+    gap: 1.3rem;
+}
 .codigo-item{
-    position: absolute;
+    /* position: absolute; */
     font-size: 2rem;
     color: black;
 }
 
-.item1{
-    top: 0;
+/* .item1{
+    top: 1rem;
 }
 
 .item2{
-    top: 2rem;
-    right: 2rem;
+    top: 1rem;
+    right: 1rem;
 }
 
 .item3{
-    bottom: 8rem;
-    right: 5.3rem;
+    bottom: 1rem;
+    right: 1rem;
 }
 
 .item4{
-    bottom: 0;
-    left: 0;
-}
+    bottom: 1rem;
+    left: 1rem;
+} */
 

@@ -87,10 +87,7 @@ function selectDifficulty(difficulty) {
 
         submenu.style = "display: flex";
         console.log(juegosDesordenados);
-
     }
-
-
 }
 
 // Limpia el main entre juegos

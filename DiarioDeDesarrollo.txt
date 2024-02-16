@@ -64,3 +64,8 @@
 15-02-2024
     HECHO
         - Se acabo el segundo juego
+
+16-02-2024
+    HECHO
+        - Se resolvieron errores de inicio de Sesion 
+        - Se empezo el 3er juego
