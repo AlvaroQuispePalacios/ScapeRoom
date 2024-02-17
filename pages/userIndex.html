@@ -91,9 +91,10 @@
             </section>
         </div>
     </div> -->
-
+<!-- 
         <div class="adivinarPalabraDesordenada-main">
             <h2>Adivina la palabra</h2>
+
             <section class="palabra-desordenada">
                 <div class="letra-desordenada">H</div>
                 <div class="letra-desordenada">O</div>
@@ -124,7 +125,6 @@
                     <div class="fila-item-relleno fila1-relleno2"></div>
                     <div class="fila-item-relleno fila1-relleno2"></div>
                     <div class="fila-item-relleno fila1-relleno3"></div>
-
                 </div>
                 <div class="fila fila2">
                     <div class="fila-item-relleno fila2-relleno1"></div>
@@ -141,7 +141,6 @@
                     <div class="fila-item-relleno fila2-relleno2"></div>
                     <div class="fila-item-relleno fila2-relleno2"></div>
                     <div class="fila-item-relleno fila2-relleno3"></div>
-
                 </div>
                 <div class="fila fila3">
                     <div class="fila-item-relleno fila3-relleno1"></div>
@@ -156,7 +155,6 @@
                     <div class="fila-item-relleno fila3-relleno2"></div>
                     <div class="fila-item-relleno fila3-relleno2"></div>
                     <div class="fila-item-relleno fila3-relleno3"></div>
-
                 </div>
                 <div class="fila fila4">
                     <div class="fila-item-relleno fila4-relleno1"></div>
@@ -169,7 +167,7 @@
                     <div class="fila-item-relleno fila4-relleno3"></div>
                 </div>
             </section>
-        </div>
+        </div> -->
     </body>
     <script src="../js/UserClass.js"></script>
     <script src="../js/userIndex.js"></script>
@@ -177,4 +175,36 @@
     <script src="../js/games/memory/memory.js"></script>
     <script src="../js/games/codigoCesar/codigoCesar.js"></script>
     <script src="../js/games/adivinarPalabraDesordenada/adivinarPalabraDesordenada.js"></script>
+    <!-- <script>
+        let letraUsuario = document.querySelectorAll(".letra");
+        console.log(letraUsuario.length);
+        let contador = 0;
+        document.addEventListener("keydown", (e) => {
+            let userInput = e.key;
+            // Verificar si la tecla presionada es una letra
+            if (/^[a-zA-Z]$/.test(userInput)) {
+                if(contador < letraUsuario.length){
+                    letraUsuario[contador].textContent = userInput.toUpperCase();
+                    contador++;
+                    console.log(contador);
+                    if(contador == letraUsuario.length){
+                        let adivinado = false;
+                        console.log("PROBANDO COMBINACION");
+                        if(adivinado){
+                            console.log("adivinado");
+                            // Pasar al siguente juego
+                        }else{
+                            contador++;
+                        }
+                        if(contador > letraUsuario.length){
+                            setTimeout(() => {
+                                contador = 0;
+                                letraUsuario.forEach((letra) => letra.textContent = "__");    
+                            }, 100)
+                        }
+                    }
+                }
+            }
+        });
+    </script> -->
 </html>

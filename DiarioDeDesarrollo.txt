@@ -69,3 +69,8 @@
     HECHO
         - Se resolvieron errores de inicio de Sesion 
         - Se empezo el 3er juego
+
+17-02-2024
+    HECHO 
+        - Se termino el 3er juego
+        

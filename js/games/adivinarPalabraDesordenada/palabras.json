@@ -1,5 +1,5 @@
 {
     "easy":["perro", "gato","casa","Sol","Lluvia","Flor","Agua","Correr","Comer","Dormir","Libro","Feliz","Triste","Amigo","Jugar","Bailar","Cantar","Dulce"],
-    "medium":[],
-    "hard":[]
+    "medium":["Espectro", "Nebulosa", "Intriga", "Enigma", "Criptograma", "Espeluznante", "Clandestino", "Laberinto", "Eclecticismo", "Maravilla", "Travesura", "Deslumbrante", "Perspicaz", "Intangible"],
+    "hard":["Esquizofrenia", "Anencefalia", "Anticonstitucionalmente", "Quimera", "Desoxirribonucleico", "Homeostasis", "Policonstitucionalmente", "Esquizofreniforme"]
 }

@@ -151,7 +151,8 @@ function irAlSiguienteJuego(){
 
 function createGameAdivinarPalabraDesordenada() {
     limpiarMain();
-
+    // ASYNC
+    obtenerPalabras();
     
     console.log("Otro juego");
     // irAlSiguienteJuego();
