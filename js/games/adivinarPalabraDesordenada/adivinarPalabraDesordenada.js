@@ -43,16 +43,15 @@ function obtenerPalabras() {
                         if (contador == letraUsuario.length) {                
                             console.log("PROBANDO COMBINACION");
                             if (compararElementosDeLosArrays(letrasEscritasPorElUsuario, palabraCorrectaArray)) {
-                                console.log("adivinado");
                                 mostrarDialogo("Felicidades adivinaste la palabra")
-                                irAlSiguienteJuego();
                                 // Pasar al siguente juego
+                                irAlSiguienteJuego();
                             } else {
                                 contador++;
+                                letrasEscritasPorElUsuario = Array();
                                 mostrarDialogo("Incorrecto")
-
                             }
-
+                            
                             if (contador > letraUsuario.length) {
                                 setTimeout(() => {
                                     contador = 0;
@@ -65,7 +64,7 @@ function obtenerPalabras() {
             });
 
         } else if (request.readyState === 4) {
-            // miCallback("No se han podido obtener los datos", undefined);
+            mostrarDialogo("Ha ocurrido un error D:");
         }
     });
     request.open("GET", "/js/games/adivinarPalabraDesordenada/palabras.json", true);
@@ -163,23 +162,6 @@ function generarPalabraDesordenadaTablero() {
     for (let i = 0; i < palabra.length; i++) {
         document.querySelector(".palabra").innerHTML += `<div class="letra">__</div>`
     }
-
-
-
-}
-
-function generarPalabraUsuarioTablero() {
-    // let palabraUsuario = document.querySelectorAll("")
-    console.log(object);
-    document.addEventListener('keydown', (e) => {
-        var userInput = e.key;
-        // Verificar si la tecla presionada es una letra
-        if (/^[a-zA-Z]$/.test(userInput)) {
-            // Agregar la letra al elemento con id 'output'
-            console.log(e);
-            // document.getElementById('output').innerText += userInput;
-        }
-    });
 }
 
 function compararElementosDeLosArrays(arrayLetrasUsuario, arrayPalabraCorrecta){
@@ -191,7 +173,6 @@ function compararElementosDeLosArrays(arrayLetrasUsuario, arrayPalabraCorrecta){
             array.push(false);
         }
     }
-
     let resultado = array.reduce((acumulador, valorActual) => acumulador && valorActual, true);
     return resultado;
 };

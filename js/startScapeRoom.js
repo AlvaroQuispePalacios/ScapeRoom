@@ -4,13 +4,66 @@ const main = document.getElementById("main");
 const submenu = document.querySelector(".submenu");
 const dialogue = document.querySelector(".dialogue");
 
+// 
 const arrayDeJuegos = [createGameMemory, createGameAdivinarPalabraDesordenada, createOtherGame2, createGameCodigoCesar];
 const juegosDesordenados = seleccionarJuegosAleatoriamente();
+// Dificultad de la partida 
 let dificultad;
+// El puntaje con el que comienzas y al pasar del tiempo o al uso de alguna pìsta disminuye
+let maxScore;
 let user = User.fromJSON(JSON.parse(sessionStorage.getItem("connected")));
 console.log(user);
-console.log(user.getUsername());
 console.log(juegosDesordenados);
+
+
+// ------------------------ CRONOMETRO -------------------------------
+const tiempoTranscurrido = document.querySelector(".tiempoTranscurrido");
+let contadorIniciarCronometro = 0;
+let cronometro;
+let miFecha = new Date();
+miFecha.setHours(0, 0, 0, 0);
+tiempoTranscurrido.textContent = "00:00:00";
+
+function crono() {
+    let segundos = miFecha.getSeconds();
+    let minutos = miFecha.getMinutes();
+    let horas = miFecha.getHours();
+
+    segundos += 1;
+
+    if (segundos == 60) {
+        segundos = 0;
+        minutos += 1;
+
+        miFecha.setMinutes(minutos);
+    }
+    miFecha.setSeconds(segundos);
+
+    if (horas < 10) {
+        horas = "0" + horas;
+    }
+    if (minutos < 10) {
+        minutos = "0" + minutos;
+    }
+    if (segundos < 10) {
+        segundos = "0" + segundos;
+    }
+
+    tiempoTranscurrido.textContent = `${horas}:${minutos}:${segundos}`;
+}
+
+function reiniciarCronometro() {
+    miFecha.setHours(0, 0, 0, 0);
+    tiempoTranscurrido.textContent = "00:00:00";
+}
+
+function iniciarCrono() {
+    cronometro = setInterval(crono, 1000);
+}
+
+function pararCrono() {
+    clearInterval(cronometro);
+}
 
 // ---------------------------- MENU ----------------------
 function seleccionarJuegosAleatoriamente() {
@@ -26,15 +79,41 @@ function seleccionarJuegosAleatoriamente() {
 
 function createMenuSelectDifficulty() {
     return `
-    <div class="menu-select-difficulty">
-        <h2>Selecciona la dificultad</h2>
-        <button onclick="selectDifficulty('easy')">Facil</button>
-        <button onclick="selectDifficulty('medium')">Intermedio</button>
-        <button onclick="selectDifficulty('hard')">Dificil</button>
-    </div>
+        <div class="menu-select-difficulty">
+            <h2>Selecciona la dificultad</h2>
+            <button onclick="selectDifficulty('easy')">Facil</button>
+            <button onclick="selectDifficulty('medium')">Intermedio</button>
+            <button onclick="selectDifficulty('hard')">Dificil</button>
+        </div>
     `;
 }
 
+function createMenuFinal(){
+    submenu.style = "display: none";
+
+    return `
+    <div class="puntuacion-main">
+        <h1>Puntuación Total</h1>
+
+        <div class="puntuacion">1654</div>
+
+        <div class="puntuacion-items">
+            <section class="puntuacion-item">
+                <h2>Algo</h2>
+                <p></p>
+            </section>
+            <section class="puntuacion-item">
+                <h2>Tiempo</h2>
+                <p>${tiempoTranscurrido.textContent}</p>
+            </section>
+            <section class="puntuacion-item">
+                <h2>Pistas usadas</h2>
+                <p>0</p>
+            </section>
+        </div>
+    </div>
+    `;
+}
 // Si el memory es el primero en crearse
 function isCreateMemoryFirst() {
     if (juegosDesordenados[0] == createGameMemory) {
@@ -50,7 +129,7 @@ function selectDifficulty(difficulty) {
     }, 5000);
 
     if (difficulty == "easy") {
-
+        maxScore = 2400;
         dificultad = "easy";
 
         // user.addGameEasy(
@@ -61,7 +140,8 @@ function selectDifficulty(difficulty) {
         //             }
         //         ],
         //         time: ,
-        //         score: 
+        //         score: ,
+        //         finalizedGame: 
 
         //     }
         // );
@@ -73,36 +153,37 @@ function selectDifficulty(difficulty) {
         } else {
             juegosDesordenados[0]();
         }
-        submenu.style = "display: flex";
+
         console.log(juegosDesordenados);
 
 
     } else if (difficulty == "medium") {
         dificultad = "medium";
-
+        maxScore = 2100;
         juegosDesordenados.splice(3);
+
         if (isCreateMemoryFirst()) {
             juegosDesordenados[0](12);
         } else {
             juegosDesordenados[0]();
         }
-
-        submenu.style = "display: flex";
 
         console.log(juegosDesordenados);
 
     } else if (difficulty == "hard") {
         dificultad = "hard";
-
+        maxScore = 1800;
         if (isCreateMemoryFirst()) {
             juegosDesordenados[0](12);
         } else {
             juegosDesordenados[0]();
         }
 
-        submenu.style = "display: flex";
         console.log(juegosDesordenados);
     }
+    
+    iniciarCrono();
+    submenu.style = "display: flex";
 }
 
 // Limpia el main entre juegos
@@ -123,14 +204,19 @@ function irAlSiguienteJuego(){
     juegosDesordenados.shift();
 
     if(juegosDesordenados.length == 0){
+        pararCrono();
+        // Mostrar pantalla final con la puntuacion
+
         setTimeout(() => {
             limpiarMain();
+            main.innerHTML = createMenuFinal();
+            console.log("creando menu final");
             mostrarDialogo("Se acabo")
         }, 2000);
+        
     }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "easy"){
         setTimeout(() => {
             juegosDesordenados[0](8);
-            
         }, 2000);
     }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "medium"){
         setTimeout(() => {
@@ -166,7 +252,6 @@ function createOtherGame2() {
 
 function createGameCodigoCesar() {
     limpiarMain();
-
     crearCandado();
     generarCodigo();
     cambiarNumeroDeLaCerradura();
@@ -183,7 +268,6 @@ function createGameCodigoCesar() {
 
 function createGameMemory(cantidadDeCartas) {
     limpiarMain();
-
     generarCartas(cantidadDeCartas);
     generarContenidoEnCartas(cantidadDeCartas);
 

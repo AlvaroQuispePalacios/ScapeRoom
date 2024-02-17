@@ -508,6 +508,11 @@ input:focus-visible {
     width: 33%;
 }
 
+.submenu-temp > p{
+    margin: 0;
+    font-size: 1.7rem;
+}
+
 .submenu-hints{
     /* text-align: center; */
     display: flex;
