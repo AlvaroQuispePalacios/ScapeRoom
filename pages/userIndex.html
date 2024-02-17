@@ -1,80 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/memory.css" />
+        <link rel="stylesheet" href="../css/codigoCesar.css" />
+        <link rel="stylesheet" href="../css/adivinarPalabraDesordenada.css" />
+        <title>Scape Rooms D:</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/memory.css" />
-    <link rel="stylesheet" href="../css/codigoCesar.css">
-    <link rel="stylesheet" href="../css/adivinarPalabraDesordenada.css">
-    <title>Scape Rooms D:</title>
-</head>
-
-<body>
-    <header>
-        <nav class="navbar">
-            <section class="logo">
-                <h1 class="logo-title">Scape Rooms</h1>
-                <img src="#" alt="logo" class="logo-img" />
-            </section>
-            <section>
-                <ul class="links">
-                    <li>
-                        <a href="./userIndex.html" class="link">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="./userInfo.html" class="link linkUserInfo">
-                            <!-- <img src="../img/userAvatar.jpg" alt="D:"> -->
-                        </a>
-                    </li>
-                    <li><a href="#" class="link closeSession">Salir</a></li>
-                </ul>
-            </section>
-        </nav>
-    </header>
-    <main id="main">
-        <div class="menu-start-game">
-            <p>Scape Room</p>
-            <div>
-                <button id="btnStartScapeRoom">JUGAR</button>
-            </div>
-        </div>
-    </main>
-
-    <aside>
-        <article class="submenu" id="submenu">
-
-            <section class="submenu-map">
-                <h2>Inventario</h2>
-                <p>
-                    Aqui ira el mapa
-                </p>
-            </section>
-
-            <section class="submenu-temp">
-                <h2>Tiempo</h2>
-                <p>
-                    Aqui ira el temporizador
-                </p>
-            </section>
-
-            <section class="submenu-hints">
-                <h2>Pistas</h2>
+    <body>
+        <header>
+            <nav class="navbar">
+                <section class="logo">
+                    <h1 class="logo-title">Scape Rooms</h1>
+                    <img src="#" alt="logo" class="logo-img" />
+                </section>
+                <section>
+                    <ul class="links">
+                        <li>
+                            <a href="./userIndex.html" class="link">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="./userInfo.html" class="link linkUserInfo">
+                                <!-- <img src="../img/userAvatar.jpg" alt="D:"> -->
+                            </a>
+                        </li>
+                        <li><a href="#" class="link closeSession">Salir</a></li>
+                    </ul>
+                </section>
+            </nav>
+        </header>
+        <main id="main">
+            <div class="menu-start-game">
+                <p>Scape Room</p>
                 <div>
-                    <div class="dialogue">
-                        <p>
-                            Hola, soy Eugenio y estare ayudandote en esta aventura.
-                        </p>
-                    </div>
-                    <img src="../img/sistemaDePistas.webp" />
+                    <button id="btnStartScapeRoom">JUGAR</button>
                 </div>
-            </section>
-        </article>
-    </aside>
+            </div>
+        </main>
 
-    <!-- <div class="puntuacion-main">
+        <aside>
+            <article class="submenu" id="submenu">
+                <section class="submenu-map">
+                    <h2>Inventario</h2>
+                    <p>Aqui ira el mapa</p>
+                </section>
+
+                <section class="submenu-temp">
+                    <h2>Tiempo</h2>
+                    <p>Aqui ira el temporizador</p>
+                </section>
+
+                <section class="submenu-hints">
+                    <h2>Pistas</h2>
+                    <div>
+                        <div class="dialogue">
+                            <p>
+                                Hola, soy Eugenio y estare ayudandote en esta
+                                aventura.
+                            </p>
+                        </div>
+                        <img src="../img/sistemaDePistas.webp" />
+                    </div>
+                </section>
+            </article>
+        </aside>
+
+        <!-- <div class="puntuacion-main">
         <h1>Puntuación Total</h1>
 
         <div class="puntuacion">
@@ -97,25 +92,89 @@
         </div>
     </div> -->
 
-    <div class="adivinarPalabraDesordenada-main">
-        <h2>Adivina la palabra</h2>
-        <section class="palabra">
-            <div class="letra-desordenada">H</div>
-            <div class="letra-desordenada">O</div>
-            <div class="letra-desordenada">L</div>
-            <div class="letra-desordenada">A</div>
-        </section>
+        <div class="adivinarPalabraDesordenada-main">
+            <h2>Adivina la palabra</h2>
+            <section class="palabra-desordenada">
+                <div class="letra-desordenada">H</div>
+                <div class="letra-desordenada">O</div>
+                <div class="letra-desordenada">L</div>
+                <div class="letra-desordenada">A</div>
+            </section>
 
-        <section class="teclado">
+            <section class="palabra">
+                <div class="letra">__</div>
+                <div class="letra">__</div>
+                <div class="letra">__</div>
+                <div class="letra">__</div>
+            </section>
 
-        </section>
-    </div>
+            <section class="teclado">
+                <div class="fila fila1">
+                    <div class="fila-item-relleno fila1-relleno1"></div>
+                    <button class="fila-item">Q</button>
+                    <button class="fila-item">W</button>
+                    <button class="fila-item">E</button>
+                    <button class="fila-item">R</button>
+                    <button class="fila-item">T</button>
+                    <button class="fila-item">Y</button>
+                    <button class="fila-item">U</button>
+                    <button class="fila-item">I</button>
+                    <button class="fila-item">O</button>
+                    <button class="fila-item">P</button>
+                    <div class="fila-item-relleno fila1-relleno2"></div>
+                    <div class="fila-item-relleno fila1-relleno2"></div>
+                    <div class="fila-item-relleno fila1-relleno3"></div>
 
-</body>
-<script src="../js/UserClass.js"></script>
-<script src="../js/userIndex.js"></script>
-<script src="../js/startScapeRoom.js"></script>
-<script src="../js/games/memory/memory.js"></script>
-<script src="../js/games/codigoCesar/codigoCesar.js"></script>
+                </div>
+                <div class="fila fila2">
+                    <div class="fila-item-relleno fila2-relleno1"></div>
+                    <button class="fila-item">A</button>
+                    <button class="fila-item">S</button>
+                    <button class="fila-item">D</button>
+                    <button class="fila-item">F</button>
+                    <button class="fila-item">G</button>
+                    <button class="fila-item">H</button>
+                    <button class="fila-item">J</button>
+                    <button class="fila-item">K</button>
+                    <button class="fila-item">L</button>
+                    <button class="fila-item">Ñ</button>
+                    <div class="fila-item-relleno fila2-relleno2"></div>
+                    <div class="fila-item-relleno fila2-relleno2"></div>
+                    <div class="fila-item-relleno fila2-relleno3"></div>
 
+                </div>
+                <div class="fila fila3">
+                    <div class="fila-item-relleno fila3-relleno1"></div>
+                    <button class="fila-item">Z</button>
+                    <button class="fila-item">X</button>
+                    <button class="fila-item">C</button>
+                    <button class="fila-item">V</button>
+                    <button class="fila-item">B</button>
+                    <button class="fila-item">N</button>
+                    <button class="fila-item">M</button>
+                    <div class="fila-item-relleno fila3-relleno2"></div>
+                    <div class="fila-item-relleno fila3-relleno2"></div>
+                    <div class="fila-item-relleno fila3-relleno2"></div>
+                    <div class="fila-item-relleno fila3-relleno3"></div>
+
+                </div>
+                <div class="fila fila4">
+                    <div class="fila-item-relleno fila4-relleno1"></div>
+                    <div class="fila-item-relleno fila4-relleno2"></div>
+                    <div class="fila-item-relleno fila4-relleno3"></div>
+                    <button class="fila-item-espacio"></button>
+                    <div class="fila-item-relleno fila4-relleno1"></div>
+                    <div class="fila-item-relleno fila4-relleno2"></div>
+                    <div class="fila-item-relleno fila4-relleno3"></div>
+                    <div class="fila-item-relleno fila4-relleno3"></div>
+                </div>
+            </section>
+        </div>
+    </body>
+    <script src="../js/UserClass.js"></script>
+    <script src="../js/userIndex.js"></script>
+    <script src="../js/startScapeRoom.js"></script>
+    <script src="../js/games/memory/memory.js"></script>
+    <script src="../js/games/codigoCesar/codigoCesar.js"></script>
+    <script src="../js/games/adivinarPalabraDesordenada/adivinarPalabraDesordenada.js"></script>
 </html>

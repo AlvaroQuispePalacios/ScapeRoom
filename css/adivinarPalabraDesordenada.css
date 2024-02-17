@@ -11,7 +11,7 @@
     font-size: 3rem;
 }
 
-.palabra{
+.palabra-desordenada{
     display: flex;
     gap: .5rem;
     font-size: 1.6rem;
@@ -19,6 +19,7 @@
     font-weight: bold;
     border: 2px solid #528fae;
     border-radius: 5px;
+    margin-bottom: 2rem;
 }
 
 
@@ -30,3 +31,129 @@
     border: 2px solid #cd355d;
 }
 
+/*  */
+.palabra{
+    display: flex;
+    gap: .5rem;
+    font-size: 1.6rem;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.letra{
+    padding: 1rem;
+    border-radius: 5px;
+    min-width: 48px;
+    text-align: center;
+    border: 2px solid #cd355d;
+}
+
+.teclado {
+    padding: 1rem;
+    border: 1px solid lightgoldenrodyellow;
+    border-radius: 5px;
+}
+
+.fila{
+    display: flex;
+    gap: .2rem;
+    margin-bottom: 5px;
+}
+
+.fila-item{
+    font-size: 1.1rem;
+    padding: .7rem;
+    min-width: 40px;
+    background-color: #e4e2d6d6;
+    border: 0;
+    outline: 0;
+    text-align: center;
+    border-radius: 3px;
+    color: #000;
+    /* background-color: transparent; */
+}
+
+.fila-item:hover{
+    color: #fff;
+    background-color: #e4e2d670;
+}
+
+.fila-item-espacio{
+    font-size: 1rem;
+    padding: .7rem;
+    min-width: 40px;
+    border: 0;
+    outline: 0;
+    text-align: center;
+    border-radius: 3px;
+    min-width: 280px;
+    min-height: 39px;
+    background-color: rgb(252, 129, 41);
+}
+
+.fila-item-espacio:hover{
+    background-color: rgba(252, 129, 41, 0.655);
+}
+
+.fila-item-relleno{
+    width: 50px;
+    border-radius: 3px;
+    background-color: #3b3b3b;
+    color: rgb(252, 129, 41);
+    text-align: center;
+    padding: .7rem;
+    font-size: 1.2rem;
+
+}
+
+.fila1-relleno1{
+    width: 60px;
+}
+
+.fila1-relleno2{
+    width: 40px;
+}
+
+.fila1-relleno3{
+    width: 70px;
+}
+
+.fila2-relleno1{
+    width: 80px;
+}
+
+.fila2-relleno2{
+    width: 40px;
+}
+
+.fila2-relleno3{
+
+}
+
+.fila3-relleno1{
+    width: 100px;
+}
+
+.fila3-relleno2{
+    width: 40px;
+}
+
+.fila3-relleno3{
+    width: 117px;
+}
+
+.fila3-relleno4{
+    width: 53px;
+}
+
+.fila4-relleno1{
+
+}
+
+.fila4-relleno1{
+    
+}
+
+.fila4-relleno1{
+    
+}
