@@ -3,7 +3,6 @@ const btnStartScapeRoom = document.getElementById("btnStartScapeRoom");
 const main = document.getElementById("main");
 const submenu = document.querySelector(".submenu");
 const dialogue = document.querySelector(".dialogue");
-
 // 
 const arrayDeJuegos = [createGameMemory, createGameAdivinarPalabraDesordenada, createOtherGame2, createGameCodigoCesar];
 const juegosDesordenados = seleccionarJuegosAleatoriamente();
@@ -11,10 +10,26 @@ const juegosDesordenados = seleccionarJuegosAleatoriamente();
 let dificultad;
 // El puntaje con el que comienzas y al pasar del tiempo o al uso de alguna pìsta disminuye
 let maxScore;
-let user = User.fromJSON(JSON.parse(sessionStorage.getItem("connected")));
-console.log(user);
+let userConnected = User.fromJSON(JSON.parse(sessionStorage.getItem("connected")));
+
+//
+console.log("Usuario del sesion");
+console.log(userConnected);
+
 console.log(juegosDesordenados);
 
+// 
+function saveGame(user){
+    let usersLocalStorage = JSON.parse(localStorage.getItem("users"));
+    usersLocalStorage.forEach((userLS, index) => {
+        if(userLS.username == user.username){
+            usersLocalStorage[index] = user;
+        }
+    });
+    console.log(usersLocalStorage);
+    localStorage.setItem("users", JSON.stringify(usersLocalStorage));
+    sessionStorage.setItem("connected", JSON.stringify(user));
+}
 
 // ------------------------ CRONOMETRO -------------------------------
 const tiempoTranscurrido = document.querySelector(".tiempoTranscurrido");
@@ -88,7 +103,7 @@ function createMenuSelectDifficulty() {
     `;
 }
 
-function createMenuFinal(){
+function createMenuFinal() {
     submenu.style = "display: none";
 
     return `
@@ -123,7 +138,7 @@ function isCreateMemoryFirst() {
 }
 
 function selectDifficulty(difficulty) {
-    // Desaparecera el mensaje por defecto despues de 7seg
+    // Desaparecera el mensaje por defecto despues de 5seg
     setTimeout(() => {
         dialogue.style = "display: none";
     }, 5000);
@@ -131,22 +146,11 @@ function selectDifficulty(difficulty) {
     if (difficulty == "easy") {
         maxScore = 2400;
         dificultad = "easy";
-
-        // user.addGameEasy(
-        //     {
-        //         games: [
-        //             {
-                        
-        //             }
-        //         ],
-        //         time: ,
-        //         score: ,
-        //         finalizedGame: 
-
-        //     }
-        // );
-
+        // 
         juegosDesordenados.splice(2);
+        // Agregar la partida al jugador
+        userConnected.addGameEasy(juegosDesordenados);
+        saveGame(userConnected);
 
         if (isCreateMemoryFirst()) {
             juegosDesordenados[0](8);
@@ -181,7 +185,7 @@ function selectDifficulty(difficulty) {
 
         console.log(juegosDesordenados);
     }
-    
+
     iniciarCrono();
     submenu.style = "display: flex";
 }
@@ -200,10 +204,10 @@ function mostrarDialogo(mensaje) {
 }
 
 // Ejecutamos el siguiente juego, en el caso del Memory depende de la dificultad mostrara cierto numero de cartas a adivinar
-function irAlSiguienteJuego(){
+function irAlSiguienteJuego() {
     juegosDesordenados.shift();
 
-    if(juegosDesordenados.length == 0){
+    if (juegosDesordenados.length == 0) {
         pararCrono();
         // Mostrar pantalla final con la puntuacion
 
@@ -213,21 +217,21 @@ function irAlSiguienteJuego(){
             console.log("creando menu final");
             mostrarDialogo("Se acabo")
         }, 2000);
-        
-    }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "easy"){
+
+    } else if ((juegosDesordenados[0] == createGameMemory) && dificultad == "easy") {
         setTimeout(() => {
             juegosDesordenados[0](8);
         }, 2000);
-    }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "medium"){
+    } else if ((juegosDesordenados[0] == createGameMemory) && dificultad == "medium") {
         setTimeout(() => {
             juegosDesordenados[0](12);
-            
+
         }, 2000);
-    }else if((juegosDesordenados[0] == createGameMemory) && dificultad == "hard"){
+    } else if ((juegosDesordenados[0] == createGameMemory) && dificultad == "hard") {
         setTimeout(() => {
             juegosDesordenados[0](16);
         }, 2000);
-    }else{
+    } else {
         setTimeout(() => {
             // Ejecutamos el siguiente juego
             juegosDesordenados[0]();
@@ -239,7 +243,7 @@ function createGameAdivinarPalabraDesordenada() {
     limpiarMain();
     // ASYNC
     obtenerPalabras();
-    
+
     console.log("Otro juego");
     // irAlSiguienteJuego();
 }

@@ -17,16 +17,52 @@ class User {
         this.username = newUsername;
     }
 
-    addGameEasy(gameObject) {
-        this.games.easy.push(gameObject);
+    addGameEasy(arrayGames) {
+        let gameEasy = {
+            gamesOfTheGame: [],
+            difficulty: "easy",
+            totalTime: "",
+            score: 2400,
+            finalizedGame: false
+        };
+
+        arrayGames.forEach((gameName) => {
+            gameEasy.gamesOfTheGame.push({name: gameName, time: "", finalized: false});
+        });
+
+        this.games.easy.push(gameEasy);
     }
 
-    addGameMedium(gameObject) {
-        this.games.medium.push(gameObject);
+    addGameMedium(arrayGames) {
+        let gameMedium = {
+            gamesOfTheGame: [],
+            difficulty: "medium",
+            totalTime: "",
+            score: 2100,
+            finalizedGame: false
+        };
+
+        arrayGames.forEach((gameName) => {
+            gameMedium.gamesOfTheGame.push({name: gameName, time: "", finalized: false});
+        });
+
+        this.games.medium.push(gameMedium);
     }
 
-    addGameHard(gameObject) {
-        this.games.hard.push(gameObject);
+    addGameHard(arrayGames) {
+        let gameHard = {
+            gamesOfTheGame: [],
+            difficulty: "hard",
+            totalTime: "",
+            score: 1800,
+            finalizedGame: false
+        };
+
+        arrayGames.forEach((gameName) => {
+            gameHard.gamesOfTheGame.push({name: gameName, time: "", finalized: false});
+        });
+
+        this.games.hard.push(gameHard);
     }
 
     // Método estático para reconstruir el objeto desde su representación serializable

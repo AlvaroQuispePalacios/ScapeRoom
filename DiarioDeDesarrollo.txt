@@ -73,4 +73,10 @@
 17-02-2024
     HECHO 
         - Se termino el 3er juego
-        
+
+18-02-2024
+    HECHO
+        - Se puede guardar las partidas del usuario en el localStorage y el sessionStorage
+    HACER
+        - Hacer el sistema puntaje
+        - Hacer tabla globla de los mejores puntajes dependiendo del nivel(Se mostrata: tiempo, numeroDePistasUsadas, puntajeTotal, juegos de la partida, nombre del usuario)
