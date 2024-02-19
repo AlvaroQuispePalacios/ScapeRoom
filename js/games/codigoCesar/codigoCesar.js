@@ -126,6 +126,7 @@ function juegoAdivinarCodigoCompletado(array) {
     if(array[0] && array[1] && array[2] && array[3]){
         mostrarDialogo("Juego completado");
         // Si quieres introducir para poder regresar a una partida hay que agregar juegoAdivinarCodigoCompletado = true para guardarlo en la partida, con el codigo generado anteriormente y volverlos a cargar para poder jugar donde lo dejamos
+        
         irAlSiguienteJuego();
     }
 }

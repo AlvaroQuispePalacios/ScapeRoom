@@ -13,9 +13,12 @@ let maxScore;
 let userConnected = User.fromJSON(JSON.parse(sessionStorage.getItem("connected")));
 
 //
-console.log("Usuario del sesion");
-console.log(userConnected);
-
+// console.log("Usuario del sesion");
+// console.log(userConnected);
+// console.log("juego del usuario");
+// console.log(userConnected.games.easy[0].gamesOfTheGame[0]);
+// console.log(userConnected.games.easy[0].gamesOfTheGame);
+console.log("Juegos");
 console.log(juegosDesordenados);
 
 // 
@@ -26,7 +29,6 @@ function saveGame(user){
             usersLocalStorage[index] = user;
         }
     });
-    console.log(usersLocalStorage);
     localStorage.setItem("users", JSON.stringify(usersLocalStorage));
     sessionStorage.setItem("connected", JSON.stringify(user));
 }
@@ -150,7 +152,9 @@ function selectDifficulty(difficulty) {
         juegosDesordenados.splice(2);
         // Agregar la partida al jugador
         userConnected.addGameEasy(juegosDesordenados);
+        console.log(userConnected);
         saveGame(userConnected);
+        console.log(userConnected);
 
         if (isCreateMemoryFirst()) {
             juegosDesordenados[0](8);
@@ -241,11 +245,8 @@ function irAlSiguienteJuego() {
 
 function createGameAdivinarPalabraDesordenada() {
     limpiarMain();
-    // ASYNC
     obtenerPalabras();
-
     console.log("Otro juego");
-    // irAlSiguienteJuego();
 }
 
 function createOtherGame2() {

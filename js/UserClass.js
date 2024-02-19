@@ -18,6 +18,7 @@ class User {
     }
 
     addGameEasy(arrayGames) {
+
         let gameEasy = {
             gamesOfTheGame: [],
             difficulty: "easy",
@@ -26,8 +27,8 @@ class User {
             finalizedGame: false
         };
 
-        arrayGames.forEach((gameName) => {
-            gameEasy.gamesOfTheGame.push({name: gameName, time: "", finalized: false});
+        arrayGames.forEach((item) => {
+            gameEasy.gamesOfTheGame.push({"gameName": item, "time": "", "finalized": false});
         });
 
         this.games.easy.push(gameEasy);

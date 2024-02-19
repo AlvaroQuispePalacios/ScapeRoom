@@ -45,6 +45,7 @@ function obtenerPalabras() {
                             if (compararElementosDeLosArrays(letrasEscritasPorElUsuario, palabraCorrectaArray)) {
                                 mostrarDialogo("Felicidades adivinaste la palabra")
                                 // Pasar al siguente juego
+                                
                                 irAlSiguienteJuego();
                             } else {
                                 contador++;

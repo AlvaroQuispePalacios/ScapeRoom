@@ -86,6 +86,7 @@ function juegoMemoryCompletado(cantidadDeCartas) {
         console.log("El juego memory acabo");
         memoryCompletado = true;
         // Aqui ira la animacion de obtener una nota donde habra un numero
+        // 
         mostrarDialogo("Juego completado")
         irAlSiguienteJuego();
     }
