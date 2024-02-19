@@ -80,3 +80,7 @@
     HACER
         - Hacer el sistema puntaje
         - Hacer tabla globla de los mejores puntajes dependiendo del nivel(Se mostrata: tiempo, numeroDePistasUsadas, puntajeTotal, juegos de la partida, nombre del usuario)
+
+19-02-2024
+    HECHO 
+        - Seguimos con el sistema de guardado y puntaje

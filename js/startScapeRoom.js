@@ -152,8 +152,8 @@ function selectDifficulty(difficulty) {
         juegosDesordenados.splice(2);
         // Agregar la partida al jugador
         userConnected.addGameEasy(juegosDesordenados);
-        console.log(userConnected);
         saveGame(userConnected);
+
         console.log(userConnected);
 
         if (isCreateMemoryFirst()) {

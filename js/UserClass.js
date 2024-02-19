@@ -5,7 +5,7 @@ class User {
         this.games = {
             easy: [],
             medium: [],
-            hard: []
+            hard: [],
         };
     }
 
@@ -18,17 +18,20 @@ class User {
     }
 
     addGameEasy(arrayGames) {
-
         let gameEasy = {
             gamesOfTheGame: [],
             difficulty: "easy",
             totalTime: "",
             score: 2400,
-            finalizedGame: false
+            finalizedGame: false,
         };
 
         arrayGames.forEach((item) => {
-            gameEasy.gamesOfTheGame.push({"gameName": item, "time": "", "finalized": false});
+            gameEasy.gamesOfTheGame.push({
+                gameName: item.name,
+                time: "",
+                finalized: false,
+            });
         });
 
         this.games.easy.push(gameEasy);
@@ -40,11 +43,15 @@ class User {
             difficulty: "medium",
             totalTime: "",
             score: 2100,
-            finalizedGame: false
+            finalizedGame: false,
         };
 
-        arrayGames.forEach((gameName) => {
-            gameMedium.gamesOfTheGame.push({name: gameName, time: "", finalized: false});
+        arrayGames.forEach((item) => {
+            gameMedium.gamesOfTheGame.push({
+                name: item.name,
+                time: "",
+                finalized: false,
+            });
         });
 
         this.games.medium.push(gameMedium);
@@ -56,11 +63,15 @@ class User {
             difficulty: "hard",
             totalTime: "",
             score: 1800,
-            finalizedGame: false
+            finalizedGame: false,
         };
 
-        arrayGames.forEach((gameName) => {
-            gameHard.gamesOfTheGame.push({name: gameName, time: "", finalized: false});
+        arrayGames.forEach((item) => {
+            gameHard.gamesOfTheGame.push({
+                name: item.name,
+                time: "",
+                finalized: false,
+            });
         });
 
         this.games.hard.push(gameHard);

@@ -87,6 +87,27 @@ function juegoMemoryCompletado(cantidadDeCartas) {
         memoryCompletado = true;
         // Aqui ira la animacion de obtener una nota donde habra un numero
         // 
+        if(dificultad == "easy"){
+            userConnected.games.easy[userConnected.games.easy.length - 1].gamesOfTheGame.forEach((game) => {
+                if(game.gameName == createGameMemory.name){
+                    game.finalized = true;
+
+                    // saveGame();
+                }
+            });
+        }else if(dificultad == "medium"){
+            userConnected.games.medium[userConnected.games.medium.length - 1].gamesOfTheGame.forEach((game) => {
+                if(game.name == createGameMemory.name){
+                    game.finalized = true;
+                }
+            });
+        }else if(dificultad == "hard"){
+            userConnected.games.hard[userConnected.games.hard.length - 1].gamesOfTheGame.forEach((game) => {
+                if(game.name == createGameMemory.name){
+                    game.finalized = true;
+                }
+            });
+        }
         mostrarDialogo("Juego completado")
         irAlSiguienteJuego();
     }
