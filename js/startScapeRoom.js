@@ -22,10 +22,10 @@ console.log("Juegos");
 console.log(juegosDesordenados);
 
 // 
-function saveGame(user){
+function saveGame(user) {
     let usersLocalStorage = JSON.parse(localStorage.getItem("users"));
     usersLocalStorage.forEach((userLS, index) => {
-        if(userLS.username == user.username){
+        if (userLS.username == user.username) {
             usersLocalStorage[index] = user;
         }
     });
@@ -139,6 +139,10 @@ function isCreateMemoryFirst() {
     return false;
 }
 
+function haceAlgo(functionCreateGame, user){
+
+}
+
 function selectDifficulty(difficulty) {
     // Desaparecera el mensaje por defecto despues de 5seg
     setTimeout(() => {
@@ -169,6 +173,10 @@ function selectDifficulty(difficulty) {
         dificultad = "medium";
         maxScore = 2100;
         juegosDesordenados.splice(3);
+
+        // Agregar la partida al jugador
+        userConnected.addGameMedium(juegosDesordenados);
+        saveGame(userConnected);
 
         if (isCreateMemoryFirst()) {
             juegosDesordenados[0](12);

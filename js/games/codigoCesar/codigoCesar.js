@@ -62,19 +62,19 @@ function generarCodigo() {
     max = Math.floor(9);
     let candado = document.querySelector(".candado");
     candado.innerHTML += `<div class="codigo"></div>`
-    for(let i = 0 ; i < 4; i++){
+    for (let i = 0; i < 4; i++) {
         let numeroRandom = Math.floor(Math.random() * (max - min + 1) + min);
-        codigo.push(numeroRandom+2);
-        document.querySelector(".codigo").innerHTML += `<div class="codigo-item item${i+1}">${numeroRandom}</div>`;
+        codigo.push(numeroRandom + 2);
+        document.querySelector(".codigo").innerHTML += `<div class="codigo-item item${i + 1}">${numeroRandom}</div>`;
         // candado.innerHTML += `<div class="codigo-item item${i+1}">${numeroRandom}</div>`;
     }
 
     //
-    for(let y = 0; y < codigo.length; y++){
-        if(codigo[y] == 10){
+    for (let y = 0; y < codigo.length; y++) {
+        if (codigo[y] == 10) {
             codigo[y] = 1;
         }
-        if(codigo[y] == 11){
+        if (codigo[y] == 11) {
             codigo[y] = 0;
         }
     }
@@ -103,7 +103,7 @@ function cambiarNumeroDeLaCerradura() {
 }
 
 //Prueba el codigo introducido por el usuario y si el codigo es correcto salta al siguiente juego o si es el juego final salta la ventana donde se muestra el tiempo de la partida, pistas utilizadas y el puntaje de la partida
-function probarCodigo(){
+function probarCodigo() {
     let codigoIntroducido = Array();
     let esCodigoValido = Array();
     let candadoTableroItemNumero = document.querySelectorAll(".candado-tablero-item section");
@@ -111,22 +111,50 @@ function probarCodigo(){
         codigoIntroducido.push(Number(numero.textContent));
     });
 
-    for(let i = 0; i < 4; i++){
-        if(codigo[i] == codigoIntroducido[i]){
+    for (let i = 0; i < 4; i++) {
+        if (codigo[i] == codigoIntroducido[i]) {
             esCodigoValido.push(true);
-        }else{
+        } else {
             esCodigoValido.push(false);
         }
     }
 
     juegoAdivinarCodigoCompletado(esCodigoValido)
-}  
+}
 
 function juegoAdivinarCodigoCompletado(array) {
-    if(array[0] && array[1] && array[2] && array[3]){
+    if (array[0] && array[1] && array[2] && array[3]) {
         mostrarDialogo("Juego completado");
         // Si quieres introducir para poder regresar a una partida hay que agregar juegoAdivinarCodigoCompletado = true para guardarlo en la partida, con el codigo generado anteriormente y volverlos a cargar para poder jugar donde lo dejamos
-        
+
+        // Cambia el estado del juego a true si ha acabado y guarda este cambio a en el localStorage y sessionStorage
+        if (dificultad == "easy") {
+            userConnected.games.easy[userConnected.games.easy.length - 1].gamesOfTheGame.forEach((game) => {
+                if (game.gameName == createGameCodigoCesar.name) {
+                    game.finalized = true;
+                    game.time = tiempoTranscurrido.textContent;
+                    saveGame(userConnected);
+                }
+            });
+
+        } else if (dificultad == "medium") {
+            userConnected.games.medium[userConnected.games.medium.length - 1].gamesOfTheGame.forEach((game) => {
+                if (game.name == createGameCodigoCesar.name) {
+                    game.finalized = true;
+                    game.time = tiempoTranscurrido.textContent;
+                    saveGame(userConnected);
+                }
+            });
+
+        } else if (dificultad == "hard") {
+            userConnected.games.hard[userConnected.games.hard.length - 1].gamesOfTheGame.forEach((game) => {
+                if (game.name == createGameCodigoCesar.name) {
+                    game.finalized = true;
+                    game.time = tiempoTranscurrido.textContent;
+                    saveGame(userConnected);
+                }
+            });
+        }
         irAlSiguienteJuego();
     }
 }

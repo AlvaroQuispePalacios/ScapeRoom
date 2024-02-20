@@ -40,19 +40,45 @@ function obtenerPalabras() {
                         // Guarda lo que escribe el usuario para despues compararlo
                         letrasEscritasPorElUsuario.push(userInput.toUpperCase());
                         contador++;
-                        if (contador == letraUsuario.length) {                
+                        if (contador == letraUsuario.length) {
                             console.log("PROBANDO COMBINACION");
                             if (compararElementosDeLosArrays(letrasEscritasPorElUsuario, palabraCorrectaArray)) {
                                 mostrarDialogo("Felicidades adivinaste la palabra")
                                 // Pasar al siguente juego
-                                
+                                if (dificultad == "easy") {
+                                    userConnected.games.easy[userConnected.games.easy.length - 1].gamesOfTheGame.forEach((game) => {
+                                        if (game.gameName == createGameAdivinarPalabraDesordenada.name) {
+                                            game.finalized = true;
+                                            game.time = tiempoTranscurrido.textContent;
+                                            saveGame(userConnected);
+                                        }
+                                    });
+
+                                } else if (dificultad == "medium") {
+                                    userConnected.games.medium[userConnected.games.medium.length - 1].gamesOfTheGame.forEach((game) => {
+                                        if (game.name == createGameAdivinarPalabraDesordenada.name) {
+                                            game.finalized = true;
+                                            game.time = tiempoTranscurrido.textContent;
+                                            saveGame(userConnected);
+                                        }
+                                    });
+
+                                } else if (dificultad == "hard") {
+                                    userConnected.games.hard[userConnected.games.hard.length - 1].gamesOfTheGame.forEach((game) => {
+                                        if (game.name == createGameAdivinarPalabraDesordenada.name) {
+                                            game.finalized = true;
+                                            game.time = tiempoTranscurrido.textContent;
+                                            saveGame(userConnected);
+                                        }
+                                    });
+                                }
                                 irAlSiguienteJuego();
                             } else {
                                 contador++;
                                 letrasEscritasPorElUsuario = Array();
                                 mostrarDialogo("Incorrecto")
                             }
-                            
+
                             if (contador > letraUsuario.length) {
                                 setTimeout(() => {
                                     contador = 0;
@@ -165,12 +191,12 @@ function generarPalabraDesordenadaTablero() {
     }
 }
 
-function compararElementosDeLosArrays(arrayLetrasUsuario, arrayPalabraCorrecta){
+function compararElementosDeLosArrays(arrayLetrasUsuario, arrayPalabraCorrecta) {
     let array = Array();
-    for(let i = 0; i < arrayPalabraCorrecta.length; i++){
-        if(arrayPalabraCorrecta[i] == arrayLetrasUsuario[i]){
+    for (let i = 0; i < arrayPalabraCorrecta.length; i++) {
+        if (arrayPalabraCorrecta[i] == arrayLetrasUsuario[i]) {
             array.push(true);
-        }else{
+        } else {
             array.push(false);
         }
     }
