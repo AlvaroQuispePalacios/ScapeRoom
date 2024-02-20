@@ -12,12 +12,8 @@ let dificultad;
 let maxScore;
 let userConnected = User.fromJSON(JSON.parse(sessionStorage.getItem("connected")));
 
-//
-// console.log("Usuario del sesion");
-// console.log(userConnected);
-// console.log("juego del usuario");
-// console.log(userConnected.games.easy[0].gamesOfTheGame[0]);
-// console.log(userConnected.games.easy[0].gamesOfTheGame);
+console.log("Usuario del sesion");
+console.log(userConnected);
 console.log("Juegos");
 console.log(juegosDesordenados);
 
@@ -26,11 +22,14 @@ function saveGame(user) {
     let usersLocalStorage = JSON.parse(localStorage.getItem("users"));
     usersLocalStorage.forEach((userLS, index) => {
         if (userLS.username == user.username) {
+            console.log("Usuario encontrado en localStorage");
             usersLocalStorage[index] = user;
         }
     });
+    console.log("guardando en localStorage y SessionStorage");
     localStorage.setItem("users", JSON.stringify(usersLocalStorage));
     sessionStorage.setItem("connected", JSON.stringify(user));
+
 }
 
 // ------------------------ CRONOMETRO -------------------------------
@@ -170,8 +169,9 @@ function selectDifficulty(difficulty) {
 
 
     } else if (difficulty == "medium") {
-        dificultad = "medium";
         maxScore = 2100;
+        dificultad = "medium";
+        // 
         juegosDesordenados.splice(3);
 
         // Agregar la partida al jugador

@@ -125,37 +125,41 @@ function probarCodigo() {
 function juegoAdivinarCodigoCompletado(array) {
     if (array[0] && array[1] && array[2] && array[3]) {
         mostrarDialogo("Juego completado");
+        userConnected.resultGame(createGameCodigoCesar, dificultad, tiempoTranscurrido);
+        console.log(userConnected);
+        saveGame(userConnected);
+        irAlSiguienteJuego();
         // Si quieres introducir para poder regresar a una partida hay que agregar juegoAdivinarCodigoCompletado = true para guardarlo en la partida, con el codigo generado anteriormente y volverlos a cargar para poder jugar donde lo dejamos
 
         // Cambia el estado del juego a true si ha acabado y guarda este cambio a en el localStorage y sessionStorage
-        if (dificultad == "easy") {
-            userConnected.games.easy[userConnected.games.easy.length - 1].gamesOfTheGame.forEach((game) => {
-                if (game.gameName == createGameCodigoCesar.name) {
-                    game.finalized = true;
-                    game.time = tiempoTranscurrido.textContent;
-                    saveGame(userConnected);
-                }
-            });
+        // if (dificultad == "easy") {
+        //     userConnected.games.easy[userConnected.games.easy.length - 1].gamesOfTheGame.forEach((game) => {
+        //         if (game.gameName == createGameCodigoCesar.name) {
+        //             game.finalized = true;
+        //             game.time = tiempoTranscurrido.textContent;
+        //             saveGame(userConnected);
+        //         }
+        //     });
 
-        } else if (dificultad == "medium") {
-            userConnected.games.medium[userConnected.games.medium.length - 1].gamesOfTheGame.forEach((game) => {
-                if (game.name == createGameCodigoCesar.name) {
-                    game.finalized = true;
-                    game.time = tiempoTranscurrido.textContent;
-                    saveGame(userConnected);
-                }
-            });
+        // } else if (dificultad == "medium") {
+        //     userConnected.games.medium[userConnected.games.medium.length - 1].gamesOfTheGame.forEach((game) => {
+        //         if (game.name == createGameCodigoCesar.name) {
+        //             game.finalized = true;
+        //             game.time = tiempoTranscurrido.textContent;
+        //             saveGame(userConnected);
+        //         }
+        //     });
 
-        } else if (dificultad == "hard") {
-            userConnected.games.hard[userConnected.games.hard.length - 1].gamesOfTheGame.forEach((game) => {
-                if (game.name == createGameCodigoCesar.name) {
-                    game.finalized = true;
-                    game.time = tiempoTranscurrido.textContent;
-                    saveGame(userConnected);
-                }
-            });
-        }
-        irAlSiguienteJuego();
+        // } else if (dificultad == "hard") {
+        //     userConnected.games.hard[userConnected.games.hard.length - 1].gamesOfTheGame.forEach((game) => {
+        //         if (game.name == createGameCodigoCesar.name) {
+        //             game.finalized = true;
+        //             game.time = tiempoTranscurrido.textContent;
+        //             saveGame(userConnected);
+        //         }
+        //     });
+        // }
+
     }
 }
 
