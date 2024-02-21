@@ -21,9 +21,6 @@ function obtenerPalabras() {
                 palabraDesordenada = desordenarPalabra(palabra);
             }
 
-            console.log(palabra);
-            console.log(palabraDesordenada);
-
             generarPalabraDesordenadaTablero();
 
             let letraUsuario = document.querySelectorAll(".letra");
@@ -45,37 +42,8 @@ function obtenerPalabras() {
                             if (compararElementosDeLosArrays(letrasEscritasPorElUsuario, palabraCorrectaArray)) {
                                 mostrarDialogo("Felicidades adivinaste la palabra")
                                 userConnected.resultGame(createGameAdivinarPalabraDesordenada, dificultad, tiempoTranscurrido);
-                                console.log(userConnected);
                                 saveGame(userConnected);
                                 irAlSiguienteJuego();
-                                // Pasar al siguente juego
-                                // if (dificultad == "easy") {
-                                //     userConnected.games.easy[userConnected.games.easy.length - 1].gamesOfTheGame.forEach((game) => {
-                                //         if (game.gameName == createGameAdivinarPalabraDesordenada.name) {
-                                //             game.finalized = true;
-                                //             game.time = tiempoTranscurrido.textContent;
-                                //             saveGame(userConnected);
-                                //         }
-                                //     });
-
-                                // } else if (dificultad == "medium") {
-                                //     userConnected.games.medium[userConnected.games.medium.length - 1].gamesOfTheGame.forEach((game) => {
-                                //         if (game.name == createGameAdivinarPalabraDesordenada.name) {
-                                //             game.finalized = true;
-                                //             game.time = tiempoTranscurrido.textContent;
-                                //             saveGame(userConnected);
-                                //         }
-                                //     });
-
-                                // } else if (dificultad == "hard") {
-                                //     userConnected.games.hard[userConnected.games.hard.length - 1].gamesOfTheGame.forEach((game) => {
-                                //         if (game.name == createGameAdivinarPalabraDesordenada.name) {
-                                //             game.finalized = true;
-                                //             game.time = tiempoTranscurrido.textContent;
-                                //             saveGame(userConnected);
-                                //         }
-                                //     });
-                                // }
 
                             } else {
                                 contador++;

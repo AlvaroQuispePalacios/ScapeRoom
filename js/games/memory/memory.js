@@ -86,9 +86,7 @@ function juegoMemoryCompletado(cantidadDeCartas) {
         console.log("El juego memory acabo");
         // memoryCompletado = true;
         userConnected.resultGame(createGameMemory, dificultad, tiempoTranscurrido);
-        console.log(userConnected);
         saveGame(userConnected);
-
         mostrarDialogo("Juego completado")
         irAlSiguienteJuego();
     }

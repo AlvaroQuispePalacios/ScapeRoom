@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
 
 :root {
     --main-bg-color: #1a1519;
@@ -11,7 +11,9 @@
 
 * {
     box-sizing: border-box;
-    font-family: roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: roboto, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -26,7 +28,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .1rem 1rem;
+    padding: 0.1rem 1rem;
     margin: 0 auto;
     max-width: 1200px;
     /* border: 1px solid beige; */
@@ -39,7 +41,7 @@ body {
 }
 
 .logo-title {
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     font-size: 1.5rem;
     color: var(--other1);
 }
@@ -56,7 +58,7 @@ body {
 }
 
 .link {
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     color: var(--other0);
     text-decoration: none;
     transition: all 0.2s;
@@ -73,7 +75,7 @@ body {
 } */
 
 main {
-    padding: .1rem 1rem;
+    padding: 0.1rem 1rem;
     margin: 0 auto;
     max-width: 1200px;
 }
@@ -98,14 +100,14 @@ main {
     min-height: 256px;
 }
 
-.lr-text-bg-login>p {
+.lr-text-bg-login > p {
     font-size: 1.7rem;
 }
 
 .lr-text-bg-login button {
     font-size: 1rem;
     font-weight: bold;
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     padding: 1rem;
     outline: 1px solid var(--other0);
     border-radius: 2px;
@@ -113,7 +115,6 @@ main {
     color: var(--other0);
     background-color: transparent;
     transition: all 0.1s;
-
 }
 
 .lr-text-bg-login button:hover {
@@ -183,7 +184,7 @@ main {
 }
 
 input {
-    font-size: .9rem;
+    font-size: 0.9rem;
     display: block;
     padding: 1rem;
     border-radius: 5px;
@@ -226,14 +227,14 @@ input:focus-visible {
     min-height: 256px;
 }
 
-.lr-text-bg-register>p {
+.lr-text-bg-register > p {
     font-size: 1.7rem;
 }
 
 .lr-text-bg-register button {
     font-size: 1rem;
     font-weight: bold;
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     padding: 1rem;
     outline: 1px solid var(--other0);
     border-radius: 2px;
@@ -241,7 +242,6 @@ input:focus-visible {
     color: var(--other0);
     background-color: transparent;
     transition: all 0.1s;
-
 }
 
 .lr-text-bg-register button:hover {
@@ -297,7 +297,6 @@ input:focus-visible {
     background-color: #fff;
 }
 
-
 /*------------ ESTILOS DE LA CARD DEL USUARIO----------------- */
 
 .user-card {
@@ -313,7 +312,8 @@ input:focus-visible {
     padding: 1rem;
 }
 
-.user-card-img {}
+.user-card-img {
+}
 
 .user-card-img img {
     aspect-ratio: 16 / 9;
@@ -322,8 +322,7 @@ input:focus-visible {
 }
 
 .user-card-info {
-    padding: .5rem;
-
+    padding: 0.5rem;
 }
 
 .user-card-info h2 {
@@ -333,7 +332,7 @@ input:focus-visible {
 .user-card-form {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    gap: 0.5rem;
 }
 
 .user-card-form input {
@@ -358,7 +357,7 @@ input:focus-visible {
 }
 
 .user-card-form label p {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 }
 
 .user-card-form div {
@@ -368,7 +367,7 @@ input:focus-visible {
 }
 
 .btn-save-change-info-user {
-    padding: .7rem;
+    padding: 0.7rem;
     font-size: 1rem;
     border: 0;
     border-radius: 5px;
@@ -394,7 +393,7 @@ input:focus-visible {
     left: 50%;
     right: 50%;
     transform: translate(-50%, -50%);
-    padding: .5rem;
+    padding: 0.5rem;
     width: 14rem;
     height: 100%;
     text-align: center;
@@ -402,7 +401,7 @@ input:focus-visible {
     border-radius: 5px;
     color: #1a1519;
     animation-name: popUpAnimation;
-    animation-duration: .5s;
+    animation-duration: 0.5s;
     display: none;
 }
 
@@ -411,30 +410,29 @@ input:focus-visible {
 }
 
 @keyframes popUpAnimation {
-    from{
-        top:-5rem;
+    from {
+        top: -5rem;
     }
     to {
-       top:4rem;
+        top: 4rem;
     }
-
 }
 
 /*  */
-.menu-start-game{
+.menu-start-game {
     margin-top: 10rem;
 }
 
-.menu-start-game > p{
+.menu-start-game > p {
     font-size: 5rem;
     text-align: center;
 }
 
-.menu-start-game > div{
+.menu-start-game > div {
     text-align: center;
 }
 
-.menu-start-game button{
+.menu-start-game button {
     font-size: 3rem;
     padding: 2rem;
     background-color: #cd355d;
@@ -443,25 +441,25 @@ input:focus-visible {
     border-radius: 5px;
 }
 
-.menu-start-game button:hover{
+.menu-start-game button:hover {
     color: #b2b0a7;
     border: 5px dashed #b2b0a7;
     background-color: #982343;
 }
 
-.menu-select-difficulty{
+.menu-select-difficulty {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
 }
 
-.menu-select-difficulty h2{
+.menu-select-difficulty h2 {
     text-align: center;
     font-size: 3rem;
 }
 
-.menu-select-difficulty button{
+.menu-select-difficulty button {
     text-align: center;
     font-size: 2rem;
     padding: 1.5rem;
@@ -472,7 +470,7 @@ input:focus-visible {
     border-radius: 5px;
 }
 
-.menu-select-difficulty button:hover{
+.menu-select-difficulty button:hover {
     color: #b2b0a7;
     border: 5px dashed #b2b0a7;
     background-color: #982343;
@@ -480,11 +478,11 @@ input:focus-visible {
 
 /*------------------------- Estilos del submenu------------------------- */
 
-.submenu{
+.submenu {
     display: flex;
     justify-content: center;
     align-items: baseline;
-    padding: .1rem 1rem;
+    padding: 0.1rem 1rem;
     margin: 0 auto;
     margin-top: 6rem;
     max-width: 1200px;
@@ -492,7 +490,7 @@ input:focus-visible {
     display: none;
 }
 
-.submenu-map{
+.submenu-map {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -500,7 +498,7 @@ input:focus-visible {
     width: 33%;
 }
 
-.submenu-temp{
+.submenu-temp {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -508,12 +506,12 @@ input:focus-visible {
     width: 33%;
 }
 
-.submenu-temp > p{
+.submenu-temp > p {
     margin: 0;
     font-size: 1.7rem;
 }
 
-.submenu-hints{
+.submenu-hints {
     /* text-align: center; */
     display: flex;
     flex-direction: column;
@@ -524,11 +522,11 @@ input:focus-visible {
     /* border: 1px solid #223d49; */
 }
 
-.submenu-hints > div{
+.submenu-hints > div {
     position: relative;
 }
 
-.dialogue{
+.dialogue {
     position: absolute;
     bottom: 8rem;
     right: 4rem;
@@ -536,26 +534,34 @@ input:focus-visible {
     height: 10rem;
     padding: 1rem;
     background-color: #fad17279;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 75%,
+        75% 75%,
+        75% 100%,
+        50% 75%,
+        0% 75%
+    );
     border-radius: 5px;
-    animation: aparecerLentamente .7s;
+    animation: aparecerLentamente 0.7s;
 }
 
-.dialogue p{
+.dialogue p {
     margin: 0;
     padding: 0;
 }
 
 @keyframes aparecerLentamente {
-    from{
+    from {
         opacity: 0;
     }
-    to{
+    to {
         opacity: 1;
     }
 }
 
-.submenu-hints img{
+.submenu-hints img {
     width: 10rem;
     height: 10rem;
     cursor: pointer;
@@ -565,7 +571,7 @@ input:focus-visible {
 
 /* ----------------------Puntuacion final despues de acabar la partida -------------*/
 
-.puntuacion-main{
+.puntuacion-main {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -576,31 +582,104 @@ input:focus-visible {
     text-align: center;
 }
 
-.puntuacion-main > h1{
+.puntuacion-main > h1 {
     margin-bottom: 0;
     font-size: 3rem;
 }
 
-.puntuacion{
+.puntuacion {
     font-size: 2.5rem;
 }
 
-.puntuacion-items{
+.puntuacion-items {
     display: flex;
     justify-content: baseline;
     width: 100%;
     text-align: center;
 }
 
-.puntuacion-item{
+.puntuacion-item {
     font-size: 1.5rem;
     width: 33%;
 }
 
-/* .puntuacion-item > h2{
-    font-size: 2rem;
+.botones-TablaDePuntuaciones {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 1rem;
 }
 
-.puntuacion-item > p {
-    font-size: 2.5rem;
-} */
+.btn-TablaDePuntuaciones {
+    font-size: 1.2rem;
+    padding: 1rem;
+    background-color: #cd355d;
+    color: var(--other0);
+    border: 5px dashed var(--other0);
+    border-radius: 5px;
+    width: 250px;
+}
+
+.btn-TablaDePuntuaciones:hover {
+    color: #b2b0a7;
+    border: 5px dashed #b2b0a7;
+    background-color: #982343;
+}
+
+/*-------------- TABLA DE PUNTUACIONES ------------------ */
+.titulo-puntuaciones{
+    text-align: center;
+}
+
+.tabla-puntuaciones-dificultad{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.tabla-puntuaciones-dificultad  button{
+    padding: 1rem;
+    border: 0;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    color: #ebeae8;
+    font-size: 1.2rem;
+    margin: 0;
+}
+.tabla-puntuaciones{
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+
+.tabla-puntuaciones-titulos{
+    display: flex;
+    width: 100%;
+    font-size: 1.3rem;
+    padding: .5rem;
+    border-bottom: 1px solid #b2b0a777;
+    margin-bottom: .5rem;
+}
+
+.tabla-puntuaciones-titulos > div{
+    width: 20%;
+}
+
+.tabla-puntuaciones-usuarios{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: .5rem;
+}
+
+.usuario-puntaje{
+    display: flex;
+}
+
+.usuario-puntaje-item{
+    width: 20%;
+}

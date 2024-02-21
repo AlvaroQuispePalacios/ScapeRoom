@@ -88,4 +88,12 @@
 20-02-2024
     HECHO
         - Seguimos con el sistema de guardado y puntaje
-        
+
+21-02-2024
+    HECHO
+        - Sistema de guardado completado
+        - Tabla de puntuaciones solo falta filtrar por dificultad
+    HACER
+        - Terminar el filtrado por dificultad 
+        - Pensar en un nuevo juego
+        - Hacer el sistema de recuperacion de partida

@@ -106,13 +106,19 @@ function createMenuSelectDifficulty() {
 
 function createMenuFinal() {
     submenu.style = "display: none";
-
+    let puntajeTotal;
+    if(dificultad == "easy"){
+        puntajeTotal = userConnected.games.easy[userConnected.games.easy.length - 1].score;
+    }else if(dificultad == "medium"){
+        puntajeTotal = userConnected.games.medium[userConnected.games.medium.length - 1].score;
+    }else if(dificultad == "hard"){
+        puntajeTotal = userConnected.games.hard[userConnected.games.hard.length - 1].score;
+    }
     return `
     <div class="puntuacion-main">
         <h1>Puntuación Total</h1>
 
-        <div class="puntuacion">1654</div>
-
+        <div class="puntuacion">${puntajeTotal}</div>
         <div class="puntuacion-items">
             <section class="puntuacion-item">
                 <h2>Algo</h2>
@@ -126,6 +132,10 @@ function createMenuFinal() {
                 <h2>Pistas usadas</h2>
                 <p>0</p>
             </section>
+        </div>
+        <div class="botones-TablaDePuntuaciones">
+            <button class="btn-TablaDePuntuaciones">Volver a jugar</button>
+            <button class="btn-TablaDePuntuaciones">Tabla de puntuaciones</button>
         </div>
     </div>
     `;
@@ -153,8 +163,6 @@ function selectDifficulty(difficulty) {
         userConnected.addGameEasy(juegosDesordenados);
         saveGame(userConnected);
 
-        console.log(userConnected);
-
         if (isCreateMemoryFirst()) {
             juegosDesordenados[0](8);
         } else {
@@ -172,7 +180,7 @@ function selectDifficulty(difficulty) {
 
         // Agregar la partida al jugador
         userConnected.addGameMedium(juegosDesordenados);
-        console.log(userConnected);
+
         saveGame(userConnected);
 
         if (isCreateMemoryFirst()) {
