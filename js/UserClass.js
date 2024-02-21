@@ -48,7 +48,7 @@ class User {
 
         arrayGames.forEach((item) => {
             gameMedium.gamesOfTheGame.push({
-                name: item.name,
+                gameName: item.name,
                 time: "",
                 finalized: false,
             });
@@ -68,7 +68,7 @@ class User {
 
         arrayGames.forEach((item) => {
             gameHard.gamesOfTheGame.push({
-                name: item.name,
+                gameName: item.name,
                 time: "",
                 finalized: false,
             });
@@ -77,38 +77,39 @@ class User {
         this.games.hard.push(gameHard);
     }
 
-    resultGame(functionGame, dificultad, tiempoTranscurrido){
-        
+    resultGame(functionGame, dificultad, tiempoTranscurrido) {
+
         let gameEasyLength = this.games.easy.length;
         let gameMediumLength = this.games.medium.length;
         let gameHardLength = this.games.hard.length;
 
-        if(dificultad == "easy"){
-            // Verifica si el juego que se esta ejecutando en el scapeRoom ha finalizado, si ha finalizado lo declara como finalizado
-            let arrayJuegosFinalizados = Array();
-            let scapeRoomFinalizado;
+        let arrayJuegosFinalizados = Array();
+        let scapeRoomFinalizado;
 
-            // Cuando un juego termina lo marca como completado 
+        if (dificultad == "easy") {
+            // Verifica si el juego que se esta ejecutando en el scapeRoom ha finalizado, si ha finalizado lo declara como finalizado
+            // Cuando un juego termina lo marca como completado y guarda el tiempo en que el juego fue completado
             this.games.easy[gameEasyLength - 1].gamesOfTheGame.forEach((game) => {
-                if(game.gameName == functionGame.name){
+                if (game.gameName == functionGame.name) {
                     game.finalized = true;
                     game.time = tiempoTranscurrido.textContent;
                 }
             });
-            
-            // Si todos los juegos del scapeRoom fueron terminados marca que el scapeRoom ha finalizado 
+
+            // Si todos los juegos del scapeRoom fueron terminados, lo pasa a un array de boolean
             this.games.easy[gameEasyLength - 1].gamesOfTheGame.forEach((game) => {
-                if(game.finalized){
+                if (game.finalized) {
                     arrayJuegosFinalizados.push(true);
-                }else{
+                } else {
                     arrayJuegosFinalizados.push(false);
                 }
             });
 
+            // Reduce el array utilizando el operador AND para verificar si todos los juegos fueron completados
             scapeRoomFinalizado = arrayJuegosFinalizados.reduce((acumulador, valorActual) => acumulador && valorActual, true);
 
-            // Marca la partida como acabada si todos los juegos de la partida han sido completados
-            if(scapeRoomFinalizado){
+            //Si todos los juegos fueron completados marca la partida como acabada
+            if (scapeRoomFinalizado) {
                 this.games.easy[gameEasyLength - 1].finalizedGame = true;
                 // Obtiene el tiempo en que termino el ultimo juego de la partida y lo iguala al tiempo total de la partida
                 this.games.easy[gameEasyLength - 1].totalTime = this.games.easy[gameEasyLength - 1].gamesOfTheGame[this.games.easy[gameEasyLength - 1].gamesOfTheGame.length - 1].time;
@@ -119,34 +120,28 @@ class User {
                 let minutos = x.getMinutes();
                 let segundos = x.getSeconds();
                 let tiempoTotalEnSegundos = horas * 3600 + minutos * 60 + segundos;
-                this.games.easy[gameEasyLength - 1].score -= (tiempoTotalEnSegundos * 3); 
+                this.games.easy[gameEasyLength - 1].score -= (tiempoTotalEnSegundos * 3);
             }
-
-        }else if(dificultad == "medium"){
-            let arrayJuegosFinalizados = Array();
-            let scapeRoomFinalizado;
-
-            // Cuando un juego termina lo marca como completado 
+        } else if (dificultad == "medium") {
             this.games.medium[gameMediumLength - 1].gamesOfTheGame.forEach((game) => {
-                if(game.gameName == functionGame.name){
+                if (game.gameName == functionGame.name) {
                     game.finalized = true;
                     game.time = tiempoTranscurrido.textContent;
                 }
             });
-            
-            // Si todos los juegos del scapeRoom fueron terminados marca que el scapeRoom ha finalizado 
+            // Si todos los juegos del scapeRoom fueron terminados, lo pasa a un array de boolean
             this.games.medium[gameMediumLength - 1].gamesOfTheGame.forEach((game) => {
-                if(game.finalized){
+                if (game.finalized) {
                     arrayJuegosFinalizados.push(true);
-                }else{
+                } else {
                     arrayJuegosFinalizados.push(false);
                 }
             });
 
+            // Reduce el array utilizando el operador AND para verificar si todos los juegos fueron completados
             scapeRoomFinalizado = arrayJuegosFinalizados.reduce((acumulador, valorActual) => acumulador && valorActual, true);
 
-            // Marca la partida como acabada si todos los juegos de la partida han sido completados
-            if(scapeRoomFinalizado){
+            if (scapeRoomFinalizado) {
                 this.games.medium[gameMediumLength - 1].finalizedGame = true;
                 // Obtiene el tiempo en que termino el ultimo juego de la partida y lo iguala al tiempo total de la partida
                 this.games.medium[gameMediumLength - 1].totalTime = this.games.medium[gameMediumLength - 1].gamesOfTheGame[this.games.medium[gameMediumLength - 1].gamesOfTheGame.length - 1].time;
@@ -157,45 +152,7 @@ class User {
                 let minutos = x.getMinutes();
                 let segundos = x.getSeconds();
                 let tiempoTotalEnSegundos = horas * 3600 + minutos * 60 + segundos;
-                this.games.medium[gameMediumLength - 1].score -= (tiempoTotalEnSegundos * 3); 
-            }
-
-        }else if(dificultad == "hard"){
-            let arrayJuegosFinalizados = Array();
-            let scapeRoomFinalizado;
-
-            // Cuando un juego termina lo marca como completado 
-            this.games.hard[gameHardLength - 1].gamesOfTheGame.forEach((game) => {
-                if(game.gameName == functionGame.name){
-                    game.finalized = true;
-                    game.time = tiempoTranscurrido.textContent;
-                }
-            });
-            
-            // Si todos los juegos del scapeRoom fueron terminados marca que el scapeRoom ha finalizado 
-            this.games.hard[gameHardLength - 1].gamesOfTheGame.forEach((game) => {
-                if(game.finalized){
-                    arrayJuegosFinalizados.push(true);
-                }else{
-                    arrayJuegosFinalizados.push(false);
-                }
-            });
-
-            scapeRoomFinalizado = arrayJuegosFinalizados.reduce((acumulador, valorActual) => acumulador && valorActual, true);
-
-            // Marca la partida como acabada si todos los juegos de la partida han sido completados
-            if(scapeRoomFinalizado){
-                this.games.hard[gameHardLength - 1].finalizedGame = true;
-                // Obtiene el tiempo en que termino el ultimo juego de la partida y lo iguala al tiempo total de la partida
-                this.games.hard[gameHardLength - 1].totalTime = this.games.hard[gameHardLength - 1].gamesOfTheGame[this.games.hard[gameHardLength - 1].gamesOfTheGame.length - 1].time;
-
-                // Transformar el tiempo total de la partida para poder restar 3 pts por cada segundo de partida
-                let x = new Date(`1970-01-01T${this.games.hard[this.games.hard.length - 1].totalTime}`);
-                let horas = x.getHours();
-                let minutos = x.getMinutes();
-                let segundos = x.getSeconds();
-                let tiempoTotalEnSegundos = horas * 3600 + minutos * 60 + segundos;
-                this.games.hard[gameHardLength - 1].score -= (tiempoTotalEnSegundos * 3); 
+                this.games.medium[gameMediumLength - 1].score -= (tiempoTotalEnSegundos * 3);
             }
         }
     }

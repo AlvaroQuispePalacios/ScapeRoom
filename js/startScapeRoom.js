@@ -138,10 +138,6 @@ function isCreateMemoryFirst() {
     return false;
 }
 
-function haceAlgo(functionCreateGame, user){
-
-}
-
 function selectDifficulty(difficulty) {
     // Desaparecera el mensaje por defecto despues de 5seg
     setTimeout(() => {
@@ -176,6 +172,7 @@ function selectDifficulty(difficulty) {
 
         // Agregar la partida al jugador
         userConnected.addGameMedium(juegosDesordenados);
+        console.log(userConnected);
         saveGame(userConnected);
 
         if (isCreateMemoryFirst()) {
@@ -259,8 +256,7 @@ function createGameAdivinarPalabraDesordenada() {
 
 function createOtherGame2() {
     console.log("Otro juego");
-
-    // irAlSiguienteJuego();
+    irAlSiguienteJuego();
 }
 
 function createGameCodigoCesar() {
