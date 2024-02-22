@@ -97,3 +97,7 @@
         - Terminar el filtrado por dificultad 
         - Pensar en un nuevo juego
         - Hacer el sistema de recuperacion de partida
+
+22-02-2024
+    HECHO 
+        - Sistema de puntuaciones y pagina que muestra las puntuaciones globales acabadas

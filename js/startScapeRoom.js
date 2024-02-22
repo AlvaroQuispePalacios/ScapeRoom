@@ -134,11 +134,15 @@ function createMenuFinal() {
             </section>
         </div>
         <div class="botones-TablaDePuntuaciones">
-            <button class="btn-TablaDePuntuaciones">Volver a jugar</button>
-            <button class="btn-TablaDePuntuaciones">Tabla de puntuaciones</button>
+            <button class="btn-TablaDePuntuaciones" onclick="">Volver a jugar</button>
+            <button class="btn-TablaDePuntuaciones" onclick="redirigirATablaPuntuaciones()">Tabla de puntuaciones</button>
         </div>
     </div>
     `;
+}
+
+function redirigirATablaPuntuaciones(){
+    location.href = "../pages/tablaPuntuaciones.html"
 }
 // Si el memory es el primero en crearse
 function isCreateMemoryFirst() {

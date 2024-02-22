@@ -638,15 +638,26 @@ input:focus-visible {
     flex-direction: column;
     width: 100%;
 }
-.tabla-puntuaciones-dificultad  button{
-    padding: 1rem;
-    border: 0;
+
+.btn-dificultad{
+    padding: .7rem;
+    border: .5px solid #cd355d;
     outline: 0;
     background-color: rgba(0, 0, 0, 0.15);
     color: #ebeae8;
     font-size: 1.2rem;
     margin: 0;
+    border-radius: 5px;
 }
+
+.btn-dificultad:hover{
+    background-color: #cd355d;
+}
+
+.btn-seleccionado{
+    background-color: #cd355d;
+}
+
 .tabla-puntuaciones{
     max-width: 1200px;
     display: flex;
