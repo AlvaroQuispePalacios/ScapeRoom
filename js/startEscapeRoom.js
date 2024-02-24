@@ -1,5 +1,5 @@
 // En este archivo me canse del ingles
-const btnStartScapeRoom = document.getElementById("btnStartScapeRoom");
+const btnStartEscapeRoom = document.getElementById("btnStartEscapeRoom");
 const main = document.getElementById("main");
 const submenu = document.querySelector(".submenu");
 const dialogue = document.querySelector(".dialogue");
@@ -304,6 +304,6 @@ function createGameMemory(cantidadDeCartas) {
 }
 
 //
-btnStartScapeRoom.addEventListener("click", () => {
+btnStartEscapeRoom.addEventListener("click", () => {
     main.innerHTML = createMenuSelectDifficulty();
 });

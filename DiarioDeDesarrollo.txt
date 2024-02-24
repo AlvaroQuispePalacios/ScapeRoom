@@ -27,13 +27,13 @@
         - Corregimos mas errores que se presentaban en el register y login
 
     HACER 04-02-2024
-        - Terminar que el usuario pueda modificar sus datos y iniciar los juegos para el Scape Room
+        - Terminar que el usuario pueda modificar sus datos y iniciar los juegos para el escape Room
 
 04-02-2024
     HECHO
         - Terminamos que el usuario pueda modificar sus datos
     HACER 05-02-2024
-        - Comenzar con los juegos para el scape room
+        - Comenzar con los juegos para el escape room
 
 07-02-2024
     HECHO

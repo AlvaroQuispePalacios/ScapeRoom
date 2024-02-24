@@ -54,8 +54,6 @@ function obtenerMejorJuegoEasy() {
             arrayJuegosFinalizados.sort((a, b) => { return a.score - b.score });
             // Se le pasa el usuario y la mejor partida de este usuario 
             mejoresPartidas.push({ "usuario": usuario, "mejorPartida": arrayJuegosFinalizados[arrayJuegosFinalizados.length - 1] });
-        }else{
-            tablaPuntuacionesUsuarios.innerHTML = `Aún no hay partidas, sé el primero en obtener el primer puesto`;
         }
         
     });
@@ -85,8 +83,6 @@ function obtenerMejorJuegoMedium() {
             arrayJuegosFinalizados.sort((a, b) => { return a.score - b.score });
             // Se le pasa el usuario y la mejor partida de este usuario 
             mejoresPartidas.push({ "usuario": usuario, "mejorPartida": arrayJuegosFinalizados[arrayJuegosFinalizados.length - 1] });
-        }else{
-            tablaPuntuacionesUsuarios.innerHTML = `Aún no hay partidas, sé el primero en obtener el primer puesto`;
         }
         
     });
@@ -115,8 +111,6 @@ function obtenerMejorJuegoHard() {
             arrayJuegosFinalizados.sort((a, b) => { return a.score - b.score });
             // Se le pasa el usuario y la mejor partida de este usuario 
             mejoresPartidas.push({ "usuario": usuario, "mejorPartida": arrayJuegosFinalizados[arrayJuegosFinalizados.length - 1] });
-        }else{
-            tablaPuntuacionesUsuarios.innerHTML = `Aún no hay partidas, sé el primero en obtener el primer puesto`;
         }
         
     });
