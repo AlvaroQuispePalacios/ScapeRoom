@@ -78,11 +78,10 @@ class User {
     }
 
     resultGame(functionGame, dificultad, tiempoTranscurrido) {
-
         let gameEasyLength = this.games.easy.length;
         let gameMediumLength = this.games.medium.length;
         let gameHardLength = this.games.hard.length;
-
+        console.log(gameHardLength);
         let arrayJuegosFinalizados = Array();
         let escapeRoomFinalizado;
 
@@ -153,6 +152,40 @@ class User {
                 let segundos = x.getSeconds();
                 let tiempoTotalEnSegundos = horas * 3600 + minutos * 60 + segundos;
                 this.games.medium[gameMediumLength - 1].score -= (tiempoTotalEnSegundos * 3);
+            }
+
+        }else if (dificultad == "hard") {
+            
+            this.games.hard[gameHardLength - 1].gamesOfTheGame.forEach((game) => {
+                if (game.gameName == functionGame.name) {
+                    game.finalized = true;
+                    game.time = tiempoTranscurrido.textContent;
+                }
+            });
+            // Si todos los juegos del escapeRoom fueron terminados, lo pasa a un array de boolean
+            this.games.hard[gameHardLength - 1].gamesOfTheGame.forEach((game) => {
+                if (game.finalized) {
+                    arrayJuegosFinalizados.push(true);
+                } else {
+                    arrayJuegosFinalizados.push(false);
+                }
+            });
+
+            // Reduce el array utilizando el operador AND para verificar si todos los juegos fueron completados
+            escapeRoomFinalizado = arrayJuegosFinalizados.reduce((acumulador, valorActual) => acumulador && valorActual, true);
+
+            if (escapeRoomFinalizado) {
+                this.games.hard[gameHardLength - 1].finalizedGame = true;
+                // Obtiene el tiempo en que termino el ultimo juego de la partida y lo iguala al tiempo total de la partida
+                this.games.hard[gameHardLength - 1].totalTime = this.games.hard[gameHardLength - 1].gamesOfTheGame[this.games.hard[gameHardLength - 1].gamesOfTheGame.length - 1].time;
+
+                // Transformar el tiempo total de la partida para poder restar 3 pts por cada segundo de partida
+                let x = new Date(`1970-01-01T${this.games.hard[this.games.hard.length - 1].totalTime}`);
+                let horas = x.getHours();
+                let minutos = x.getMinutes();
+                let segundos = x.getSeconds();
+                let tiempoTotalEnSegundos = horas * 3600 + minutos * 60 + segundos;
+                this.games.hard[gameHardLength - 1].score -= (tiempoTotalEnSegundos * 3);
             }
         }
     }

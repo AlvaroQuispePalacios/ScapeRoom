@@ -4,7 +4,7 @@ const main = document.getElementById("main");
 const submenu = document.querySelector(".submenu");
 const dialogue = document.querySelector(".dialogue");
 // 
-const arrayDeJuegos = [createGameMemory, createGameAdivinarPalabraDesordenada, createOtherGame2, createGameCodigoCesar];
+const arrayDeJuegos = [createGameMemory, createGameAdivinarPalabraDesordenada, createGameCodigoCesar];
 const juegosDesordenados = seleccionarJuegosAleatoriamente();
 // Dificultad de la partida 
 let dificultad;
@@ -107,11 +107,11 @@ function createMenuSelectDifficulty() {
 function createMenuFinal() {
     submenu.style = "display: none";
     let puntajeTotal;
-    if(dificultad == "easy"){
+    if (dificultad == "easy") {
         puntajeTotal = userConnected.games.easy[userConnected.games.easy.length - 1].score;
-    }else if(dificultad == "medium"){
+    } else if (dificultad == "medium") {
         puntajeTotal = userConnected.games.medium[userConnected.games.medium.length - 1].score;
-    }else if(dificultad == "hard"){
+    } else if (dificultad == "hard") {
         puntajeTotal = userConnected.games.hard[userConnected.games.hard.length - 1].score;
     }
     return `
@@ -141,7 +141,7 @@ function createMenuFinal() {
     `;
 }
 
-function redirigirATablaPuntuaciones(){
+function redirigirATablaPuntuaciones() {
     location.href = "../pages/tablaPuntuaciones.html"
 }
 // Si el memory es el primero en crearse
@@ -184,7 +184,6 @@ function selectDifficulty(difficulty) {
 
         // Agregar la partida al jugador
         userConnected.addGameMedium(juegosDesordenados);
-
         saveGame(userConnected);
 
         if (isCreateMemoryFirst()) {
@@ -198,8 +197,12 @@ function selectDifficulty(difficulty) {
     } else if (difficulty == "hard") {
         dificultad = "hard";
         maxScore = 1800;
+        // Agregar la partida al jugador
+        userConnected.addGameHard(juegosDesordenados);
+        saveGame(userConnected);
+
         if (isCreateMemoryFirst()) {
-            juegosDesordenados[0](12);
+            juegosDesordenados[0](16);
         } else {
             juegosDesordenados[0]();
         }

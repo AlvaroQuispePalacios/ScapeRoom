@@ -101,3 +101,10 @@
 22-02-2024
     HECHO 
         - Sistema de puntuaciones y pagina que muestra las puntuaciones globales acabadas
+    HACER
+        - Empezar con el sistema de recuperacion de partida
+
+25-02-2024
+    HECHO 
+        - Se arreglaron errores en crear partida
+    

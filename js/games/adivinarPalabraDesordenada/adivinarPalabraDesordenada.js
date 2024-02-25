@@ -20,7 +20,7 @@ function obtenerPalabras() {
                 palabraCorrectaArray = [...palabra];
                 palabraDesordenada = desordenarPalabra(palabra);
             }
-
+            console.log(palabra);
             generarPalabraDesordenadaTablero();
 
             let letraUsuario = document.querySelectorAll(".letra");
