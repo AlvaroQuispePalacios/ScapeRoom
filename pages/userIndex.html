@@ -15,8 +15,8 @@
         <header>
             <nav class="navbar">
                 <section class="logo">
-                    <h1 class="logo-title">Escape Room</h1>
-                    <img src="#" alt="logo" class="logo-img" />
+                    <h1 class="logo-title">DuckScape</h1>
+                    <!-- <img src="#" alt="logo" class="logo-img" /> -->
                 </section>
                 <section>
                     <ul class="links">
@@ -37,10 +37,26 @@
         </header>
         <main id="main">
             <div class="menu-start-game">
-                <p>Escape Room</p>
+                <p>DuckScape</p>
                 <div>
                     <button id="btnStartEscapeRoom">JUGAR</button>
+                    <button id="btnMostrarPartidasIncompletas">CONTINUAR PARTIDA</button>
                 </div>
+            </div>
+            <div class="partidas-incompletas-main">
+                <div class="partidas-incompletas-main-header">
+                    <button id="btnVolverAInicio">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="white" viewBox="0 0 448 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+                    </button>
+                    <h2 class="partidas-incompletas-title">Partidas Incompletas</h2>
+                </div>
+                <section class="partidas-incompletas-content">
+                    <div class="partidas-incompletas-content-item">
+                        <!-- <button>
+                            <span>Dificultad: <span>Fácil</span></span>
+                        </button> -->
+                    </div>
+                </section>
             </div>
         </main>
 
@@ -95,6 +111,8 @@
                 <button class="btn-TablaDePuntuaciones">Tabla de puntuaciones</button>
             </div>
         </div> -->
+
+
     </body>
     <script src="../js/UserClass.js"></script>
     <script src="../js/userIndex.js"></script>

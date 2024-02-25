@@ -107,4 +107,4 @@
 25-02-2024
     HECHO 
         - Se arreglaron errores en crear partida
-    
+        - Sistema de recuperación de partidas casi listo

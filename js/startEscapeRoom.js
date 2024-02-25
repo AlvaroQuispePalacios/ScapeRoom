@@ -1,5 +1,7 @@
 // En este archivo me canse del ingles
 const btnStartEscapeRoom = document.getElementById("btnStartEscapeRoom");
+const btnMostrarPartidasIncompletas = document.getElementById("btnMostrarPartidasIncompletas");
+const btnVolverAInicio = document.getElementById("btnVolverAInicio");
 const main = document.getElementById("main");
 const submenu = document.querySelector(".submenu");
 const dialogue = document.querySelector(".dialogue");
@@ -81,7 +83,8 @@ function pararCrono() {
     clearInterval(cronometro);
 }
 
-// ---------------------------- MENU ----------------------
+// ---------------------------- MENUS ----------------------
+
 function seleccionarJuegosAleatoriamente() {
     for (let i = arrayDeJuegos.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -102,6 +105,82 @@ function createMenuSelectDifficulty() {
             <button onclick="selectDifficulty('hard')">Dificil</button>
         </div>
     `;
+}
+
+function crearMenuMostrarPartidasIncompletas(){
+    let partidasIncompletasContent = document.querySelector(".partidas-incompletas-content");
+    partidasIncompletasContent.innerHTML = "";
+    // Muestra las partidas no acabadas que la dificultad sea fácil
+    userConnected.games.easy.forEach((gameEasy, index) => {
+        if(!gameEasy.finalizedGame){
+            partidasIncompletasContent.innerHTML += `
+            <div class="partidas-incompletas-content-item">
+                <button onclick="cargarPartidaFacil('${index}')">
+                    <span>Dificultad: <span>Fácil</span></span>
+                </button>
+            </div>
+            `; 
+        }
+    });
+
+    userConnected.games.medium.forEach((gameMedium, index) => {
+        if(!gameMedium.finalizedGame){
+            partidasIncompletasContent.innerHTML += `
+            <div class="partidas-incompletas-content-item">
+                <button onclick="console.log('${index}')">
+                    <span>Dificultad: <span>Intermedio</span></span>
+                </button>
+            </div>
+            `; 
+        }
+    });
+
+    userConnected.games.hard.forEach((gameDificil, index) => {
+        if(!gameDificil.finalizedGame){
+            partidasIncompletasContent.innerHTML += `
+            <div class="partidas-incompletas-content-item">
+                <button onclick="console.log('${index}')">
+                    <span>Dificultad: <span>Difícil</span></span>
+                </button>
+            </div>
+            `; 
+        }
+    });
+}
+
+function cargarPartidaFacil(index) { 
+    let indexT = Number(index);
+    let partida = userConnected.games.easy[indexT];
+    let tiempo = "00:00:00";
+    // Encontrar el último juego finalizado
+    let ultimoJuegoFinalizado = partida.gamesOfTheGame.find(item => item.finalized);
+    // Si se encuentra un juego finalizado, obtener su tiempo
+    if (ultimoJuegoFinalizado) {
+        tiempo = ultimoJuegoFinalizado.time;
+    }
+    // Poner el tiempo del ultimo juego finalizado
+    let [horas, minutos, segundos] = tiempo.split(':').map(Number);
+    miFecha.setHours(horas);
+    miFecha.setMinutes(minutos);
+    miFecha.setSeconds(segundos);
+    tiempoTranscurrido.textContent = tiempo;
+    
+    // LLena el array con los juegos que no han sido finalizados
+    juegosDesordenados.splice(0);
+    partida.gamesOfTheGame.forEach((item) => {
+        if(!item.finalized){
+            if(item.gameName == createGameMemory.name){
+                juegosDesordenados.push(createGameMemory);
+            }else if(item.gameName == createGameAdivinarPalabraDesordenada.name){
+                juegosDesordenados.push(createGameAdivinarPalabraDesordenada);
+            }else if(item.gameName == createGameCodigoCesar.name){
+                juegosDesordenados.push(createGameCodigoCesar);
+            }
+        }
+    });
+
+    console.log(juegosDesordenados);
+    selectDifficulty("easy");
 }
 
 function createMenuFinal() {
@@ -306,7 +385,18 @@ function createGameMemory(cantidadDeCartas) {
     });
 }
 
-//
+//-------------------------------- EVENTOS ----------------------------------
 btnStartEscapeRoom.addEventListener("click", () => {
     main.innerHTML = createMenuSelectDifficulty();
+});
+
+btnMostrarPartidasIncompletas.addEventListener("click", () => {
+    document.querySelector(".menu-start-game").style = "display: none";
+    document.querySelector(".partidas-incompletas-main").style = "display: block";
+    crearMenuMostrarPartidasIncompletas();
+});
+
+btnVolverAInicio.addEventListener("click", () => {
+    document.querySelector(".menu-start-game").style = "display: block";
+    document.querySelector(".partidas-incompletas-main").style = "display: none";
 });
