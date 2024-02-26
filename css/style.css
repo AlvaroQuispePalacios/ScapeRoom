@@ -507,7 +507,7 @@ input:focus-visible {
 }
 
 .menu-start-game > p {
-    font-size: 5rem;
+    font-size: 4rem;
     text-align: center;
 }
 
@@ -523,17 +523,16 @@ input:focus-visible {
 .menu-start-game button {
     font-size: 1.5rem;
     padding: 1rem;
-    background-color: #cd355d;
+    background-color: transparent;
     color: var(--other0);
-    border: 5px dashed var(--other0);
+    border: 2px solid var(--other1);
     border-radius: 5px;
     max-width: 400px;
 }
 
 .menu-start-game button:hover {
-    color: #b2b0a7;
-    border: 5px dashed #b2b0a7;
-    background-color: #982343;
+
+    background-color: var(--other1);
 }
 
 .menu-select-difficulty {
@@ -550,19 +549,17 @@ input:focus-visible {
 
 .menu-select-difficulty button {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 1.5rem;
     width: 12.5rem;
-    background-color: #cd355d;
     color: var(--other0);
-    border: 5px dashed var(--other0);
+    border: 2px solid var(--other1);
     border-radius: 5px;
+    background-color: transparent;
 }
 
 .menu-select-difficulty button:hover {
-    color: #b2b0a7;
-    border: 5px dashed #b2b0a7;
-    background-color: #982343;
+    background-color: var(--other1);
 }
 
 .partidas-incompletas-main{
@@ -572,7 +569,7 @@ input:focus-visible {
     padding: 1rem;
     border-radius: 2px;
     margin: 0 auto;
-    margin-top: 8rem;
+    margin-top: 5rem;
     /* overflow: hidden; */
     display: none;
 }

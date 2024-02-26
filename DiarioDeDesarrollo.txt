@@ -108,3 +108,9 @@
     HECHO 
         - Se arreglaron errores en crear partida
         - Sistema de recuperación de partidas casi listo
+
+26-02-2024
+    HECHO
+        - El sistema de recuperación se complica
+        - Se añadieron efectos visuales a los juegos 
+        - Mañana sera un nuevo día

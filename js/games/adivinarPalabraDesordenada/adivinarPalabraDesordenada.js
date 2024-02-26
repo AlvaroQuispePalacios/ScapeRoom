@@ -23,14 +23,25 @@ function obtenerPalabras() {
             console.log(palabra);
             generarPalabraDesordenadaTablero();
 
+            let filaItem = document.querySelectorAll(".fila-item");
             let letraUsuario = document.querySelectorAll(".letra");
             let letrasEscritasPorElUsuario = Array();
             let contador = 0;
 
             document.addEventListener("keydown", (e) => {
                 let userInput = e.key;
-                // Verificar si la tecla presionada es una letra
+                // Verifica si la tecla presionada es una letra
                 if (/^[a-zA-Z]$/.test(userInput)) {
+                    // Efecto de presionar una tecla en el teclado virtual
+                    filaItem.forEach((item) => {
+                        if(userInput.toUpperCase() == item.textContent){
+                            item.classList.add("fila-item-toggle");
+                            setTimeout(() => {
+                                item.classList.remove("fila-item-toggle");
+                            }, 100);
+                        }
+                    });
+                    // 
                     if (contador < letraUsuario.length) {
                         // Muestra por pantalla lo que escribe el usuario
                         letraUsuario[contador].textContent = userInput.toUpperCase();
@@ -87,7 +98,7 @@ function generarPalabraDesordenadaTablero() {
 
     let adivinarPalabraDesordenadaMain = document.querySelector(".adivinarPalabraDesordenada-main");
     adivinarPalabraDesordenadaMain.innerHTML = `
-        <h2>Ordena la</h2>
+        <h2>Ordena la palabra</h2>
         <section class="palabra-desordenada"></section>
         <section class="palabra"></section>
         <section class="teclado">
