@@ -81,7 +81,6 @@ class User {
         let gameEasyLength = this.games.easy.length;
         let gameMediumLength = this.games.medium.length;
         let gameHardLength = this.games.hard.length;
-        console.log(gameHardLength);
         let arrayJuegosFinalizados = Array();
         let escapeRoomFinalizado;
 

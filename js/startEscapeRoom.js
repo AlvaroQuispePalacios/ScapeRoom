@@ -168,7 +168,7 @@ function cargarPartidaFacil(index) {
     // LLena el array con los juegos que no han sido finalizados
     juegosDesordenados.splice(0);
     partida.gamesOfTheGame.forEach((item) => {
-        if(!item.finalized){
+        // if(!item.finalized){
             if(item.gameName == createGameMemory.name){
                 juegosDesordenados.push(createGameMemory);
             }else if(item.gameName == createGameAdivinarPalabraDesordenada.name){
@@ -176,11 +176,12 @@ function cargarPartidaFacil(index) {
             }else if(item.gameName == createGameCodigoCesar.name){
                 juegosDesordenados.push(createGameCodigoCesar);
             }
-        }
+        // }
     });
 
     console.log(juegosDesordenados);
-    selectDifficulty("easy");
+    
+    // selectDifficulty("easy");
 }
 
 function createMenuFinal() {
@@ -242,8 +243,8 @@ function selectDifficulty(difficulty) {
         dificultad = "easy";
         // 
         juegosDesordenados.splice(2);
-        // Agregar la partida al jugador
         userConnected.addGameEasy(juegosDesordenados);
+        // Agregar la partida al jugador
         saveGame(userConnected);
 
         if (isCreateMemoryFirst()) {
