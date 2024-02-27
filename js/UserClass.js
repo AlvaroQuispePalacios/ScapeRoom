@@ -77,6 +77,7 @@ class User {
         this.games.hard.push(gameHard);
     }
 
+    // Marca como finalizado un juego completado en el scapeRoom
     resultGame(functionGame, dificultad, tiempoTranscurrido) {
         let gameEasyLength = this.games.easy.length;
         let gameMediumLength = this.games.medium.length;
@@ -139,6 +140,7 @@ class User {
             // Reduce el array utilizando el operador AND para verificar si todos los juegos fueron completados
             escapeRoomFinalizado = arrayJuegosFinalizados.reduce((acumulador, valorActual) => acumulador && valorActual, true);
 
+            // Si todos los juegos fueron completados significa que la partida ha sido finalizada
             if (escapeRoomFinalizado) {
                 this.games.medium[gameMediumLength - 1].finalizedGame = true;
                 // Obtiene el tiempo en que termino el ultimo juego de la partida y lo iguala al tiempo total de la partida

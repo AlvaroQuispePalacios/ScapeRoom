@@ -50,8 +50,9 @@ function obtenerPalabras() {
                         contador++;
                         if (contador == letraUsuario.length) {
                             console.log("PROBANDO COMBINACION");
+                            // Si el juego ha sido terminado lo guarda el tiempo y lo marca como finalizado y pasa al siguiente juego
                             if (compararElementosDeLosArrays(letrasEscritasPorElUsuario, palabraCorrectaArray)) {
-                                mostrarDialogo("Felicidades adivinaste la palabra")
+                                mostrarDialogo("Felicidades adivinaste la palabra");
                                 userConnected.resultGame(createGameAdivinarPalabraDesordenada, dificultad, tiempoTranscurrido);
                                 saveGame(userConnected);
                                 irAlSiguienteJuego();

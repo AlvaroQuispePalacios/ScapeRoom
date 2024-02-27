@@ -600,7 +600,7 @@ input:focus-visible {
     border: 1px solid #f9a11c;
     border-radius: 2px;
     padding: 1rem;
-    max-height: 600px;
+    max-height: 550px;
     overflow-y: auto;
 }
 

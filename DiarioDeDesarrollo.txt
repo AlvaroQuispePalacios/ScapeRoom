@@ -114,3 +114,8 @@
         - El sistema de recuperación se complica
         - Se añadieron efectos visuales a los juegos 
         - Mañana sera un nuevo día
+27-02-2024
+    HECHO 
+        - El sistema de recuperacion HECHO(falta dificultad media y dificil)
+    HACER
+        - Sistema de pistas

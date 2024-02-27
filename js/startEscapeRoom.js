@@ -99,9 +99,9 @@ function createMenuSelectDifficulty() {
     return `
         <div class="menu-select-difficulty">
             <h2>Selecciona la dificultad</h2>
-            <button onclick="selectDifficulty('easy')">Facil</button>
-            <button onclick="selectDifficulty('medium')">Intermedio</button>
-            <button onclick="selectDifficulty('hard')">Dificil</button>
+            <button onclick="selectDifficulty('easy', false)">Facil</button>
+            <button onclick="selectDifficulty('medium', false)">Intermedio</button>
+            <button onclick="selectDifficulty('hard', false)">Dificil</button>
         </div>
     `;
 }
@@ -147,6 +147,9 @@ function crearMenuMostrarPartidasIncompletas(){
     });
 }
 
+/*-----------------------------Sistema de recuperación de partidas----------------------*
+ * El sistema de recuperar partida se basa en tomar los datos de esta partida y crear una nueva partida "vacia" en el cual se le pasara los datos de la partida original, esto se hace para ponerlo al final del todo del array de las partidas faciles porque el código trabaja siempre en la última partida del array
+ */
 function cargarPartidaFacil(index) { 
     let indexT = Number(index);
     let partida = userConnected.games.easy[indexT];
@@ -164,8 +167,9 @@ function cargarPartidaFacil(index) {
     miFecha.setSeconds(segundos);
     tiempoTranscurrido.textContent = tiempo;
     
-    // LLena el array con los juegos que no han sido finalizados
     juegosDesordenados.splice(0);
+    // LLena el array con los juegos de la partida que no han sido completado la cual queremos retomar 
+    // console.log("Guardando los juegos de la partia que se quiere recuperar");
     partida.gamesOfTheGame.forEach((item) => {
         if(!item.finalized){
             if(item.gameName == createGameMemory.name){
@@ -178,10 +182,23 @@ function cargarPartidaFacil(index) {
         }
     });
 
-    console.log(juegosDesordenados);
-    
-    selectDifficulty("easy");
+    // Juego que reemplazara al original(No importa los juegos con los que se inicialize porque se tomaran los juegos de la partida que queremos recuperar)
+    userConnected.addGameEasy(juegosDesordenados);
+    // Guardamos los datos de la partida original a la copia
+    userConnected.games.easy[userConnected.games.easy.length - 1] = partida;
+    // console.log("Mostrando partida nueva en la ultima posicion con los datos de la vieja partida");
+    // console.log(userConnected.games.easy[userConnected.games.easy.length - 1]);
+    // console.log("Eliminando partida antigua");
+    // Eliminamos la partida original porque estaremos trabajando con la copia ahora
+    userConnected.games.easy.splice(indexT, 1);
+    console.log(userConnected);
+    // Guardamos los cambios en el local y session
+    saveGame(userConnected);
+    // Iniciamos la partida con el primer juego que no ha sido completado
+    selectDifficulty("easy", true);
 }
+
+
 
 function createMenuFinal() {
     submenu.style = "display: none";
@@ -231,70 +248,105 @@ function isCreateMemoryFirst() {
     return false;
 }
 
-function selectDifficulty(difficulty) {
+function selectDifficulty(difficulty, partidaGuardada) {
+    console.log(partidaGuardada);
     // Desaparecera el mensaje por defecto despues de 5seg
     setTimeout(() => {
         dialogue.style = "display: none";
     }, 5000);
 
+    // Cargando partida guardada
+    if(partidaGuardada){
+        if(difficulty == "easy"){
+            maxScore = 2400;
+            dificultad = "easy";
+            if (isCreateMemoryFirst()) {
+                juegosDesordenados[0](8);
+            } else {
+                juegosDesordenados[0]();
+            }
+        }else if(difficulty == "medium"){
+            maxScore = 2100;
+            dificultad = "medium";
+            if (isCreateMemoryFirst()) {
+                juegosDesordenados[0](12);
+            } else {
+                juegosDesordenados[0]();
+            }
+        }else if (difficulty == "hard") {
+            dificultad = "hard";
+            maxScore = 1800;
+            // Agregar la partida al jugador
+            if (isCreateMemoryFirst()) {
+                juegosDesordenados[0](16);
+            } else {
+                juegosDesordenados[0]();
+            }
+        }
+
+        iniciarCrono();
+        submenu.style = "display: flex";
+
+    }else{
+        // Nueva partida
+        if (difficulty == "easy") {
+            maxScore = 2400;
+            dificultad = "easy";
+            // 
+            juegosDesordenados.splice(2);
+            userConnected.addGameEasy(juegosDesordenados);
+            // Agregar la partida al jugador
+            saveGame(userConnected);
+            
+
+            if (isCreateMemoryFirst()) {
+                juegosDesordenados[0](8);
+            } else {
+                juegosDesordenados[0]();
+            }
     
-
-
-    // Modo normal sin guardar partida
-    if (difficulty == "easy") {
-        maxScore = 2400;
-        dificultad = "easy";
-        // 
-        juegosDesordenados.splice(2);
-        userConnected.addGameEasy(juegosDesordenados);
-        // Agregar la partida al jugador
-        saveGame(userConnected);
-
-        if (isCreateMemoryFirst()) {
-            juegosDesordenados[0](8);
-        } else {
-            juegosDesordenados[0]();
+            console.log(juegosDesordenados);
+    
+    
+        } else if (difficulty == "medium") {
+            maxScore = 2100;
+            dificultad = "medium";
+            // 
+            juegosDesordenados.splice(3);
+    
+            // Agregar la partida al jugador
+            userConnected.addGameMedium(juegosDesordenados);
+            saveGame(userConnected);
+    
+            if (isCreateMemoryFirst()) {
+                juegosDesordenados[0](12);
+            } else {
+                juegosDesordenados[0]();
+            }
+    
+            console.log(juegosDesordenados);
+    
+        } else if (difficulty == "hard") {
+            dificultad = "hard";
+            maxScore = 1800;
+            // Agregar la partida al jugador
+            userConnected.addGameHard(juegosDesordenados);
+            saveGame(userConnected);
+    
+            if (isCreateMemoryFirst()) {
+                juegosDesordenados[0](16);
+            } else {
+                juegosDesordenados[0]();
+            }
+    
+            console.log(juegosDesordenados);
         }
-
-        console.log(juegosDesordenados);
-
-
-    } else if (difficulty == "medium") {
-        maxScore = 2100;
-        dificultad = "medium";
-        // 
-        juegosDesordenados.splice(3);
-
-        // Agregar la partida al jugador
-        userConnected.addGameMedium(juegosDesordenados);
-        saveGame(userConnected);
-
-        if (isCreateMemoryFirst()) {
-            juegosDesordenados[0](12);
-        } else {
-            juegosDesordenados[0]();
-        }
-
-        console.log(juegosDesordenados);
-
-    } else if (difficulty == "hard") {
-        dificultad = "hard";
-        maxScore = 1800;
-        // Agregar la partida al jugador
-        userConnected.addGameHard(juegosDesordenados);
-        saveGame(userConnected);
-
-        if (isCreateMemoryFirst()) {
-            juegosDesordenados[0](16);
-        } else {
-            juegosDesordenados[0]();
-        }
-
-        console.log(juegosDesordenados);
+    
+        iniciarCrono();
+        submenu.style = "display: flex";
     }
 
-    iniciarCrono();
-    submenu.style = "display: flex";
+
 }
 
 // Limpia el main entre juegos
