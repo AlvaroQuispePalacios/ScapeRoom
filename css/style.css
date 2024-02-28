@@ -764,17 +764,17 @@ input:focus-visible {
 .btn-TablaDePuntuaciones {
     font-size: 1.2rem;
     padding: 1rem;
-    background-color: #cd355d;
+    background-color: transparent;
     color: var(--other0);
-    border: 5px dashed var(--other0);
+    border: 2px solid var(--other1);
     border-radius: 5px;
     width: 250px;
 }
 
 .btn-TablaDePuntuaciones:hover {
-    color: #b2b0a7;
-    border: 5px dashed #b2b0a7;
-    background-color: #982343;
+    color: #dedcd3;
+    background-color: #cd355d;
+
 }
 
 /*-------------- TABLA DE PUNTUACIONES ------------------ */

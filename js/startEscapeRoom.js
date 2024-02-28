@@ -1,25 +1,33 @@
 // En este archivo me canse del ingles
 const btnStartEscapeRoom = document.getElementById("btnStartEscapeRoom");
-const btnMostrarPartidasIncompletas = document.getElementById("btnMostrarPartidasIncompletas");
+const btnMostrarPartidasIncompletas = document.getElementById(
+    "btnMostrarPartidasIncompletas"
+);
 const btnVolverAInicio = document.getElementById("btnVolverAInicio");
 const main = document.getElementById("main");
 const submenu = document.querySelector(".submenu");
 const dialogue = document.querySelector(".dialogue");
-// 
-const arrayDeJuegos = [createGameMemory, createGameAdivinarPalabraDesordenada, createGameCodigoCesar];
+//
+const arrayDeJuegos = [
+    createGameMemory,
+    createGameAdivinarPalabraDesordenada,
+    createGameCodigoCesar,
+];
 const juegosDesordenados = seleccionarJuegosAleatoriamente();
-// Dificultad de la partida 
+// Dificultad de la partida
 let dificultad;
 // El puntaje con el que comienzas y al pasar del tiempo o al uso de alguna pìsta disminuye
 let maxScore;
-let userConnected = User.fromJSON(JSON.parse(sessionStorage.getItem("connected")));
+let userConnected = User.fromJSON(
+    JSON.parse(sessionStorage.getItem("connected"))
+);
 
 console.log("Usuario del sesion");
 console.log(userConnected);
 console.log("Juegos");
 console.log(juegosDesordenados);
 
-// 
+//
 function saveGame(user) {
     let usersLocalStorage = JSON.parse(localStorage.getItem("users"));
     usersLocalStorage.forEach((userLS, index) => {
@@ -31,7 +39,6 @@ function saveGame(user) {
     console.log("guardando en localStorage y SessionStorage");
     localStorage.setItem("users", JSON.stringify(usersLocalStorage));
     sessionStorage.setItem("connected", JSON.stringify(user));
-
 }
 
 // ------------------------ CRONOMETRO -------------------------------
@@ -106,43 +113,45 @@ function createMenuSelectDifficulty() {
     `;
 }
 
-function crearMenuMostrarPartidasIncompletas(){
-    let partidasIncompletasContent = document.querySelector(".partidas-incompletas-content");
+function crearMenuMostrarPartidasIncompletas() {
+    let partidasIncompletasContent = document.querySelector(
+        ".partidas-incompletas-content"
+    );
     partidasIncompletasContent.innerHTML = "";
     // Muestra las partidas no acabadas que la dificultad sea fácil
     userConnected.games.easy.forEach((gameEasy, index) => {
-        if(!gameEasy.finalizedGame){
+        if (!gameEasy.finalizedGame) {
             partidasIncompletasContent.innerHTML += `
             <div class="partidas-incompletas-content-item">
                 <button onclick="cargarPartidaFacil('${index}')">
                     <span>Dificultad: <span>Fácil</span></span>
                 </button>
             </div>
-            `; 
+            `;
         }
     });
 
     userConnected.games.medium.forEach((gameMedium, index) => {
-        if(!gameMedium.finalizedGame){
+        if (!gameMedium.finalizedGame) {
             partidasIncompletasContent.innerHTML += `
             <div class="partidas-incompletas-content-item">
-                <button onclick="console.log('${index}')">
+                <button onclick="cargarPartidaMedia('${index}')">
                     <span>Dificultad: <span>Intermedio</span></span>
                 </button>
             </div>
-            `; 
+            `;
         }
     });
 
     userConnected.games.hard.forEach((gameDificil, index) => {
-        if(!gameDificil.finalizedGame){
+        if (!gameDificil.finalizedGame) {
             partidasIncompletasContent.innerHTML += `
             <div class="partidas-incompletas-content-item">
-                <button onclick="console.log('${index}')">
+                <button onclick="cargarPartidaDificil('${index}')">
                     <span>Dificultad: <span>Difícil</span></span>
                 </button>
             </div>
-            `; 
+            `;
         }
     });
 }
@@ -150,33 +159,37 @@ function crearMenuMostrarPartidasIncompletas(){
 /*-----------------------------Sistema de recuperación de partidas----------------------*
  * El sistema de recuperar partida se basa en tomar los datos de esta partida y crear una nueva partida "vacia" en el cual se le pasara los datos de la partida original, esto se hace para ponerlo al final del todo del array de las partidas faciles porque el código trabaja siempre en la última partida del array
  */
-function cargarPartidaFacil(index) { 
+function cargarPartidaFacil(index) {
     let indexT = Number(index);
     let partida = userConnected.games.easy[indexT];
     let tiempo = "00:00:00";
-    // Encontrar el último juego finalizado
-    let ultimoJuegoFinalizado = partida.gamesOfTheGame.find(item => item.finalized);
-    // Si se encuentra un juego finalizado, obtener su tiempo
-    if (ultimoJuegoFinalizado) {
-        tiempo = ultimoJuegoFinalizado.time;
+    // Carga el cronometro con el tiempo del ultimo juego finalizado
+    for (let i = partida.gamesOfTheGame.length - 1; i > -1; i--) {
+        if (partida.gamesOfTheGame[i].finalized) {
+            // ultimoJuegoFinalizado =
+            tiempo = partida.gamesOfTheGame[i].time;
+            break;
+        }
     }
     // Poner el tiempo del ultimo juego finalizado
-    let [horas, minutos, segundos] = tiempo.split(':').map(Number);
+    let [horas, minutos, segundos] = tiempo.split(":").map(Number);
     miFecha.setHours(horas);
     miFecha.setMinutes(minutos);
     miFecha.setSeconds(segundos);
     tiempoTranscurrido.textContent = tiempo;
-    
+
     juegosDesordenados.splice(0);
-    // LLena el array con los juegos de la partida que no han sido completado la cual queremos retomar 
+    // LLena el array con los juegos de la partida que no han sido completado la cual queremos retomar
     // console.log("Guardando los juegos de la partia que se quiere recuperar");
     partida.gamesOfTheGame.forEach((item) => {
-        if(!item.finalized){
-            if(item.gameName == createGameMemory.name){
+        if (!item.finalized) {
+            if (item.gameName == createGameMemory.name) {
                 juegosDesordenados.push(createGameMemory);
-            }else if(item.gameName == createGameAdivinarPalabraDesordenada.name){
+            } else if (
+                item.gameName == createGameAdivinarPalabraDesordenada.name
+            ) {
                 juegosDesordenados.push(createGameAdivinarPalabraDesordenada);
-            }else if(item.gameName == createGameCodigoCesar.name){
+            } else if (item.gameName == createGameCodigoCesar.name) {
                 juegosDesordenados.push(createGameCodigoCesar);
             }
         }
@@ -198,17 +211,117 @@ function cargarPartidaFacil(index) {
     selectDifficulty("easy", true);
 }
 
+function cargarPartidaMedia(index) {
+    let indexT = Number(index);
+    let partida = userConnected.games.medium[indexT];
+    let tiempo = "00:00:00";
 
+    // Tomar el tiempo del último juego de la partida
+    for (let i = partida.gamesOfTheGame.length - 1; i > -1; i--) {
+        if (partida.gamesOfTheGame[i].finalized) {
+            // ultimoJuegoFinalizado =
+            tiempo = partida.gamesOfTheGame[i].time;
+            break;
+        }
+    }
+
+    // Cargar el tiempo en el cronometro
+
+    let [horas, minutos, segundos] = tiempo.split(":").map(Number);
+    miFecha.setHours(horas);
+    miFecha.setMinutes(minutos);
+    miFecha.setSeconds(segundos);
+    tiempoTranscurrido.textContent = tiempo;
+
+    juegosDesordenados.splice(0);
+    // LLena el array con los juegos de la partida que no han sido completado la cual queremos retomar
+    // console.log("Guardando los juegos de la partia que se quiere recuperar");
+    partida.gamesOfTheGame.forEach((item) => {
+        if (!item.finalized) {
+            if (item.gameName == createGameMemory.name) {
+                juegosDesordenados.push(createGameMemory);
+            } else if (
+                item.gameName == createGameAdivinarPalabraDesordenada.name
+            ) {
+                juegosDesordenados.push(createGameAdivinarPalabraDesordenada);
+            } else if (item.gameName == createGameCodigoCesar.name) {
+                juegosDesordenados.push(createGameCodigoCesar);
+            }
+        }
+    });
+
+    // Juego que reemplazara al original(No importa los juegos con los que se inicialize porque se tomaran los juegos de la partida que queremos recuperar)
+    userConnected.addGameMedium(juegosDesordenados);
+    // Guardamos los datos de la partida original a la copia
+    userConnected.games.medium[userConnected.games.medium.length - 1] = partida;
+    userConnected.games.medium.splice(indexT, 1);
+    // Guardamos los cambios en el local y session
+    saveGame(userConnected);
+    // Iniciamos la partida con el primer juego que no ha sido completado
+    selectDifficulty("medium", true);
+}
+
+function cargarPartidaDificil(index) {
+    let indexT = Number(index);
+    let partida = userConnected.games.hard[indexT];
+    let tiempo = "00:00:00";
+    // Tomar el tiempo del último juego de la partida
+    for (let i = partida.gamesOfTheGame.length - 1; i > -1; i--) {
+        if (partida.gamesOfTheGame[i].finalized) {
+            // ultimoJuegoFinalizado =
+            tiempo = partida.gamesOfTheGame[i].time;
+            break;
+        }
+    }
+    // Cargar el tiempo en el cronometro
+    let [horas, minutos, segundos] = tiempo.split(":").map(Number);
+    miFecha.setHours(horas);
+    miFecha.setMinutes(minutos);
+    miFecha.setSeconds(segundos);
+    tiempoTranscurrido.textContent = tiempo;
+
+    juegosDesordenados.splice(0);
+    // LLena el array con los juegos de la partida que no han sido completado la cual queremos retomar
+    // console.log("Guardando los juegos de la partia que se quiere recuperar");
+    partida.gamesOfTheGame.forEach((item) => {
+        if (!item.finalized) {
+            if (item.gameName == createGameMemory.name) {
+                juegosDesordenados.push(createGameMemory);
+            } else if (
+                item.gameName == createGameAdivinarPalabraDesordenada.name
+            ) {
+                juegosDesordenados.push(createGameAdivinarPalabraDesordenada);
+            } else if (item.gameName == createGameCodigoCesar.name) {
+                juegosDesordenados.push(createGameCodigoCesar);
+            }
+        }
+    });
+
+    // Juego que reemplazara al original(No importa los juegos con los que se inicialize porque se tomaran los juegos de la partida que queremos recuperar)
+    userConnected.addGameHard(juegosDesordenados);
+    // Guardamos los datos de la partida original a la copia
+    userConnected.games.hard[userConnected.games.hard.length - 1] = partida;
+    userConnected.games.hard.splice(indexT, 1);
+    console.log(userConnected);
+    // Guardamos los cambios en el local y session
+    saveGame(userConnected);
+    // Iniciamos la partida con el primer juego que no ha sido completado
+    selectDifficulty("hard", true);
+}
 
 function createMenuFinal() {
     submenu.style = "display: none";
     let puntajeTotal;
     if (dificultad == "easy") {
-        puntajeTotal = userConnected.games.easy[userConnected.games.easy.length - 1].score;
+        puntajeTotal =
+            userConnected.games.easy[userConnected.games.easy.length - 1].score;
     } else if (dificultad == "medium") {
-        puntajeTotal = userConnected.games.medium[userConnected.games.medium.length - 1].score;
+        puntajeTotal =
+            userConnected.games.medium[userConnected.games.medium.length - 1]
+                .score;
     } else if (dificultad == "hard") {
-        puntajeTotal = userConnected.games.hard[userConnected.games.hard.length - 1].score;
+        puntajeTotal =
+            userConnected.games.hard[userConnected.games.hard.length - 1].score;
     }
     return `
     <div class="puntuacion-main">
@@ -238,7 +351,7 @@ function createMenuFinal() {
 }
 
 function redirigirATablaPuntuaciones() {
-    location.href = "../pages/tablaPuntuaciones.html"
+    location.href = "../pages/tablaPuntuaciones.html";
 }
 // Si el memory es el primero en crearse
 function isCreateMemoryFirst() {
@@ -256,8 +369,8 @@ function selectDifficulty(difficulty, partidaGuardada) {
     }, 5000);
 
     // Cargando partida guardada
-    if(partidaGuardada){
-        if(difficulty == "easy"){
+    if (partidaGuardada) {
+        if (difficulty == "easy") {
             maxScore = 2400;
             dificultad = "easy";
             if (isCreateMemoryFirst()) {
@@ -265,7 +378,7 @@ function selectDifficulty(difficulty, partidaGuardada) {
             } else {
                 juegosDesordenados[0]();
             }
-        }else if(difficulty == "medium"){
+        } else if (difficulty == "medium") {
             maxScore = 2100;
             dificultad = "medium";
             if (isCreateMemoryFirst()) {
@@ -273,7 +386,7 @@ function selectDifficulty(difficulty, partidaGuardada) {
             } else {
                 juegosDesordenados[0]();
             }
-        }else if (difficulty == "hard") {
+        } else if (difficulty == "hard") {
             dificultad = "hard";
             maxScore = 1800;
             // Agregar la partida al jugador
@@ -286,67 +399,60 @@ function selectDifficulty(difficulty, partidaGuardada) {
 
         iniciarCrono();
         submenu.style = "display: flex";
-
-    }else{
+    } else {
         // Nueva partida
         if (difficulty == "easy") {
             maxScore = 2400;
             dificultad = "easy";
-            // 
+            //
             juegosDesordenados.splice(2);
             userConnected.addGameEasy(juegosDesordenados);
             // Agregar la partida al jugador
             saveGame(userConnected);
-            
 
             if (isCreateMemoryFirst()) {
                 juegosDesordenados[0](8);
             } else {
                 juegosDesordenados[0]();
             }
-    
+
             console.log(juegosDesordenados);
-    
-    
         } else if (difficulty == "medium") {
             maxScore = 2100;
             dificultad = "medium";
-            // 
+            //
             juegosDesordenados.splice(3);
-    
+
             // Agregar la partida al jugador
             userConnected.addGameMedium(juegosDesordenados);
             saveGame(userConnected);
-    
+
             if (isCreateMemoryFirst()) {
                 juegosDesordenados[0](12);
             } else {
                 juegosDesordenados[0]();
             }
-    
+
             console.log(juegosDesordenados);
-    
         } else if (difficulty == "hard") {
             dificultad = "hard";
             maxScore = 1800;
             // Agregar la partida al jugador
             userConnected.addGameHard(juegosDesordenados);
             saveGame(userConnected);
-    
+
             if (isCreateMemoryFirst()) {
                 juegosDesordenados[0](16);
             } else {
                 juegosDesordenados[0]();
             }
-    
+
             console.log(juegosDesordenados);
         }
-    
+
         iniciarCrono();
         submenu.style = "display: flex";
     }
-
-
 }
 
 // Limpia el main entre juegos
@@ -374,19 +480,26 @@ function irAlSiguienteJuego() {
             limpiarMain();
             main.innerHTML = createMenuFinal();
             console.log("creando menu final");
-            mostrarDialogo("Se acabo")
+            mostrarDialogo("Se acabo");
         }, 2000);
-
-    } else if ((juegosDesordenados[0] == createGameMemory) && dificultad == "easy") {
+    } else if (
+        juegosDesordenados[0] == createGameMemory &&
+        dificultad == "easy"
+    ) {
         setTimeout(() => {
             juegosDesordenados[0](8);
         }, 2000);
-    } else if ((juegosDesordenados[0] == createGameMemory) && dificultad == "medium") {
+    } else if (
+        juegosDesordenados[0] == createGameMemory &&
+        dificultad == "medium"
+    ) {
         setTimeout(() => {
             juegosDesordenados[0](12);
-
         }, 2000);
-    } else if ((juegosDesordenados[0] == createGameMemory) && dificultad == "hard") {
+    } else if (
+        juegosDesordenados[0] == createGameMemory &&
+        dificultad == "hard"
+    ) {
         setTimeout(() => {
             juegosDesordenados[0](16);
         }, 2000);
@@ -422,7 +535,6 @@ function createGameCodigoCesar() {
     nota.addEventListener("click", mirarNota);
     mainPopUp.addEventListener("click", dejarDeMirarNota);
     btnProbarCodigo.addEventListener("click", probarCodigo);
-
 }
 
 function createGameMemory(cantidadDeCartas) {
@@ -448,11 +560,13 @@ btnStartEscapeRoom.addEventListener("click", () => {
 
 btnMostrarPartidasIncompletas.addEventListener("click", () => {
     document.querySelector(".menu-start-game").style = "display: none";
-    document.querySelector(".partidas-incompletas-main").style = "display: block";
+    document.querySelector(".partidas-incompletas-main").style =
+        "display: block";
     crearMenuMostrarPartidasIncompletas();
 });
 
 btnVolverAInicio.addEventListener("click", () => {
     document.querySelector(".menu-start-game").style = "display: block";
-    document.querySelector(".partidas-incompletas-main").style = "display: none";
+    document.querySelector(".partidas-incompletas-main").style =
+        "display: none";
 });

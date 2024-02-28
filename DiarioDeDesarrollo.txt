@@ -119,3 +119,9 @@
         - El sistema de recuperacion HECHO(falta dificultad media y dificil)
     HACER
         - Sistema de pistas
+
+28-02-2024
+    HECHO 
+        - Sistema de recuperacion de partidas listo
+    HACER 
+        - Sistema de pistas
